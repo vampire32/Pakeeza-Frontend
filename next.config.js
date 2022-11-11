@@ -4,5 +4,14 @@ const nextConfig = {
   swcMinify: true,
 }
 
-
+module.exports = {
+	async rewrites() {
+		return [
+			{
+				source: "/",
+				destination: "/",
+			},
+		];
+	},
+};
 module.exports = nextConfig

@@ -421,7 +421,7 @@ const Kitchen = (props) => {
 		</div>
 	);
 };
-export async function getStaticProps(context) {
+export async function getServerSideProps(context) {
 	let headers = {
 		Authorization:
 			"e4cbdda2da4876ca76a1458aece14ae1e513d4f509c2ca53fba1368fcd806d0a93f30f4dde98050a933ff4b88fa7581685e5761c9f9c6413cd9fb0994fd045c78c046b29fe5e179e25f2075d82285f7cdc147a4b66f6a93475a24422e4a7e2aeb2f88be57addcd4e54e8be86106da6ae83035fb39710f87b087c241221cddcbf",

@@ -7,6 +7,7 @@ import { Dialog, Transition } from "@headlessui/react";
 import { XMarkIcon } from "@heroicons/react/24/outline";
 import Cart from "./Cart";
 import Image from "next/image";
+import {VscLocation} from "react-icons/vsc"
 
 
 
@@ -104,9 +105,7 @@ const NavBar = ({ Carts, addToCart, RemoveFromcart, clearCart, SubTotal }) => {
 																				</p>
 																			</div>
 																		</div>
-																		
 																	</li>
-															
 																);
 															})}
 														</ul>
@@ -168,6 +167,12 @@ const NavBar = ({ Carts, addToCart, RemoveFromcart, clearCart, SubTotal }) => {
 									Pakeeza<span className="text-[#ffae42]">Electronics</span>
 								</span>
 							</div>
+							<a className="cursor-pointer text-[#ffae42] font-semibold px-3 py-2 text-md hover:font-black res">
+								<div className="flex">
+									<VscLocation size={45} />
+									Shop Address
+								</div>
+							</a>
 							<div className="hidden res3 md:block">
 								<div className=" ml-10 flex items-baseline space-x-4">
 									<a className="cursor-pointer text-[#ffae42] font-semibold px-3 py-2 text-md hover:font-black">
@@ -353,6 +358,12 @@ const NavBar = ({ Carts, addToCart, RemoveFromcart, clearCart, SubTotal }) => {
 
 								<a className="cursor-pointer hover:bg-blue-600 text-black hover:text-white block px-3 py-2 rounded-md text-base font-medium">
 									<Link href="/home">Contact</Link>
+								</a>
+								<a className="cursor-pointer text-[#ffae42] font-semibold px-3 py-2 text-md hover:font-black">
+									<div className="flex">
+										<VscLocation size={45} />
+										Shop Address
+									</div>
 								</a>
 								<button className=" btn bg-[#200b52] hover:bg-[#ffae42] cursor-pointer  text-white hover:text-white block px-3 py-2 rounded-md text-base font-medium">
 									<Link activeClass="Home" href="/Login">

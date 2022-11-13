@@ -10,7 +10,7 @@ import '../styles/filters.css'
 import '../styles/about.css'
 import '../styles/checkout.css'
 
-
+import getConfig from "next/config";
 
 import NavBar from "../Components/Navbar";
 

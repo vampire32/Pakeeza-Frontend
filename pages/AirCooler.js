@@ -425,10 +425,10 @@ const Products = (props) => {
 export async function getServerSideProps(context) {
 	let headers = {
 		Authorization:
-			"e4cbdda2da4876ca76a1458aece14ae1e513d4f509c2ca53fba1368fcd806d0a93f30f4dde98050a933ff4b88fa7581685e5761c9f9c6413cd9fb0994fd045c78c046b29fe5e179e25f2075d82285f7cdc147a4b66f6a93475a24422e4a7e2aeb2f88be57addcd4e54e8be86106da6ae83035fb39710f87b087c241221cddcbf",
+			"9ad861e7d9919e881e8b92dfda4c896c1bac63a983dc0acc82727073cc2692d137929ebae6d3242d3a30f1988bc4b8d59faf909d74751f2d4a4f2ab6e4451fa6b1df48774c83cd3646a9a4fed0c45f2716ffd1fc18fd649ecdeea1107ec31a6762073d70cf6f0baa9e063ddd36cbe04bab635baed591742cba412e3ad64cf1ec",
 	};
 	let a = await fetch(
-		"https://glacial-woodland-47482.herokuapp.com/api/air-con-and-air-coolers?populate=*",
+		"https://gentle-lake-42463.herokuapp.com/api/products?filters[Category][$eq]=AC",
 		(headers = headers)
 	);
 	let productsData = await a.json();

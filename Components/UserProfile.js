@@ -1,19 +1,11 @@
-import  React from "react";
-import Col from 'react-bootstrap/Col';
-import Nav from 'react-bootstrap/Nav';
-import Row from 'react-bootstrap/Row';
-import Tab from 'react-bootstrap/Tab';
+import React from "react";
+import Col from "react-bootstrap/Col";
+import Nav from "react-bootstrap/Nav";
+import Row from "react-bootstrap/Row";
+import Tab from "react-bootstrap/Tab";
 import Table from "react-bootstrap/Table";
-import Router, { useRouter } from "next/router";
 
 const UserProfile = () => {
-
-	const Logout=()=>{
-		localStorage.removeItem('jwt')
-		Router.push('/')
-
-	}
-    
 	return (
 		<section className="my-account" style={{ overflow: "hiiden" }}>
 			<Tab.Container id="left-tabs-example" defaultActiveKey="first">
@@ -59,15 +51,6 @@ const UserProfile = () => {
 								>
 									DELIVERY ADDRESS
 								</Nav.Link>
-							</Nav.Item>
-							<Nav.Item>
-								<button
-								onClick={Logout}
-									eventKey="fiveth"
-									className="font-bold text-[22px] text-[#ffb248]"
-								>
-									LOGOUT
-								</button>
 							</Nav.Item>
 						</Nav>
 					</Col>

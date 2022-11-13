@@ -413,8 +413,9 @@ const Home = (props) => {
 										{props.productsData.data.map((item) => {
 											let imgurl =
 												"https://glacial-woodland-47482.herokuapp.com";
-											let img = item.attributes.img.data.attributes.url;
-											console.log(img);
+											let img =
+												item.attributes.img.data.attributes.formats.thumbnail.url;
+											// console.log(img);
 
 											return (
 												<SwiperSlide key={item.id}>
@@ -422,7 +423,7 @@ const Home = (props) => {
 														slug={item.attributes.Name}
 														brands={item.attributes.Brand}
 														price={item.attributes.Price}
-														Picture={imgurl + img}
+														Picture={img}
 														Model={item.attributes.Model}
 													/>
 													;
@@ -703,17 +704,19 @@ const Home = (props) => {
 					modules={[Pagination, Navigation]}
 					className="mySwiper"
 				>
+					
 					{props.productsData.data.map((item) => {
 						let imgurl = "https://glacial-woodland-47482.herokuapp.com";
-						let img = item.attributes.img.data.attributes.url;
+						let img = item.attributes.img.data.attributes.formats.thumbnail.url;
 
 						return (
 							<SwiperSlide key={item.id}>
+								
 								<ProductCards
 									slug={item.attributes.Name}
 									brands={item.attributes.Brand}
 									price={item.attributes.Price}
-									Picture={imgurl + img}
+									Picture={img}
 									Model={item.attributes.Model}
 								/>
 								;
@@ -752,8 +755,8 @@ const Home = (props) => {
 				>
 					{props.FreezerData.data.map((item) => {
 						let imgurl = "https://glacial-woodland-47482.herokuapp.com";
-						let img = item.attributes.img.data.attributes.url;
-						console.log(img);
+						let img = item.attributes.img.data.attributes.formats.thumbnail.url;
+						// console.log(img);
 
 						return (
 							<SwiperSlide key={item.id}>
@@ -762,7 +765,7 @@ const Home = (props) => {
 									Model={item.attributes.Model}
 									brands={item.attributes.Brand}
 									price={item.attributes.Price}
-									Picture={imgurl + img}
+									Picture={img}
 								/>
 								;
 							</SwiperSlide>
@@ -799,8 +802,8 @@ const Home = (props) => {
 				>
 					{props.LEDData.data.map((item) => {
 						let imgurl = "https://glacial-woodland-47482.herokuapp.com";
-						let img = item.attributes.img.data.attributes.url;
-						console.log(img);
+						let img = item.attributes.img.data.attributes.formats.thumbnail.url;
+						// console.log(img);
 
 						return (
 							<SwiperSlide key={item.id}>
@@ -809,7 +812,7 @@ const Home = (props) => {
 									Model={item.attributes.Model}
 									brands={item.attributes.Brand}
 									price={item.attributes.Price}
-									Picture={imgurl + img}
+									Picture={img}
 								/>
 								;
 							</SwiperSlide>
@@ -846,8 +849,8 @@ const Home = (props) => {
 				>
 					{props.HomeData.data.map((item) => {
 						let imgurl = "https://glacial-woodland-47482.herokuapp.com";
-						let img = item.attributes.img.data.attributes.url;
-						console.log(img);
+						let img = item.attributes.img.data.attributes.formats.thumbnail.url;
+						// console.log(img);
 
 						return (
 							<SwiperSlide key={item.id}>
@@ -856,7 +859,7 @@ const Home = (props) => {
 									Model={item.attributes.Model}
 									brands={item.attributes.Brand}
 									price={item.attributes.Price}
-									Picture={imgurl + img}
+									Picture={img}
 								/>
 								;
 							</SwiperSlide>
@@ -893,8 +896,8 @@ const Home = (props) => {
 				>
 					{props.KitchenData.data.map((item) => {
 						let imgurl = "https://glacial-woodland-47482.herokuapp.com";
-						let img = item.attributes.img.data.attributes.url;
-						console.log(img);
+						let img = item.attributes.img.data.attributes.formats.thumbnail.url;
+						// console.log(img);
 
 						return (
 							<SwiperSlide key={item.id}>
@@ -903,7 +906,7 @@ const Home = (props) => {
 									Model={item.attributes.Model}
 									brands={item.attributes.Brand}
 									price={item.attributes.Price}
-									Picture={imgurl + img}
+									Picture={img}
 								/>
 								;
 							</SwiperSlide>
@@ -940,8 +943,8 @@ const Home = (props) => {
 				>
 					{props.WashingData.data.map((item) => {
 						let imgurl = "https://glacial-woodland-47482.herokuapp.com";
-						let img = item.attributes.img.data.attributes.url;
-						console.log(img);
+						let img = item.attributes.img.data.attributes.formats.thumbnail.url;
+						// console.log(img);
 
 						return (
 							<SwiperSlide key={item.id}>
@@ -950,7 +953,7 @@ const Home = (props) => {
 									Model={item.attributes.Model}
 									brands={item.attributes.Brand}
 									price={item.attributes.Price}
-									Picture={imgurl + img}
+									Picture={img}
 								/>
 								;
 							</SwiperSlide>
@@ -1063,43 +1066,47 @@ const Home = (props) => {
 export async function getServerSideProps(context) {
 	let headers = {
 		Authorization:
-			"e4cbdda2da4876ca76a1458aece14ae1e513d4f509c2ca53fba1368fcd806d0a93f30f4dde98050a933ff4b88fa7581685e5761c9f9c6413cd9fb0994fd045c78c046b29fe5e179e25f2075d82285f7cdc147a4b66f6a93475a24422e4a7e2aeb2f88be57addcd4e54e8be86106da6ae83035fb39710f87b087c241221cddcbf",
+			"9ad861e7d9919e881e8b92dfda4c896c1bac63a983dc0acc82727073cc2692d137929ebae6d3242d3a30f1988bc4b8d59faf909d74751f2d4a4f2ab6e4451fa6b1df48774c83cd3646a9a4fed0c45f2716ffd1fc18fd649ecdeea1107ec31a6762073d70cf6f0baa9e063ddd36cbe04bab635baed591742cba412e3ad64cf1ec",
 	};
-	let a = await fetch("https://glacial-woodland-47482.herokuapp.com/api/air-con-and-air-coolers?populate=*",
+	let a = await fetch(
+		"https://gentle-lake-42463.herokuapp.com/api/products?filters[Category][$eq]=AC&populate=*",
 		(headers = headers)
 	);
-	let b= await fetch(
-		"https://glacial-woodland-47482.herokuapp.com/api/refrigerator-and-freezers?populate=*",
+	
+	let b = await fetch(
+		"https://gentle-lake-42463.herokuapp.com/api/products?filters[Category][$eq]=Freezer&populate=*",
 		(headers = headers)
 	);
 	let c = await fetch(
-		"https://glacial-woodland-47482.herokuapp.com/api/home-appliances?populate=*",
+		"https://gentle-lake-42463.herokuapp.com/api/products?filters[Category][$eq]=Appliance&populate=*",
 		(headers = headers)
 	);
-	let d= await fetch("https://glacial-woodland-47482.herokuapp.com/api/built-in-kitchens?populate=*",
-			(headers = headers)
-		)
+	let d = await fetch(
+		"https://gentle-lake-42463.herokuapp.com/api/products?filters[Category][$eq]=Kitchen&populate=*",
+		(headers = headers)
+	);
 	
 	let e = await fetch(
-		"https://glacial-woodland-47482.herokuapp.com/api/led-tv-and-sound-systems?populate=*",
+		"https://gentle-lake-42463.herokuapp.com/api/products?filters[Category][$eq]=LED&populate=*",
 		(headers = headers)
 	);
 	let f = await fetch(
-		"https://glacial-woodland-47482.herokuapp.com/api/washing-solutions?populate=*",
+		"https://gentle-lake-42463.herokuapp.com/api/products?filters[Category][$eq]=Washing&populate=*",
 		(headers = headers)
 	);
 	
 
 	let productsData = await a.json();
+	
 	let FreezerData = await b.json();
 	let HomeData = await c.json();
 	let KitchenData = await d.json();
 	let LEDData = await e.json();
 	let WashingData = await f.json();
-	console.log(FreezerData.data)
+
 	
 	return {
-		props: { productsData: productsData, FreezerData: FreezerData,LEDData:LEDData,HomeData:HomeData,KitchenData:KitchenData,WashingData:WashingData },
+		props: { productsData: productsData, FreezerData: FreezerData,LEDData:LEDData,HomeData:HomeData,KitchenData:KitchenData,WashingData:WashingData},
 		// will be passed to the page component as props
 	};
 }

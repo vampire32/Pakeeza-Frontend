@@ -130,498 +130,60 @@ const Home = (props) => {
 				<link rel="icon" href="/favicon.ico" />
 			</Head>
 			<MainSlider />
-			{/* <Brands /> */}
-			<Transition.Root show={mobileFiltersOpen} as={Fragment}>
-				<Dialog
-					as="div"
-					className="relative z-40 lg:hidden"
-					onClose={setMobileFiltersOpen}
-				>
-					<Transition.Child
-						as={Fragment}
-						enter="transition-opacity ease-linear duration-300"
-						enterFrom="opacity-0"
-						enterTo="opacity-100"
-						leave="transition-opacity ease-linear duration-300"
-						leaveFrom="opacity-100"
-						leaveTo="opacity-0"
+			<Brands />
+			<div className="bg-[#2b2a2a] h-[50rem] mt-[10rem]">
+				<div className="container ">
+					<h3 className="text-center text-yellow-600 mt-5 text-[32px] mt-5 pb=22 font-medium">
+						New Arrivals
+					</h3>
+					<Swiper
+						breakpoints={{
+							640: {
+								slidesPerView: 1,
+							},
+							768: {
+								slidesPerView: 2,
+							},
+							1199: {
+								slidesPerView: 3,
+							},
+						}}
+						spaceBetween={30}
+						freeMode={true}
+						pagination={{
+							clickable: true,
+						}}
+						navigation={{
+							clickable: true,
+						}}
+						modules={[Pagination, Navigation]}
+						className="mySwiper"
 					>
-						<div className="fixed inset-0 bg-black bg-opacity-25" />
-					</Transition.Child>
+						{props.productsData.data.map((item) => {
+							let imgurl = "https://glacial-woodland-47482.herokuapp.com";
+							let img =
+								item.attributes.img.data.attributes.formats.thumbnail.url;
+							// console.log(img);
 
-					<div className="fixed inset-0 z-40 flex">
-						<Transition.Child
-							as={Fragment}
-							enter="transition ease-in-out duration-300 transform"
-							enterFrom="translate-x-full"
-							enterTo="translate-x-0"
-							leave="transition ease-in-out duration-300 transform"
-							leaveFrom="translate-x-0"
-							leaveTo="translate-x-full"
-						>
-							<Dialog.Panel className="relative ml-auto flex h-full w-full max-w-xs flex-col overflow-y-auto bg-white py-4 pb-12 shadow-xl">
-								<div className="flex items-center justify-between px-4">
-									<h2 className="text-lg font-medium text-gray-900">Filters</h2>
-									<button
-										type="button"
-										className="-mr-2 flex h-10 w-10 items-center justify-center rounded-md bg-white p-2 text-gray-400"
-										onClick={() => setMobileFiltersOpen(false)}
-									>
-										<span className="sr-only">Close menu</span>
-										<XMarkIcon className="h-6 w-6" aria-hidden="true" />
-									</button>
-								</div>
+							return (
+								<SwiperSlide key={item.id}>
+									<ProductCards
+										slug={item.attributes.Model}
+										name={item.attributes.Name}
+										
+										brands={item.attributes.Brand}
+										price={item.attributes.Price}
+										Picture={img}
+										
+									/>
+									;
+								</SwiperSlide>
+							);
+						})}
+					</Swiper>
+				</div>
+			</div>
 
-								{/* Filters */}
-								<form className="mt-4 border-t border-gray-200">
-									<h3 className="sr-only">Categories</h3>
-									<ul
-										role="list"
-										className="px-2 py-3 font-medium text-gray-900"
-									>
-										{subCategories.map((category) => (
-											<li key={category.name}>
-												<a href={category.href} className="block px-2 py-3">
-													{category.name}
-												</a>
-											</li>
-										))}
-									</ul>
-
-									{filters.map((section) => (
-										<Disclosure
-											as="div"
-											key={section.id}
-											className="border-t border-gray-200 px-4 py-6"
-										>
-											{({ open }) => (
-												<>
-													<h3 className="-mx-2 -my-3 flow-root">
-														<Disclosure.Button className="flex w-full items-center justify-between bg-white px-2 py-3 text-gray-400 hover:text-gray-500">
-															<span className="font-medium text-gray-900">
-																{section.name}
-															</span>
-															<span className="ml-6 flex items-center">
-																{open ? (
-																	<MinusIcon
-																		className="h-5 w-5"
-																		aria-hidden="true"
-																	/>
-																) : (
-																	<PlusIcon
-																		className="h-5 w-5"
-																		aria-hidden="true"
-																	/>
-																)}
-															</span>
-														</Disclosure.Button>
-													</h3>
-													<Disclosure.Panel className="pt-6">
-														<div className="space-y-6">
-															{section.options.map((option, optionIdx) => (
-																<div
-																	key={option.value}
-																	className="flex items-center"
-																>
-																	<input
-																		id={`filter-mobile-${section.id}-${optionIdx}`}
-																		name={`${section.id}[]`}
-																		defaultValue={option.value}
-																		type="checkbox"
-																		defaultChecked={option.checked}
-																		className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
-																	/>
-																	<label
-																		htmlFor={`filter-mobile-${section.id}-${optionIdx}`}
-																		className="ml-3 min-w-0 flex-1 text-gray-500"
-																	>
-																		{option.label}
-																	</label>
-																</div>
-															))}
-														</div>
-													</Disclosure.Panel>
-												</>
-											)}
-										</Disclosure>
-									))}
-								</form>
-							</Dialog.Panel>
-						</Transition.Child>
-					</div>
-				</Dialog>
-			</Transition.Root>
-			<main className="container">
-				<section aria-labelledby="products-heading" className="pt-6 pb-24">
-					<h2 id="products-heading" className="sr-only">
-						Products
-					</h2>
-					<div className="flex items-center">
-						<Menu as="div" className="relative inline-block text-left">
-							<Transition
-								as={Fragment}
-								enter="transition ease-out duration-100"
-								enterFrom="transform opacity-0 scale-95"
-								enterTo="transform opacity-100 scale-100"
-								leave="transition ease-in duration-75"
-								leaveFrom="transform opacity-100 scale-100"
-								leaveTo="transform opacity-0 scale-95"
-							>
-								<Menu.Items className="absolute right-0 z-10 mt-2 w-40 origin-top-right rounded-md bg-white shadow-2xl ring-1 ring-black ring-opacity-5 focus:outline-none">
-									<div className="py-1">
-										{sortOptions.map((option) => (
-											<Menu.Item key={option.name}>
-												{({ active }) => (
-													<a
-														href={option.href}
-														className={classNames(
-															option.current
-																? "font-medium text-gray-900"
-																: "text-gray-500",
-															active ? "bg-gray-100" : "",
-															"block px-4 py-2 text-sm"
-														)}
-													>
-														{option.name}
-													</a>
-												)}
-											</Menu.Item>
-										))}
-									</div>
-								</Menu.Items>
-							</Transition>
-						</Menu>
-
-						<button
-							type="button"
-							className="-m-2 ml-4 p-2 text-gray-400 hover:text-gray-500 sm:ml-6 lg:hidden"
-							onClick={() => setMobileFiltersOpen(true)}
-						>
-							<span className="sr-only">Filters</span>
-							<FunnelIcon className="h-5 w-5" aria-hidden="true" />
-						</button>
-					</div>
-					<div className="row bg-light">
-						<div className="col-md-6" style={{ width: "20%" }}>
-							{/* Filters */}
-							<form className="hidden lg:block">
-								<h3 className="sr-only">Categories</h3>
-								<ul
-									role="list"
-									className="space-y-4 border-b border-gray-200 pb-6 text-sm font-medium text-gray-900"
-								>
-									{subCategories.map((category) => (
-										<li key={category.name}>
-											<a href={category.href}>{category.name}</a>
-										</li>
-									))}
-								</ul>
-
-								{filters.map((section) => (
-									<Disclosure
-										as="div"
-										key={section.id}
-										className="border-b border-gray-200 py-6"
-									>
-										{({ open }) => (
-											<>
-												<h3 className="-my-3 flow-root">
-													<Disclosure.Button className="flex w-full items-center justify-between bg-light py-3 text-sm text-gray-400 hover:text-gray-500">
-														<span className="font-medium text-gray-900">
-															{section.name}
-														</span>
-														<span className="ml-6 flex items-center">
-															{open ? (
-																<MinusIcon
-																	className="h-5 w-5"
-																	aria-hidden="true"
-																/>
-															) : (
-																<PlusIcon
-																	className="h-5 w-5"
-																	aria-hidden="true"
-																/>
-															)}
-														</span>
-													</Disclosure.Button>
-												</h3>
-												<Disclosure.Panel className="pt-6">
-													<div className="space-y-4">
-														{section.options.map((option, optionIdx) => (
-															<div
-																key={option.value}
-																className="flex items-center"
-															>
-																<input
-																	id={`filter-${section.id}-${optionIdx}`}
-																	name={`${section.id}[]`}
-																	defaultValue={option.value}
-																	type="checkbox"
-																	defaultChecked={option.checked}
-																	className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
-																/>
-																<label
-																	htmlFor={`filter-${section.id}-${optionIdx}`}
-																	className="ml-3 text-sm text-gray-600"
-																>
-																	{option.label}
-																</label>
-															</div>
-														))}
-													</div>
-												</Disclosure.Panel>
-											</>
-										)}
-									</Disclosure>
-								))}
-							</form>
-						</div>
-						<section class="bg-light py-5 mt-10 col-md-8">
-							<div class="container my-4">
-								<div class="row text-center py-3">
-									<div class="col-lg-12 m-auto">
-										<h1 class="h1">Our Brands</h1>
-										<p>
-											Lorem ipsum dolor sit amet, consectetur adipisicing elit,
-											sed do eiusmod Lorem ipsum dolor sit amet.
-										</p>
-									</div>
-									<h3 className="text-[22px]">Hot Products</h3>
-									<Swiper
-										breakpoints={{
-											640: {
-												slidesPerView: 1,
-											},
-											768: {
-												slidesPerView: 2,
-											},
-											1199: {
-												slidesPerView: 3,
-											},
-										}}
-										spaceBetween={30}
-										freeMode={true}
-										pagination={{
-											clickable: true,
-										}}
-										navigation={{
-											clickable: true,
-										}}
-										modules={[Pagination, Navigation]}
-										className="mySwiper"
-									>
-										{props.productsData.data.map((item) => {
-											let imgurl =
-												"https://glacial-woodland-47482.herokuapp.com";
-											let img =
-												item.attributes.img.data.attributes.formats.thumbnail.url;
-											// console.log(img);
-
-											return (
-												<SwiperSlide key={item.id}>
-													<ProductCards
-														slug={item.attributes.Name}
-														brands={item.attributes.Brand}
-														price={item.attributes.Price}
-														Picture={img}
-														Model={item.attributes.Model}
-													/>
-													;
-												</SwiperSlide>
-											);
-										})}
-									</Swiper>
-									<div class="col-lg-9 m-auto tempaltemo-carousel">
-										<div class="row d-flex flex-row">
-											<div class="col-1 align-self-center">
-												<a
-													class="h1"
-													href="#templatemo-slide-brand"
-													role="button"
-													data-bs-slide="prev"
-												>
-													<FaChevronLeft />
-												</a>
-											</div>
-
-											<div class="col">
-												<div
-													class="carousel slide carousel-multi-item pt-2 pt-md-0"
-													id="templatemo-slide-brand"
-													data-bs-ride="carousel"
-												>
-													<div
-														class="carousel-inner product-links-wap"
-														role="listbox"
-													>
-														<div class="carousel-item active">
-															<div class="row">
-																<div class="col-3 p-md-5">
-																	<a href="#">
-																		<div className="img-fluid brand-img">
-																			<Image
-																				class="img-fluid brand-img"
-																				src={b1}
-																				alt="Brand Logo"
-																			/>
-																		</div>
-																	</a>
-																</div>
-																<div class="col-3 p-md-5">
-																	<a href="#">
-																		<div className="img-fluid brand-img">
-																			<Image
-																				class="img-fluid brand-img"
-																				src={b2}
-																				alt="Brand Logo"
-																			/>
-																		</div>
-																	</a>
-																</div>
-																<div class="col-3 p-md-5">
-																	<a href="#">
-																		<div className="img-fluid brand-img">
-																			<Image
-																				class="img-fluid brand-img"
-																				src={b3}
-																				alt="Brand Logo"
-																			/>
-																		</div>
-																	</a>
-																</div>
-																<div class="col-3 p-md-5">
-																	<a href="#">
-																		<div className="img-fluid brand-img">
-																			<Image
-																				class="img-fluid brand-img"
-																				src={b4}
-																				alt="Brand Logo"
-																			/>
-																		</div>
-																	</a>
-																</div>
-															</div>
-														</div>
-
-														<div class="carousel-item">
-															<div class="row">
-																<div class="col-3 p-md-5">
-																	<a href="#">
-																		<div className="img-fluid brand-img">
-																			<Image
-																				class="img-fluid brand-img"
-																				src={b4}
-																				alt="Brand Logo"
-																			/>
-																		</div>
-																	</a>
-																</div>
-																<div class="col-3 p-md-5">
-																	<a href="#">
-																		<div className="img-fluid brand-img">
-																			<Image
-																				class="img-fluid brand-img"
-																				src={b5}
-																				alt="Brand Logo"
-																			/>
-																		</div>
-																	</a>
-																</div>
-																<div class="col-3 p-md-5">
-																	<a href="#">
-																		<div className="img-fluid brand-img">
-																			<Image
-																				class="img-fluid brand-img"
-																				src={b3}
-																				alt="Brand Logo"
-																			/>
-																		</div>
-																	</a>
-																</div>
-																<div class="col-3 p-md-5">
-																	<a href="#">
-																		<div className="img-fluid brand-img">
-																			<Image
-																				class="img-fluid brand-img"
-																				src={b2}
-																				alt="Brand Logo"
-																			/>
-																		</div>
-																	</a>
-																</div>
-															</div>
-														</div>
-
-														<div class="carousel-item">
-															<div class="row">
-																<div class="col-3 p-md-5">
-																	<a href="#">
-																		<div className="img-fluid brand-img">
-																			<Image
-																				class="img-fluid brand-img"
-																				src={b2}
-																				alt="Brand Logo"
-																			/>
-																		</div>
-																	</a>
-																</div>
-																<div class="col-3 p-md-5">
-																	<a href="#">
-																		<div className="img-fluid brand-img">
-																			<Image
-																				class="img-fluid brand-img"
-																				src={b2}
-																				alt="Brand Logo"
-																			/>
-																		</div>
-																	</a>
-																</div>
-																<div class="col-3 p-md-5">
-																	<a href="#">
-																		<div className="img-fluid brand-img">
-																			<Image
-																				class="img-fluid brand-img"
-																				src={b2}
-																				alt="Brand Logo"
-																			/>
-																		</div>
-																	</a>
-																</div>
-																<div class="col-3 p-md-5">
-																	<a href="#">
-																		<div className="img-fluid brand-img">
-																			<Image
-																				class="img-fluid brand-img"
-																				src={b2}
-																				alt="Brand Logo"
-																			/>
-																		</div>
-																	</a>
-																</div>
-															</div>
-														</div>
-													</div>
-												</div>
-											</div>
-
-											<div class="col-1 align-self-center">
-												<a
-													class="h1"
-													href="#templatemo-slide-brand"
-													role="button"
-													data-bs-slide="next"
-												>
-													<FaChevronRight />
-												</a>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-						</section>
-					</div>
-				</section>
-			</main>
 			<section class="container py-5">
 				<div class="row">
 					<div class="col-md-6 col-lg-3 pb-5">
@@ -676,390 +238,355 @@ const Home = (props) => {
 					TOP CATEGORIES
 				</h2>
 			</div>
+			<div className="bg-[#2b2a2a] h-[50rem] mt-[10rem]">
+				<div className="conatiner mt-[4rem]">
+					<p className="text-yellow-500 text-[30px] text-center">
+						Premium Collections
+					</p>
+					<h3 className=" font-extrabold text-[40px] text-center pb-3  ml-5 text-white">
+						AIR-CON & AIR COOLER
+					</h3>
+					<p className="text-center text-white text-[18px]">
+						Details to details is what makes Hexashop different from the other
+						themes
+					</p>
+					<Swiper
+						breakpoints={{
+							640: {
+								slidesPerView: 1,
+								spaceBetween: 30,
+							},
+							768: {
+								slidesPerView: 2,
+								spaceBetween: 30,
+							},
+							1199: {
+								slidesPerView: 3,
+								spaceBetween: -100,
+							},
+						}}
+						freeMode={true}
+						pagination={{
+							clickable: true,
+						}}
+						navigation={{
+							clickable: true,
+						}}
+						modules={[Pagination, Navigation]}
+						className="mySwiper"
+					>
+						{props.productsData.data.map((item) => {
+							let imgurl = "https://glacial-woodland-47482.herokuapp.com";
+							let img =
+								item.attributes.img.data.attributes.formats.thumbnail.url;
 
-			<div className="conatiner mt-[4rem]">
-				<h3 className=" font-bold text-[22px]  ml-5 text-[#ffae42]">
-					AIR-CON & AIR COOLER
-				</h3>
-				<Swiper
-					breakpoints={{
-						640: {
-							slidesPerView: 1,
-						},
-						768: {
-							slidesPerView: 2,
-						},
-						1199: {
-							slidesPerView: 3,
-						},
-					}}
-					spaceBetween={30}
-					freeMode={true}
-					pagination={{
-						clickable: true,
-					}}
-					navigation={{
-						clickable: true,
-					}}
-					modules={[Pagination, Navigation]}
-					className="mySwiper"
-				>
-					
-					{props.productsData.data.map((item) => {
-						let imgurl = "https://glacial-woodland-47482.herokuapp.com";
-						let img = item.attributes.img.data.attributes.formats.thumbnail.url;
-
-						return (
-							<SwiperSlide key={item.id}>
-								
-								<ProductCards
-									slug={item.attributes.Name}
-									brands={item.attributes.Brand}
-									price={item.attributes.Price}
-									Picture={img}
-									Model={item.attributes.Model}
-								/>
-								;
-							</SwiperSlide>
-						);
-					})}
-				</Swiper>
+							return (
+								<SwiperSlide key={item.id}>
+									<ProductCards
+										slug={item.attributes.Name}
+										brands={item.attributes.Brand}
+										price={item.attributes.Price}
+										Picture={img}
+										Model={item.attributes.Model}
+									/>
+									;
+								</SwiperSlide>
+							);
+						})}
+					</Swiper>
+				</div>
 			</div>
+
 			{/* <Dlivery /> */}
-			<div className="conatiner mt-[4rem]">
-				<h3 className=" font-bold text-[22px]  ml-5 text-[#ffae42]">
-					REFRIGERATOR & FREEZERS
-				</h3>
-				<Swiper
-					breakpoints={{
-						640: {
-							slidesPerView: 1,
-						},
-						768: {
-							slidesPerView: 2,
-						},
-						1199: {
-							slidesPerView: 3,
-						},
-					}}
-					spaceBetween={30}
-					freeMode={true}
-					pagination={{
-						clickable: true,
-					}}
-					navigation={{
-						clickable: true,
-					}}
-					modules={[Pagination, Navigation]}
-					className="mySwiper"
-				>
-					{props.FreezerData.data.map((item) => {
-						let imgurl = "https://glacial-woodland-47482.herokuapp.com";
-						let img = item.attributes.img.data.attributes.formats.thumbnail.url;
-						// console.log(img);
+			<div className="bg-[#2b2a2a] h-[50rem] mt-[10rem]">
+				<div className="conatiner mt-[4rem]">
+					<p className="text-yellow-500 text-[30px] text-center">
+						Premium Collections
+					</p>
+					<h3 className=" font-extrabold text-[40px] text-center pb-3  ml-5 text-white">
+						REFRIGERATOR & FREEZERS
+					</h3>
+					<p className="text-center text-white text-[18px]">
+						Details to details is what makes Hexashop different from the other
+						themes
+					</p>
+					<Swiper
+						breakpoints={{
+							640: {
+								slidesPerView: 1,
+							},
+							768: {
+								slidesPerView: 2,
+							},
+							1199: {
+								slidesPerView: 3,
+							},
+						}}
+						spaceBetween={30}
+						freeMode={true}
+						pagination={{
+							clickable: true,
+						}}
+						navigation={{
+							clickable: true,
+						}}
+						modules={[Pagination, Navigation]}
+						className="mySwiper"
+					>
+						{props.FreezerData.data.map((item) => {
+							let imgurl = "https://glacial-woodland-47482.herokuapp.com";
+							let img =
+								item.attributes.img.data.attributes.formats.thumbnail.url;
+							// console.log(img);
 
-						return (
-							<SwiperSlide key={item.id}>
-								<ProductCards
-									slug={item.attributes.Name}
-									Model={item.attributes.Model}
-									brands={item.attributes.Brand}
-									price={item.attributes.Price}
-									Picture={img}
-								/>
-								;
-							</SwiperSlide>
-						);
-					})}
-				</Swiper>
+							return (
+								<SwiperSlide key={item.id}>
+									<ProductCards
+										slug={item.attributes.Name}
+										Model={item.attributes.Model}
+										brands={item.attributes.Brand}
+										price={item.attributes.Price}
+										Picture={img}
+									/>
+									;
+								</SwiperSlide>
+							);
+						})}
+					</Swiper>
+				</div>
 			</div>
-			<div className="conatiner mt-[4rem]">
-				<h3 className=" font-bold text-[22px]  ml-5 text-[#ffae42]">
-					LED TV & SOUND SYSTEM
-				</h3>
-				<Swiper
-					breakpoints={{
-						640: {
-							slidesPerView: 1,
-						},
-						768: {
-							slidesPerView: 2,
-						},
-						1199: {
-							slidesPerView: 3,
-						},
-					}}
-					spaceBetween={30}
-					freeMode={true}
-					pagination={{
-						clickable: true,
-					}}
-					navigation={{
-						clickable: true,
-					}}
-					modules={[Pagination, Navigation]}
-					className="mySwiper"
-				>
-					{props.LEDData.data.map((item) => {
-						let imgurl = "https://glacial-woodland-47482.herokuapp.com";
-						let img = item.attributes.img.data.attributes.formats.thumbnail.url;
-						// console.log(img);
+			<div className="bg-[#2b2a2a] h-[50rem] mt-[10rem]">
+				<div className="conatiner mt-[4rem]">
+					<p className="text-yellow-500 text-[30px] text-center">
+						Premium Collections
+					</p>
+					<h3 className=" font-extrabold text-[40px] text-center pb-3  ml-5 text-white">
+						LED TV & SOUND SYSTEM
+					</h3>
+					<p className="text-center text-white text-[18px]">
+						Details to details is what makes Hexashop different from the other
+						themes
+					</p>
+					<Swiper
+						breakpoints={{
+							640: {
+								slidesPerView: 1,
+							},
+							768: {
+								slidesPerView: 2,
+							},
+							1199: {
+								slidesPerView: 3,
+							},
+						}}
+						spaceBetween={30}
+						freeMode={true}
+						pagination={{
+							clickable: true,
+						}}
+						navigation={{
+							clickable: true,
+						}}
+						modules={[Pagination, Navigation]}
+						className="mySwiper"
+					>
+						{props.LEDData.data.map((item) => {
+							let imgurl = "https://glacial-woodland-47482.herokuapp.com";
+							let img =
+								item.attributes.img.data.attributes.formats.thumbnail.url;
+							// console.log(img);
 
-						return (
-							<SwiperSlide key={item.id}>
-								<ProductCards
-									slug={item.attributes.Name}
-									Model={item.attributes.Model}
-									brands={item.attributes.Brand}
-									price={item.attributes.Price}
-									Picture={img}
-								/>
-								;
-							</SwiperSlide>
-						);
-					})}
-				</Swiper>
+							return (
+								<SwiperSlide key={item.id}>
+									<ProductCards
+										slug={item.attributes.Model}
+										name={item.attributes.Name}
+										brands={item.attributes.Brand}
+										price={item.attributes.Price}
+										Picture={img}
+									/>
+									;
+								</SwiperSlide>
+							);
+						})}
+					</Swiper>
+				</div>
 			</div>
-			<div className="conatiner mt-[4rem]">
-				<h3 className=" font-bold text-[22px]  ml-5 text-[#ffae42]">
-					HOME APPLIANCES
-				</h3>
-				<Swiper
-					breakpoints={{
-						640: {
-							slidesPerView: 1,
-						},
-						768: {
-							slidesPerView: 2,
-						},
-						1199: {
-							slidesPerView: 3,
-						},
-					}}
-					spaceBetween={30}
-					freeMode={true}
-					pagination={{
-						clickable: true,
-					}}
-					navigation={{
-						clickable: true,
-					}}
-					modules={[Pagination, Navigation]}
-					className="mySwiper"
-				>
-					{props.HomeData.data.map((item) => {
-						let imgurl = "https://glacial-woodland-47482.herokuapp.com";
-						let img = item.attributes.img.data.attributes.formats.thumbnail.url;
-						// console.log(img);
+			<div className="bg-[#2b2a2a] h-[50rem] mt-[10rem]">
+				<div className="conatiner mt-[4rem]">
+					<p className="text-yellow-500 text-[30px] text-center">
+						Premium Collections
+					</p>
+					<h3 className=" font-extrabold text-[40px] text-center pb-3  ml-5 text-white">
+						HOME APPLIANCES
+					</h3>
+					<p className="text-center text-white text-[18px]">
+						Details to details is what makes Hexashop different from the other
+						themes
+					</p>
+					<Swiper
+						breakpoints={{
+							640: {
+								slidesPerView: 1,
+							},
+							768: {
+								slidesPerView: 2,
+							},
+							1199: {
+								slidesPerView: 3,
+							},
+						}}
+						spaceBetween={30}
+						freeMode={true}
+						pagination={{
+							clickable: true,
+						}}
+						navigation={{
+							clickable: true,
+						}}
+						modules={[Pagination, Navigation]}
+						className="mySwiper"
+					>
+						{props.HomeData.data.map((item) => {
+							let imgurl = "https://glacial-woodland-47482.herokuapp.com";
+							let img =
+								item.attributes.img.data.attributes.formats.thumbnail.url;
+							// console.log(img);
 
-						return (
-							<SwiperSlide key={item.id}>
-								<ProductCards
-									slug={item.attributes.Name}
-									Model={item.attributes.Model}
-									brands={item.attributes.Brand}
-									price={item.attributes.Price}
-									Picture={img}
-								/>
-								;
-							</SwiperSlide>
-						);
-					})}
-				</Swiper>
+							return (
+								<SwiperSlide key={item.id}>
+									<ProductCards
+										slug={item.attributes.Model}
+										name={item.attributes.Name}
+										brands={item.attributes.Brand}
+										price={item.attributes.Price}
+										Picture={img}
+									/>
+									;
+								</SwiperSlide>
+							);
+						})}
+					</Swiper>
+				</div>
 			</div>
-			<div className="conatiner mt-[4rem]">
-				<h3 className=" font-bold text-[22px]  ml-5 text-[#ffae42]">
-					BUILT-IN KITCHEN
-				</h3>
-				<Swiper
-					breakpoints={{
-						640: {
-							slidesPerView: 1,
-						},
-						768: {
-							slidesPerView: 2,
-						},
-						1199: {
-							slidesPerView: 3,
-						},
-					}}
-					spaceBetween={30}
-					freeMode={true}
-					pagination={{
-						clickable: true,
-					}}
-					navigation={{
-						clickable: true,
-					}}
-					modules={[Pagination, Navigation]}
-					className="mySwiper"
-				>
-					{props.KitchenData.data.map((item) => {
-						let imgurl = "https://glacial-woodland-47482.herokuapp.com";
-						let img = item.attributes.img.data.attributes.formats.thumbnail.url;
-						// console.log(img);
+			<div className="bg-[#2b2a2a] h-[50rem] mt-[10rem]">
+				<div className="conatiner mt-[4rem]">
+					<p className="text-yellow-500 text-[30px] text-center">
+						Premium Collections
+					</p>
+					<h3 className=" font-extrabold text-[40px] text-center pb-3  ml-5 text-white">
+						BUILT-IN KITCHEN
+					</h3>
+					<p className="text-center text-white text-[18px]">
+						Details to details is what makes Hexashop different from the other
+						themes
+					</p>
+					<Swiper
+						breakpoints={{
+							640: {
+								slidesPerView: 1,
+							},
+							768: {
+								slidesPerView: 2,
+							},
+							1199: {
+								slidesPerView: 3,
+							},
+						}}
+						spaceBetween={30}
+						freeMode={true}
+						pagination={{
+							clickable: true,
+						}}
+						navigation={{
+							clickable: true,
+						}}
+						modules={[Pagination, Navigation]}
+						className="mySwiper"
+					>
+						{props.KitchenData.data.map((item) => {
+							let imgurl = "https://glacial-woodland-47482.herokuapp.com";
+							let img =
+								item.attributes.img.data.attributes.formats.thumbnail.url;
+							// console.log(img);
 
-						return (
-							<SwiperSlide key={item.id}>
-								<ProductCards
-									slug={item.attributes.Name}
-									Model={item.attributes.Model}
-									brands={item.attributes.Brand}
-									price={item.attributes.Price}
-									Picture={img}
-								/>
-								;
-							</SwiperSlide>
-						);
-					})}
-				</Swiper>
+							return (
+								<SwiperSlide key={item.id}>
+									<ProductCards
+										slug={item.attributes.Model}
+										name={item.attributes.Name}
+										brands={item.attributes.Brand}
+										price={item.attributes.Price}
+										Picture={img}
+									/>
+									;
+								</SwiperSlide>
+							);
+						})}
+					</Swiper>
+				</div>
 			</div>
-			<div className="conatiner mt-[4rem]">
-				<h3 className=" font-bold text-[22px]  ml-5 text-[#ffae42]">
-					WASHING SOLUTIONS
-				</h3>
-				<Swiper
-					breakpoints={{
-						640: {
-							slidesPerView: 1,
-						},
-						768: {
-							slidesPerView: 2,
-						},
-						1199: {
-							slidesPerView: 3,
-						},
-					}}
-					spaceBetween={30}
-					freeMode={true}
-					pagination={{
-						clickable: true,
-					}}
-					navigation={{
-						clickable: true,
-					}}
-					modules={[Pagination, Navigation]}
-					className="mySwiper"
-				>
-					{props.WashingData.data.map((item) => {
-						let imgurl = "https://glacial-woodland-47482.herokuapp.com";
-						let img = item.attributes.img.data.attributes.formats.thumbnail.url;
-						// console.log(img);
+			<div className="bg-[#2b2a2a] h-[50rem] mt-[10rem]">
+				<div className="conatiner mt-[4rem]">
+					<p className="text-yellow-500 text-[30px] text-center">
+						Premium Collections
+					</p>
+					<h3 className=" font-extrabold text-[40px] text-center pb-3  ml-5 text-white">
+						WASHING SOLUTIONS
+					</h3>
+					<p className="text-center text-white text-[18px]">
+						Details to details is what makes Hexashop different from the other
+						themes
+					</p>
+					<Swiper
+						breakpoints={{
+							640: {
+								slidesPerView: 1,
+							},
+							768: {
+								slidesPerView: 2,
+							},
+							1199: {
+								slidesPerView: 3,
+							},
+						}}
+						spaceBetween={30}
+						freeMode={true}
+						pagination={{
+							clickable: true,
+						}}
+						navigation={{
+							clickable: true,
+						}}
+						modules={[Pagination, Navigation]}
+						className="mySwiper"
+					>
+						{props.WashingData.data.map((item) => {
+							let imgurl = "https://glacial-woodland-47482.herokuapp.com";
+							let img =
+								item.attributes.img.data.attributes.formats.thumbnail.url;
+							// console.log(img);
 
-						return (
-							<SwiperSlide key={item.id}>
-								<ProductCards
-									slug={item.attributes.Name}
-									Model={item.attributes.Model}
-									brands={item.attributes.Brand}
-									price={item.attributes.Price}
-									Picture={img}
-								/>
-								;
-							</SwiperSlide>
-						);
-					})}
-				</Swiper>
+							return (
+								<SwiperSlide key={item.id}>
+									<ProductCards
+										slug={item.attributes.Model}
+										name={item.attributes.Name}
+										brands={item.attributes.Brand}
+										price={item.attributes.Price}
+										Picture={img}
+									/>
+									;
+								</SwiperSlide>
+							);
+						})}
+					</Swiper>
+				</div>
 			</div>
+
 			<Dlivery />
 			<Testimonials />
-			<section class="text-gray-600 body-font">
-				<div class="container px-5 py-24 mx-auto">
-					<div class="flex flex-col text-center w-full mb-20">
-						<h1 class="sm:text-3xl text-2xl font-medium title-font mb-4 text-gray-900">
-							Master Cleanse Reliac Heirloom
-						</h1>
-						<p class="lg:w-2/3 mx-auto leading-relaxed text-base">
-							Whatever cardigan tote bag tumblr hexagon brooklyn asymmetrical
-							gentrify, subway tile poke farm-to-table. Franzen you probably
-							havent heard of them man bun deep jianbing selfies heirloom prism
-							food truck ugh squid celiac humblebrag.
-						</p>
-					</div>
-					<div class="flex flex-wrap -m-4 text-center">
-						<div class="p-4 md:w-1/4 sm:w-1/2 w-full">
-							<div class="border-2 border-gray-200 px-4 py-6 rounded-lg">
-								<svg
-									fill="none"
-									stroke="currentColor"
-									stroke-linecap="round"
-									stroke-linejoin="round"
-									stroke-width="2"
-									class="text-[#ffae42] w-12 h-12 mb-3 inline-block"
-									viewBox="0 0 24 24"
-								>
-									<path d="M8 17l4 4 4-4m-4-5v9"></path>
-									<path d="M20.88 18.09A5 5 0 0018 9h-1.26A8 8 0 103 16.29"></path>
-								</svg>
-								<h2 class="title-font font-medium text-3xl text-gray-900">
-									2.7K
-								</h2>
-								<p class="leading-relaxed">Downloads</p>
-							</div>
-						</div>
-						<div class="p-4 md:w-1/4 sm:w-1/2 w-full">
-							<div class="border-2 border-gray-200 px-4 py-6 rounded-lg">
-								<svg
-									fill="none"
-									stroke="currentColor"
-									stroke-linecap="round"
-									stroke-linejoin="round"
-									stroke-width="2"
-									class="text-[#ffae42] w-12 h-12 mb-3 inline-block"
-									viewBox="0 0 24 24"
-								>
-									<path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"></path>
-									<circle cx="9" cy="7" r="4"></circle>
-									<path d="M23 21v-2a4 4 0 00-3-3.87m-4-12a4 4 0 010 7.75"></path>
-								</svg>
-								<h2 class="title-font font-medium text-3xl text-gray-900">
-									1.3K
-								</h2>
-								<p class="leading-relaxed">Users</p>
-							</div>
-						</div>
-						<div class="p-4 md:w-1/4 sm:w-1/2 w-full">
-							<div class="border-2 border-gray-200 px-4 py-6 rounded-lg">
-								<svg
-									fill="none"
-									stroke="currentColor"
-									stroke-linecap="round"
-									stroke-linejoin="round"
-									stroke-width="2"
-									class="text-[#ffae42] w-12 h-12 mb-3 inline-block"
-									viewBox="0 0 24 24"
-								>
-									<path d="M3 18v-6a9 9 0 0118 0v6"></path>
-									<path d="M21 19a2 2 0 01-2 2h-1a2 2 0 01-2-2v-3a2 2 0 012-2h3zM3 19a2 2 0 002 2h1a2 2 0 002-2v-3a2 2 0 00-2-2H3z"></path>
-								</svg>
-								<h2 class="title-font font-medium text-3xl text-gray-900">
-									74
-								</h2>
-								<p class="leading-relaxed">Files</p>
-							</div>
-						</div>
-						<div class="p-4 md:w-1/4 sm:w-1/2 w-full">
-							<div class="border-2 border-gray-200 px-4 py-6 rounded-lg">
-								<svg
-									fill="none"
-									stroke="currentColor"
-									stroke-linecap="round"
-									stroke-linejoin="round"
-									stroke-width="2"
-									class="text-[#ffae42] w-12 h-12 mb-3 inline-block"
-									viewBox="0 0 24 24"
-								>
-									<path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
-								</svg>
-								<h2 class="title-font font-medium text-3xl text-gray-900">
-									46
-								</h2>
-								<p class="leading-relaxed">Places</p>
-							</div>
-						</div>
-					</div>
-				</div>
-			</section>
+			
 		</div>
 	);
 };

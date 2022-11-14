@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState,useEffect } from "react";
 import { StarIcon } from "@heroicons/react/20/solid";
 import { RadioGroup } from "@headlessui/react";
 import Link from "next/link";
@@ -8,7 +8,11 @@ import C2 from "../../styles/Images/cart-2.jpg";
 import C3 from "../../styles/Images/cart-3.jpg";
 import C4 from "../../styles/Images/cart-4.jpg";
 import Image from "next/image";
+import ProductCards from "../../Components/ProductCards";
+
+
 const product = {
+	
 	name: "Basic Tee 6-Pack",
 	price: 192,
 	href: "#",
@@ -60,327 +64,234 @@ const product = {
 	details:
 		'The 6-Pack includes two black, two white, and two heather gray Basic Tees. Sign up for our subscription service and be the first to get new, exciting colors, like our upcoming "Charcoal Gray" limited release.',
 };
+
 const reviews = { href: "#", average: 4, totalCount: 117 };
 
 function classNames(...classes) {
 	return classes.filter(Boolean).join(" ");
 }
 
-const Slug = ({ addToCart, RemoveFromcart }) => {
+
+
+const Slug = ({ addToCart, RemoveFromcart, productsData }) => {
 	const router = useRouter();
 	const { slug } = router.query;
+
+	const [item, setitem] = useState([]);
 	const [selectedColor, setSelectedColor] = useState(product.colors[0]);
 	const [selectedSize, setSelectedSize] = useState(product.sizes[2]);
 	return (
 		<div>
-			(
-			<div className="bg-white">
-				<div className="pt-6">
-					<nav aria-label="Breadcrumb">
-						<ol
-							role="list"
-							className="mx-auto flex max-w-2xl items-center space-x-2 px-4 sm:px-6 lg:max-w-7xl lg:px-8"
-						>
-							{product.breadcrumbs.map((breadcrumb) => (
-								<li key={breadcrumb.id}>
-									<div className="flex items-center">
-										<a
-											href={breadcrumb.href}
-											className="mr-2 text-sm font-medium text-gray-900"
-										>
-											{breadcrumb.name}
-										</a>
-										<svg
-											width={16}
-											height={20}
-											viewBox="0 0 16 20"
-											fill="currentColor"
-											xmlns="http://www.w3.org/2000/svg"
-											aria-hidden="true"
-											className="h-5 w-4 text-gray-300"
-										>
-											<path d="M5.697 4.34L8.98 16.532h1.327L7.025 4.341H5.697z" />
-										</svg>
-									</div>
-								</li>
-							))}
-							<li className="text-sm">
-								<a
-									href={product.href}
-									aria-current="page"
-									className="font-medium text-gray-500 hover:text-gray-600"
-								>
-									{product.name}
-								</a>
-							</li>
-						</ol>
-					</nav>
+			<section class="text-gray-600 body-font overflow-hidden">
+				<div class="container px-5 py-24 mx-auto">
+					{productsData.data.map((item) => {
+						let imgurl = "https://glacial-woodland-47482.herokuapp.com";
+						let img = item.attributes.img.data.attributes.formats.thumbnail.url;
+						console.log(item.attributes.Model);
 
-					{/* Image gallery */}
-					<div className="mx-auto mt-6 max-w-2xl sm:px-6 lg:grid lg:max-w-7xl lg:grid-cols-3 lg:gap-x-8 lg:px-8">
-						<div className="aspect-w-3 aspect-h-4 hidden overflow-hidden rounded-lg lg:block">
-							<Image
-								src={product.images[0].src}
-								alt={product.images[0].alt}
-								className="h-full w-full object-cover object-center"
-							/>
-						</div>
-						<div className="hidden lg:grid lg:grid-cols-1 lg:gap-y-8">
-							<div className="aspect-w-3 aspect-h-2 overflow-hidden rounded-lg">
-								<Image
-									src={product.images[1].src}
-									alt={product.images[1].alt}
-									className="h-full w-full object-cover object-center"
+						return (
+							<div key={item.id} class="lg:w-4/5 mx-auto flex flex-wrap">
+								<img
+									alt="ecommerce"
+									class="lg:w-1/2 w-full lg:h-auto h-64 object-cover object-center rounded"
+									src={img}
 								/>
-							</div>
-							<div className="aspect-w-3 aspect-h-2 overflow-hidden rounded-lg">
-								<Image
-									src={product.images[2].src}
-									alt={product.images[2].alt}
-									className="h-full w-full object-cover object-center"
-								/>
-							</div>
-						</div>
-						<div className="aspect-w-4 aspect-h-5 sm:overflow-hidden sm:rounded-lg lg:aspect-w-3 lg:aspect-h-4">
-							<Image
-								src={product.images[3].src}
-								alt={product.images[3].alt}
-								className="h-full w-full object-cover object-center"
-							/>
-						</div>
-					</div>
+								<div class="lg:w-1/2 w-full lg:pl-10 lg:py-6 mt-6 lg:mt-0">
+									<h2 class="text-sm title-font text-gray-500 tracking-widest">
+										{slug}
+									</h2>
+									<h1 class="text-gray-900 text-3xl title-font font-medium mb-1">
+										{item.attributes.Name}
+									</h1>
+									<h2 class="text-sm title-font text-gray-500 tracking-widest">
+										Warrant:
+									</h2>
 
-					{/* Product info */}
-					<div className="mx-auto max-w-2xl px-4 pt-10 pb-16 sm:px-6 lg:grid lg:max-w-7xl lg:grid-cols-3 lg:grid-rows-[auto,auto,1fr] lg:gap-x-8 lg:px-8 lg:pt-16 lg:pb-24">
-						<div className="lg:col-span-2 lg:border-r lg:border-gray-200 lg:pr-8">
-							<h1 className="text-2xl font-bold tracking-tight text-gray-900 sm:text-3xl">
-								{product.name}
-							</h1>
-						</div>
-
-						{/* Options */}
-						<div className="mt-4 lg:row-span-3 lg:mt-0">
-							<h2 className="sr-only">Product information</h2>
-							<p className="text-3xl tracking-tight text-gray-900">
-								${product.price}
-							</p>
-
-							{/* Reviews */}
-							<div className="mt-6">
-								<h3 className="sr-only">Reviews</h3>
-								<div className="flex items-center">
-									<div className="flex items-center">
-										{[0, 1, 2, 3, 4].map((rating) => (
-											<StarIcon
-												key={rating}
-												className={classNames(
-													reviews.average > rating
-														? "text-gray-900"
-														: "text-gray-200",
-													"h-5 w-5 flex-shrink-0"
-												)}
-												aria-hidden="true"
-											/>
-										))}
-									</div>
-									<p className="sr-only">{reviews.average} out of 5 stars</p>
-									<a
-										href={reviews.href}
-										className="ml-3 text-sm font-medium text-indigo-600 hover:text-indigo-500"
-									>
-										{reviews.totalCount} reviews
-									</a>
-								</div>
-							</div>
-
-							<div className="mt-10">
-								{/* Colors */}
-								<div>
-									<h3 className="text-sm font-medium text-gray-900">Color</h3>
-
-									<RadioGroup
-										value={selectedColor}
-										onChange={setSelectedColor}
-										className="mt-4"
-									>
-										<RadioGroup.Label className="sr-only">
-											{" "}
-											Choose a color{" "}
-										</RadioGroup.Label>
-										<div className="flex items-center space-x-3">
-											{product.colors.map((color) => (
-												<RadioGroup.Option
-													key={color.name}
-													value={color}
-													className={({ active, checked }) =>
-														classNames(
-															color.selectedClass,
-															active && checked ? "ring ring-offset-1" : "",
-															!active && checked ? "ring-2" : "",
-															"-m-0.5 relative p-0.5 rounded-full flex items-center justify-center cursor-pointer focus:outline-none"
-														)
-													}
-												>
-													<RadioGroup.Label as="span" className="sr-only">
-														{" "}
-														{color.name}{" "}
-													</RadioGroup.Label>
-													<span
-														aria-hidden="true"
-														className={classNames(
-															color.class,
-															"h-8 w-8 border border-black border-opacity-10 rounded-full"
-														)}
-													/>
-												</RadioGroup.Option>
-											))}
-										</div>
-									</RadioGroup>
-								</div>
-
-								{/* Sizes */}
-								<div className="mt-10">
-									<div className="flex items-center justify-between">
-										<h3 className="text-sm font-medium text-gray-900">Size</h3>
-										<a
-											href="#"
-											className="text-sm font-medium text-indigo-600 hover:text-indigo-500"
-										>
-											Size guide
-										</a>
-									</div>
-
-									<RadioGroup
-										value={selectedSize}
-										onChange={setSelectedSize}
-										className="mt-4"
-									>
-										<RadioGroup.Label className="sr-only">
-											{" "}
-											Choose a size{" "}
-										</RadioGroup.Label>
-										<div className="grid grid-cols-4 gap-4 sm:grid-cols-8 lg:grid-cols-4">
-											{product.sizes.map((size) => (
-												<RadioGroup.Option
-													key={size.name}
-													value={size}
-													disabled={!size.inStock}
-													className={({ active }) =>
-														classNames(
-															size.inStock
-																? "bg-white shadow-sm text-gray-900 cursor-pointer"
-																: "bg-gray-50 text-gray-200 cursor-not-allowed",
-															active ? "ring-2 ring-indigo-500" : "",
-															"group relative border rounded-md py-3 px-4 flex items-center justify-center text-sm font-medium uppercase hover:bg-gray-50 focus:outline-none sm:flex-1 sm:py-6"
-														)
-													}
-												>
-													{({ active, checked }) => (
-														<>
-															<RadioGroup.Label as="span">
-																{size.name}
-															</RadioGroup.Label>
-															{size.inStock ? (
-																<span
-																	className={classNames(
-																		active ? "border" : "border-2",
-																		checked
-																			? "border-indigo-500"
-																			: "border-transparent",
-																		"pointer-events-none absolute -inset-px rounded-md"
-																	)}
-																	aria-hidden="true"
-																/>
-															) : (
-																<span
-																	aria-hidden="true"
-																	className="pointer-events-none absolute -inset-px rounded-md border-2 border-gray-200"
-																>
-																	<svg
-																		className="absolute inset-0 h-full w-full stroke-2 text-gray-200"
-																		viewBox="0 0 100 100"
-																		preserveAspectRatio="none"
-																		stroke="currentColor"
-																	>
-																		<line
-																			x1={0}
-																			y1={100}
-																			x2={100}
-																			y2={0}
-																			vectorEffect="non-scaling-stroke"
-																		/>
-																	</svg>
-																</span>
-															)}
-														</>
-													)}
-												</RadioGroup.Option>
-											))}
-										</div>
-									</RadioGroup>
-								</div>
-								<div className="flex ">
-									<button
-										onClick={() => {
-											addToCart(slug,1, product.price, product.name, product.images[0].src);
-										}}
-										className="mt-10 flex w-full items-center justify-center rounded-md border border-transparent bg-[#9e7098]  py-3 px-8 text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
-									>
-										Add to Cart
-									</button>
-									<Link href="/CheckoutPage">
-										<a
-											type="submit"
-											className="mt-10 ml-4 flex w-full items-center hover:text-white justify-center rounded-md  border-2 border-[#9e7098]   py-3 px-8 text-base font-medium text-[#ffae42] hover:bg-[#9e7098] focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
-										>
-											Buy Now
-										</a>
-									</Link>
-								</div>
-							</div>
-						</div>
-
-						<div className="py-10 lg:col-span-2 lg:col-start-1 lg:border-r lg:border-gray-200 lg:pt-6 lg:pb-16 lg:pr-8">
-							{/* Description and details */}
-							<div>
-								<h3 className="sr-only">Description</h3>
-
-								<div className="space-y-6">
-									<p className="text-base text-gray-900">
-										{product.description}
+									<p class="leading-relaxed">
+										Fam locavore kickstarter distillery. Mixtape chillwave
+										tumeric sriracha taximy chia microdosing tilde DIY. XOXO fam
+										indxgo juiceramps cornhole raw denim forage brooklyn.
+										Everyday carry +1 seitan poutine tumeric. Gastropub blue
+										bottle austin listicle pour-over, neutra jean shorts keytar
+										banjo tattooed umami cardigan.
 									</p>
+									<hr className="border-3" />
+
+									<div class="flex mt-3">
+										<span class="title-font font-medium text-2xl text-gray-900">
+											{item.attributes.Price}
+										</span>
+										<button
+											class="flex ml-auto text-white bg-gray-800 border-0 py-2 px-6 focus:outline-none  rounded"
+											onClick={() => {
+												addToCart(
+													slug,
+													1,
+													item.attributes.Price,
+													item.attributes.Name,
+													img
+												);
+											}}
+										>
+											Add to Cart
+										</button>
+										<button class="flex ml-auto text-white bg-gray-800  border-0 py-2 px-6 focus:outline-none  rounded">
+											Buy Now
+										</button>
+									</div>
 								</div>
 							</div>
-
-							<div className="mt-10">
-								<h3 className="text-sm font-medium text-gray-900">
-									Highlights
-								</h3>
-
-								<div className="mt-4">
-									<ul role="list" className="list-disc space-y-2 pl-4 text-sm">
-										{product.highlights.map((highlight) => (
-											<li key={highlight} className="text-gray-400">
-												<span className="text-gray-600">{highlight}</span>
-											</li>
-										))}
-									</ul>
-								</div>
-							</div>
-
-							<div className="mt-10">
-								<h2 className="text-sm font-medium text-gray-900">Details</h2>
-
-								<div className="mt-4 space-y-6">
-									<p className="text-sm text-gray-600">{product.details}</p>
-								</div>
-							</div>
-						</div>
-					</div>
+						);
+					})}
+				</div>
+			</section>
+			<ul
+				class="
+  nav nav-tabs nav-justified
+  flex flex-col
+  md:flex-row
+  flex-wrap
+  list-none
+  border-b-0
+  pl-0
+  mb-4
+"
+				id="tabs-tabJustify"
+				role="tablist"
+			>
+				<li class="nav-item flex-grow text-center" role="presentation">
+					<a
+						href="#tabs-homeJustify"
+						class="
+      nav-link
+      w-full
+      block
+      font-medium
+      text-xs
+      leading-tight
+      uppercase
+      border-x-0 border-t-0 border-b-2 border-transparent
+      px-6
+      py-3
+      my-2
+      hover:border-transparent hover:bg-gray-100
+      focus:border-transparent
+      active
+    "
+						id="tabs-home-tabJustify"
+						data-bs-toggle="pill"
+						data-bs-target="#tabs-homeJustify"
+						role="tab"
+						aria-controls="tabs-homeJustify"
+						aria-selected="true"
+					>
+						Details
+					</a>
+				</li>
+				<li class="nav-item flex-grow text-center" role="presentation">
+					<a
+						href="#tabs-profileJustify"
+						class="
+      nav-link
+      w-full
+      block
+      font-medium
+      text-xs
+      leading-tight
+      uppercase
+      border-x-0 border-t-0 border-b-2 border-transparent
+      px-6
+      py-3
+      my-2
+      hover:border-transparent hover:bg-gray-100
+      focus:border-transparent
+    "
+						id="tabs-profile-tabJustify"
+						data-bs-toggle="pill"
+						data-bs-target="#tabs-profileJustify"
+						role="tab"
+						aria-controls="tabs-profileJustify"
+						aria-selected="false"
+					>
+						Specification
+					</a>
+				</li>
+				<li class="nav-item flex-grow text-center" role="presentation">
+					<a
+						href="#tabs-messagesJustify"
+						class="
+      nav-link
+      w-full
+      block
+      font-medium
+      text-xs
+      leading-tight
+      uppercase
+      border-x-0 border-t-0 border-b-2 border-transparent
+      px-6
+      py-3
+      my-2
+      hover:border-transparent hover:bg-gray-100
+      focus:border-transparent
+    "
+						id="tabs-messages-tabJustify"
+						data-bs-toggle="pill"
+						data-bs-target="#tabs-messagesJustify"
+						role="tab"
+						aria-controls="tabs-messagesJustify"
+						aria-selected="false"
+					>
+						Reviews
+					</a>
+				</li>
+			</ul>
+			<div class="tab-content" id="tabs-tabContentJustify">
+				<div
+					class="tab-pane fade show active"
+					id="tabs-homeJustify"
+					role="tabpanel"
+					aria-labelledby="tabs-home-tabJustify"
+				>
+					Tab 1 content justify
+				</div>
+				<div
+					class="tab-pane fade"
+					id="tabs-profileJustify"
+					role="tabpanel"
+					aria-labelledby="tabs-profile-tabJustify"
+				>
+					Tab 2 content justify
+				</div>
+				<div
+					class="tab-pane fade"
+					id="tabs-messagesJustify"
+					role="tabpanel"
+					aria-labelledby="tabs-profile-tabJustify"
+				>
+					Tab 3 content justify
 				</div>
 			</div>
 		</div>
 	);
 };
-
+export async function getServerSideProps(context) {
+	
+	const { slug } = context.query;
+	console.log(slug)
+	
+	let headers = {
+		Authorization:
+			"9ad861e7d9919e881e8b92dfda4c896c1bac63a983dc0acc82727073cc2692d137929ebae6d3242d3a30f1988bc4b8d59faf909d74751f2d4a4f2ab6e4451fa6b1df48774c83cd3646a9a4fed0c45f2716ffd1fc18fd649ecdeea1107ec31a6762073d70cf6f0baa9e063ddd36cbe04bab635baed591742cba412e3ad64cf1ec",
+	};
+	let a = await fetch(
+		`https://gentle-lake-42463.herokuapp.com/api/products?filters[Model][$contains]=${slug}&populate=*`,
+		(headers = headers)
+	);
+	let productsData = await a.json();
+	console.log(productsData);
+	return {
+		props: { productsData: productsData },
+		// will be passed to the page component as props
+	};
+}
 export default Slug

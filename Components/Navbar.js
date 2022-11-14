@@ -19,7 +19,7 @@ const NavBar = ({ Carts, addToCart, RemoveFromcart, clearCart, SubTotal }) => {
 	return (
 		<div>
 			<Transition.Root show={cart} as={Fragment}>
-				<Dialog as="div" className="relative z-10" onClose={setcart}>
+				<Dialog as="div" className="relative z-10 mr-20" onClose={setcart}>
 					<Transition.Child
 						as={Fragment}
 						enter="ease-in-out duration-500"
@@ -76,7 +76,7 @@ const NavBar = ({ Carts, addToCart, RemoveFromcart, clearCart, SubTotal }) => {
 																return (
 																	<li key={k} className="flex py-6">
 																		<div class="h-24 w-24 flex-shrink-0 overflow-hidden rounded-md border border-gray-200">
-																			<Image
+																			<img
 																				src={Carts[k].img}
 																				alt="Salmon orange fabric pouch with match zipper, gray zipper pull, and adjustable hip belt."
 																				class="h-full w-full object-cover object-center"

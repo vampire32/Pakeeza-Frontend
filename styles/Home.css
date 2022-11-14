@@ -4,6 +4,13 @@
     background-color: #200b52;
 }
 
+  .linear-color {
+      background-color: rgba(0, 0, 0, 0.5);
+      border-radius: 15px;
+  }
+.hover-btn:hover{
+    background-color: #ffae42!important;
+}
 #template-mo-zay-hero-carousel .carousel-control-next i,
 #template-mo-zay-hero-carousel .carousel-control-prev i {
     color: #ffae42!important;
@@ -771,7 +778,7 @@
  .swiper-slide {
      text-align: center;
      font-size: 18px;
-     background: #fff;
+     
 
      /* Center slide text vertically */
      display: -webkit-box;

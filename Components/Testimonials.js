@@ -37,7 +37,7 @@ export const Testimonials = () => {
 								</div>
 								<div class="flex flex-wrap justify-center">
 									<div class="grow-0 shrink-0 basis-auto w-full lg:w-8/12 px-3">
-										<h5 class="text-lg font-bold mb-3">Hassan Tariq</h5>
+										<h5 class="text-lg font-bold mb-3">Malik Talha</h5>
 
 										<p class="text-gray-500 mb-6">
 											<svg
@@ -55,8 +55,8 @@ export const Testimonials = () => {
 													d="M464 256h-80v-64c0-35.3 28.7-64 64-64h8c13.3 0 24-10.7 24-24V56c0-13.3-10.7-24-24-24h-8c-88.4 0-160 71.6-160 160v240c0 26.5 21.5 48 48 48h128c26.5 0 48-21.5 48-48V304c0-26.5-21.5-48-48-48zm-288 0H96v-64c0-35.3 28.7-64 64-64h8c13.3 0 24-10.7 24-24V56c0-13.3-10.7-24-24-24h-8C71.6 32 0 103.6 0 192v240c0 26.5 21.5 48 48 48h128c26.5 0 48-21.5 48-48V304c0-26.5-21.5-48-48-48z"
 												></path>
 											</svg>
-											I think this is a fantastic farm in our area, with
-											excellent work being done.
+											Best Bestshop ever. Bought brand new ups and it was n
+											working.
 										</p>
 										<ul class="flex justify-center mb-0">
 											<li>
@@ -162,7 +162,7 @@ export const Testimonials = () => {
 								/>
 								<div class="flex flex-wrap justify-center">
 									<div class="grow-0 shrink-0 basis-auto w-full lg:w-8/12 px-3">
-										<h5 class="text-lg font-bold mb-3">Mujeeb Khan</h5>
+										<h5 class="text-lg font-bold mb-3">Hurria Saleem Akhtar</h5>
 
 										<p class="text-gray-500 mb-6">
 											<svg
@@ -180,7 +180,7 @@ export const Testimonials = () => {
 													d="M464 256h-80v-64c0-35.3 28.7-64 64-64h8c13.3 0 24-10.7 24-24V56c0-13.3-10.7-24-24-24h-8c-88.4 0-160 71.6-160 160v240c0 26.5 21.5 48 48 48h128c26.5 0 48-21.5 48-48V304c0-26.5-21.5-48-48-48zm-288 0H96v-64c0-35.3 28.7-64 64-64h8c13.3 0 24-10.7 24-24V56c0-13.3-10.7-24-24-24h-8C71.6 32 0 103.6 0 192v240c0 26.5 21.5 48 48 48h128c26.5 0 48-21.5 48-48V304c0-26.5-21.5-48-48-48z"
 												></path>
 											</svg>
-											Excellent service, good quality and amount of oranges.
+											Excellent service, good quality and amount of Products.
 										</p>
 										<ul class="flex justify-center mb-0">
 											<li>
@@ -286,7 +286,7 @@ export const Testimonials = () => {
 								/>
 								<div class="flex flex-wrap justify-center">
 									<div class="grow-0 shrink-0 basis-auto w-full lg:w-8/12 px-3">
-										<h5 class="text-lg font-bold mb-3">Shoaib Khan</h5>
+										<h5 class="text-lg font-bold mb-3">Syed Vlogs</h5>
 
 										<p class="text-gray-500 mb-6">
 											<svg

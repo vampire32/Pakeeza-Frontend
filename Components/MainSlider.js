@@ -5,6 +5,7 @@ import { FaChevronLeft } from "react-icons/fa";
 import C2 from "../styles/Images/Slide2.png";
 import C3 from "../styles/Images/slide3.png";
 import Image from "next/image";
+import Link from 'next/link';
 
 const MainSlider = () => {
   return (
@@ -43,7 +44,10 @@ const MainSlider = () => {
 							<div class="row p-5">
 								<div class="mx-auto col-md-8 col-lg-6 order-lg-last">
 									<div class="img-fluid">
-										<Image src={C3} alt="" />
+										<img
+											src="https://www.pngkey.com/png/full/410-4106754_bring-home-the-smartest-smart-tv-television.png"
+											alt=""
+										/>
 									</div>
 								</div>
 								<div class="col-lg-6 mb-0 d-flex align-items-center">
@@ -51,7 +55,7 @@ const MainSlider = () => {
 										<h1 class="h1 text-[#ffae42]">
 											<b>Pakeeza </b> Electronics
 										</h1>
-										<h3 class="h2">
+										<h3 class="h2 leading-[3rem]">
 											GENUINE ELECTRONICS AND LIFESTYLE STORE IN PAKISTAN.
 										</h3>
 										<p>
@@ -59,17 +63,23 @@ const MainSlider = () => {
 											of genuine and reliable electronics, appliances, LED TVs,
 											mobiles, and accessories at the best prices
 										</p>
+										<a class="btn border-2 border-yellow-600 px-8  bg-transparent text-white mx-5 mb-3 hover-btn">
+											<Link href="/">Buy Now</Link>
+										</a>
 									</div>
 								</div>
 							</div>
 						</div>
 					</div>
 					<div class="carousel-item">
-						<div class="container">
+						<div class="container pb-[10rem]">
 							<div class="row p-5">
 								<div class="mx-auto col-md-8 col-lg-6 order-lg-last">
 									<div class="img-fluid">
-										<Image src={C1} alt="" />
+										<img
+											src="https://www.pngall.com/wp-content/uploads/11/Home-Appliance-Transparent.png"
+											alt=""
+										/>
 									</div>
 								</div>
 								<div class="col-lg-6 mb-0 d-flex align-items-center">
@@ -85,17 +95,23 @@ const MainSlider = () => {
 											authentic, reliable, and genuine products that are sourced
 											only from authorized dealers.
 										</p>
+										<a class="btn border-2 border-yellow-600 px-8  bg-transparent text-white mx-5 mb-3 hover-btn">
+											<Link href="/">Buy Now</Link>
+										</a>
 									</div>
 								</div>
 							</div>
 						</div>
 					</div>
 					<div class="carousel-item">
-						<div class="container">
+						<div class="container pb-[5rem]">
 							<div class="row p-5">
 								<div class="mx-auto col-md-8 col-lg-6 order-lg-last">
 									<div class="img-fluid">
-										<Image src={C2} alt="" />
+										<img
+											src="https://www.pngarts.com/files/1/AC-Free-PNG-Image.png"
+											alt=""
+										/>
 									</div>
 								</div>
 								<div class="col-lg-6 mb-0 d-flex align-items-center">
@@ -110,17 +126,24 @@ const MainSlider = () => {
 											third-party vendors with no control over the quality or
 											originality of the product.
 										</p>
+										<a class="btn border-2 border-yellow-600 px-8  bg-transparent text-white mx-5 mb-3 hover-btn">
+											<Link href="/">Buy Now</Link>
+										</a>
 									</div>
 								</div>
 							</div>
 						</div>
 					</div>
 					<div class="carousel-item">
-						<div class="container">
+						<div class="container ">
 							<div class="row p-5">
 								<div class="mx-auto col-md-8 col-lg-6 order-lg-last">
 									<div class="img-fluid">
-										<Image src={C2} alt="" />
+										<img
+											src="https://freepngimg.com/save/19055-refrigerator-picture/1800x2550"
+											width="60%"
+											alt=""
+										/>
 									</div>
 								</div>
 								<div class="col-lg-6 mb-0 d-flex align-items-center">
@@ -136,6 +159,9 @@ const MainSlider = () => {
 											refrigerator and freezer at cheap rates. In market, we are
 											giving good prices as compared to others electronics shops
 										</p>
+										<a class="btn border-2 border-yellow-600 px-8  bg-transparent text-white mx-5 mb-3 hover-btn">
+											<Link href="/">Buy Now</Link>
+										</a>
 									</div>
 								</div>
 							</div>
@@ -160,6 +186,9 @@ const MainSlider = () => {
 											home appliance at cheap rates. In market, we are giving
 											good prices as compared to an others electronics shops.
 										</p>
+										<a class="btn border-2 border-yellow-600 px-8  bg-transparent text-white mx-5 mb-3 hover-btn">
+											<Link href="/">Buy Now</Link>
+										</a>
 									</div>
 								</div>
 							</div>

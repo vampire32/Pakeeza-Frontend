@@ -74,6 +74,17 @@ function classNames(...classes) {
 
 
 const Slug = ({ addToCart, RemoveFromcart, productsData }) => {
+	const [UserData, setUserData] = useState({
+		Name: "",
+		Model: "",
+		Brand: "",
+		OderNumber:"",
+		img:"",
+	});
+	const handleSubmit = async (e) => {
+		e.preventDefault();
+		addToCart(slug, 1, UserData.Brand, UserData.Name, UserData.img);
+	};
 	const router = useRouter();
 	const { slug } = router.query;
 
@@ -88,20 +99,24 @@ const Slug = ({ addToCart, RemoveFromcart, productsData }) => {
 						let imgurl = "https://glacial-woodland-47482.herokuapp.com";
 						let img = item.attributes.img.data.attributes.formats.thumbnail.url;
 						console.log(item.attributes.Model);
+						UserData.Name = item.attributes.Name;
+						UserData.Model=slug
+						UserData.img=img
+						UserData.Brand = item.attributes.Amount;
 
 						return (
 							<div key={item.id} class="lg:w-4/5 mx-auto flex flex-wrap">
 								<img
 									alt="ecommerce"
 									class="lg:w-1/2 w-full lg:h-auto h-64 object-cover object-center rounded"
-									src={img}
+									src={UserData.img}
 								/>
 								<div class="lg:w-1/2 w-full lg:pl-10 lg:py-6 mt-6 lg:mt-0">
 									<h2 class="text-sm title-font text-gray-500 tracking-widest">
 										{slug}
 									</h2>
 									<h1 class="text-gray-900 text-3xl title-font font-medium mb-1">
-										{item.attributes.Name}
+										{UserData.Name}
 									</h1>
 									<h2 class="text-sm title-font text-gray-500 tracking-widest">
 										Warrant:
@@ -119,24 +134,16 @@ const Slug = ({ addToCart, RemoveFromcart, productsData }) => {
 
 									<div class="flex mt-3">
 										<span class="title-font font-medium text-2xl text-gray-900">
-											{item.attributes.Price}
+											RS.{UserData.Brand}
 										</span>
 										<button
 											class="flex ml-auto text-white bg-gray-800 border-0 py-2 px-6 focus:outline-none  rounded"
-											onClick={() => {
-												addToCart(
-													slug,
-													1,
-													item.attributes.Price,
-													item.attributes.Name,
-													img
-												);
-											}}
+											onClick={handleSubmit}
 										>
 											Add to Cart
 										</button>
 										<button class="flex ml-auto text-white bg-gray-800  border-0 py-2 px-6 focus:outline-none  rounded">
-											Buy Now
+											<Link href="/CheckoutPage">Buy Now</Link>
 										</button>
 									</div>
 								</div>

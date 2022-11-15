@@ -52,10 +52,11 @@ function MyApp({ Component, pageProps }) {
 		if (itemCode in Carts) {
 			newCart[itemCode].qty = Carts[itemCode].qty + qty;
 		} else {
-			newCart[itemCode] = { qty: 1, price, name, img };
+			newCart[itemCode] = {itemCode, qty: 1, price, name, img };
 		}
 		setCarts(newCart);
 		saveCart(newCart);
+		
 
 	}
 	const saveCart = (myCart) => {
@@ -72,7 +73,7 @@ function MyApp({ Component, pageProps }) {
 		saveCart({})
 	}
 	
-	 
+	 console.log(Carts)
 	
 	
 	return (
@@ -102,6 +103,7 @@ function MyApp({ Component, pageProps }) {
 				Carts={Carts}
 				addToCart={addToCart}
 				clearCart={clearCart}
+				SubTotal={SubTotal}
 				{...pageProps}
 			/>
 			<Footer />

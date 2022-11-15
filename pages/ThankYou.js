@@ -1,7 +1,12 @@
-import React from 'react'
+import React,{useEffect} from "react";
+import { Email } from "./CheckoutPage";
+console.log(Email)
 
-const ThankYou = () => {
-  return (
+const ThankYou = (props) => {
+	
+	
+	
+	return (
 		<div>
 			<section class="h-100 gradient-custom">
 				<div class="container py-5 h-100">
@@ -19,20 +24,10 @@ const ThankYou = () => {
 										<p class="lead fw-normal mb-0" style={{ color: "#a8729a" }}>
 											Receipt
 										</p>
-										<p class="small text-muted mb-0">
-											Receipt Voucher : 1KAU9-84UIL
-										</p>
 									</div>
 									<div class="card shadow-0 border mb-4">
 										<div class="card-body">
 											<div class="row">
-												<div class="col-md-2">
-													<img
-														src="https://mdbcdn.b-cdn.net/img/Photos/Horizontal/E-commerce/Products/13.webp"
-														class="img-fluid"
-														alt="Phone"
-													/>
-												</div>
 												<div class="col-md-2 text-center d-flex justify-content-center align-items-center">
 													<p class="text-muted mb-0">Samsung Galaxy</p>
 												</div>
@@ -42,9 +37,7 @@ const ThankYou = () => {
 												<div class="col-md-2 text-center d-flex justify-content-center align-items-center">
 													<p class="text-muted mb-0 small">Capacity: 64GB</p>
 												</div>
-												<div class="col-md-2 text-center d-flex justify-content-center align-items-center">
-													<p class="text-muted mb-0 small">Qty: 1</p>
-												</div>
+
 												<div class="col-md-2 text-center d-flex justify-content-center align-items-center">
 													<p class="text-muted mb-0 small">$499</p>
 												</div>
@@ -53,144 +46,59 @@ const ThankYou = () => {
 												class="mb-4"
 												style={{ backgroundColor: "#e0e0e0", opacity: "1" }}
 											/>
-											<div class="row d-flex align-items-center">
-												<div class="col-md-2">
-													<p class="text-muted mb-0 small">Track Order</p>
-												</div>
-												<div class="col-md-10">
-													<div
-														class="progress"
-														style={{ height: "6px", borderRadius: "16px;" }}
-													>
-														<div
-															class="progress-bar"
-															role="progressbar"
-															style={{
-																width: "65%",
-																borderRadius: "16px",
-																backgroundColor: "#a8729a",
-															}}
-															aria-valuenow="65"
-															aria-valuemin="0"
-															aria-valuemax="100"
-														></div>
-													</div>
-													<div class="d-flex justify-content-around mb-1">
-														<p class="text-muted mt-1 mb-0 small ms-xl-5">
-															Out for delivary
-														</p>
-														<p class="text-muted mt-1 mb-0 small ms-xl-5">
-															Delivered
-														</p>
-													</div>
-												</div>
-											</div>
 										</div>
 									</div>
-									<div class="card shadow-0 border mb-4">
-										<div class="card-body">
-											<div class="row">
-												<div class="col-md-2">
-													<img
-														src="https://mdbcdn.b-cdn.net/img/Photos/Horizontal/E-commerce/Products/1.webp"
-														class="img-fluid"
-														alt="Phone"
-													/>
+									{props.productsData.data.map((item) => {
+										
+										return (
+											<div key={item.id}>
+												<div class="d-flex justify-content-between pt-2">
+													<p class="fw-bold mb-0">Order Details</p>
+													<p class="text-muted mb-0">
+														<span class="fw-bold me-4">Total RS</span>{" "}
+														{item.attributes.Total}
+													</p>
 												</div>
-												<div class="col-md-2 text-center d-flex justify-content-center align-items-center">
-													<p class="text-muted mb-0">iPad</p>
+												<div class="d-flex justify-content-between pt-2">
+													<p class="text-muted mb-0">
+														Invoice Number : {item.attributes.InvoiceNumber}
+													</p>
+													<p class="text-muted mb-0">
+														<span class="fw-bold me-4">Discount</span> Rs.0
+													</p>
 												</div>
-												<div class="col-md-2 text-center d-flex justify-content-center align-items-center">
-													<p class="text-muted mb-0 small">Pink rose</p>
+												<div class="d-flex justify-content-between">
+													<p class="text-muted mb-0">
+														Invoice Date : {item.attributes.InvoiceDate}
+													</p>
+													<p class="text-muted mb-0">
+														<span class="fw-bold me-4">GST 0%</span>
+													</p>
 												</div>
-												<div class="col-md-2 text-center d-flex justify-content-center align-items-center">
-													<p class="text-muted mb-0 small">Capacity: 32GB</p>
+												<div class="d-flex justify-content-between mb-5">
+													<p class="text-muted mb-0">
+														<span class="fw-bold me-4">Delivery Charges</span>
+														Free
+													</p>
 												</div>
-												<div class="col-md-2 text-center d-flex justify-content-center align-items-center">
-													<p class="text-muted mb-0 small">Qty: 1</p>
-												</div>
-												<div class="col-md-2 text-center d-flex justify-content-center align-items-center">
-													<p class="text-muted mb-0 small">$399</p>
-												</div>
-											</div>
-											<hr
-												class="mb-4"
-												style={{ backgroundColor: "#e0e0e0", opacity: "1" }}
-											/>
-											<div class="row d-flex align-items-center">
-												<div class="col-md-2">
-													<p class="text-muted mb-0 small">Track Order</p>
-												</div>
-												<div class="col-md-10">
-													<div
-														class="progress"
-														style={{ height: "6px", borderRadius: "16px;" }}
-													>
-														<div
-															class="progress-bar"
-															role="progressbar"
-															style={{
-																width: "65%",
-																borderRadius: "16px",
-																backgroundColor: "#a8729a",
-															}}
-															aria-valuenow="20"
-															aria-valuemin="0"
-															aria-valuemax="100"
-														></div>
-													</div>
-													<div class="d-flex justify-content-around mb-1">
-														<p class="text-muted mt-1 mb-0 small ms-xl-5">
-															Out for delivary
-														</p>
-														<p class="text-muted mt-1 mb-0 small ms-xl-5">
-															Delivered
-														</p>
-													</div>
+												<div
+													class="card-footer border-0 px-4 py-5"
+													style={{
+														backgroundColor: "#a8729a",
+														borderBottomLeftRadius: "10px",
+														borderBottomRightRadius: "10px",
+													}}
+												>
+													<h5 class="d-flex align-items-center justify-content-end text-white text-uppercase mb-0">
+														Total paid:{" "}
+														<span class="h2 mb-0 ms-2">
+															{item.attributes.Total}
+														</span>
+													</h5>
 												</div>
 											</div>
-										</div>
-									</div>
-
-									<div class="d-flex justify-content-between pt-2">
-										<p class="fw-bold mb-0">Order Details</p>
-										<p class="text-muted mb-0">
-											<span class="fw-bold me-4">Total</span> $898.00
-										</p>
-									</div>
-
-									<div class="d-flex justify-content-between pt-2">
-										<p class="text-muted mb-0">Invoice Number : 788152</p>
-										<p class="text-muted mb-0">
-											<span class="fw-bold me-4">Discount</span> $19.00
-										</p>
-									</div>
-
-									<div class="d-flex justify-content-between">
-										<p class="text-muted mb-0">Invoice Date : 22 Dec,2019</p>
-										<p class="text-muted mb-0">
-											<span class="fw-bold me-4">GST 18%</span> 123
-										</p>
-									</div>
-
-									<div class="d-flex justify-content-between mb-5">
-										<p class="text-muted mb-0">Recepits Voucher : 18KU-62IIK</p>
-										<p class="text-muted mb-0">
-											<span class="fw-bold me-4">Delivery Charges</span> Free
-										</p>
-									</div>
-								</div>
-								<div
-									class="card-footer border-0 px-4 py-5"
-									style={{
-										backgroundColor: "#a8729a",
-										borderBottomLeftRadius: "10px",
-										borderBottomRightRadius: "10px",
-									}}
-								>
-									<h5 class="d-flex align-items-center justify-content-end text-white text-uppercase mb-0">
-										Total paid: <span class="h2 mb-0 ms-2">$1040</span>
-									</h5>
+										);
+									})}
 								</div>
 							</div>
 						</div>
@@ -199,6 +107,32 @@ const ThankYou = () => {
 			</section>
 		</div>
 	);
+	
+	
+};
+export async function getServerSideProps(context) {
+	
+	let headers = {
+		Authorization:
+			"9ad861e7d9919e881e8b92dfda4c896c1bac63a983dc0acc82727073cc2692d137929ebae6d3242d3a30f1988bc4b8d59faf909d74751f2d4a4f2ab6e4451fa6b1df48774c83cd3646a9a4fed0c45f2716ffd1fc18fd649ecdeea1107ec31a6762073d70cf6f0baa9e063ddd36cbe04bab635baed591742cba412e3ad64cf1ec",
+	};
+	
+	
+	
+	
+	
+	
+	
+	let a = await fetch(
+		`https://gentle-lake-42463.herokuapp.com/api/order-deatails`,
+		(headers = headers)
+	);
+	
+	let productsData = await a.json();
+	
+	return {
+		props: { productsData: productsData },
+		// will be passed to the page component as props
+	};
 }
-
-export default ThankYou
+export default ThankYou;

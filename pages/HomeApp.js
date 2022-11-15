@@ -377,14 +377,16 @@ const HomeApp = (props) => {
 								</form>
 
 								{/* Product grid */}
-								<div className="lg:col-span-3">
+								<div className="lg:col-span-3 bg-[#2b2a2a]">
 									{/* Replace with your content */}
 									<div className=" lg:h-full">
 										<div className="row ">
 											{props.productsData.data.map((item) => {
 												let imgurl =
 													"https://glacial-woodland-47482.herokuapp.com";
-												let img = item.attributes.img.data.attributes.url;
+												let img =
+													item.attributes.img.data.attributes.formats.thumbnail
+														.url;
 												console.log(item.attributes.Model);
 
 												return (
@@ -394,7 +396,7 @@ const HomeApp = (props) => {
 															Model={item.attributes.Model}
 															brands={item.attributes.Brand}
 															price={item.attributes.Price}
-															Picture={imgurl + img}
+															Picture={img}
 														/>
 													</div>
 												);
@@ -427,7 +429,7 @@ export async function getServerSideProps(context) {
 			"9ad861e7d9919e881e8b92dfda4c896c1bac63a983dc0acc82727073cc2692d137929ebae6d3242d3a30f1988bc4b8d59faf909d74751f2d4a4f2ab6e4451fa6b1df48774c83cd3646a9a4fed0c45f2716ffd1fc18fd649ecdeea1107ec31a6762073d70cf6f0baa9e063ddd36cbe04bab635baed591742cba412e3ad64cf1ec",
 	};
 	let a = await fetch(
-		"https://gentle-lake-42463.herokuapp.com/api/products?filters[Category][$eq]=Appliance",
+		"https://gentle-lake-42463.herokuapp.com/api/products?filters[Category][$eq]=Appliance&populate=*",
 		(headers = headers)
 	);
 	let productsData = await a.json();

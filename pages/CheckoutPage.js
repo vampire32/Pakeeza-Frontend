@@ -12,6 +12,7 @@ const CheckoutPage = (props) => {
 	let ProductPrice;
 	let ProductImg;
 	let ProductModel;
+	
 	let InvoiceNumber=(Math.random() *6)
 	let InvoiceDate=new Date();
 	const router = useRouter();
@@ -64,7 +65,7 @@ const [Alert, setAlert] = useState(false);
 							Total: props.SubTotal,
 							TotalPaid: props.SubTotal,
 							Email: UserData.Email,
-							users_permissions_users: UserData.users_permissions_users,
+							users_permissions_users: localStorage.getItem('userid') ,
 						},
 					}),
 					method: "POST",
@@ -214,20 +215,7 @@ const [Alert, setAlert] = useState(false);
 													required=""
 												/>
 											</label>
-											<label
-												htmlFor="Email"
-												class="flex border-b border-gray-200 h-12 py-3 items-center"
-											>
-												<span class="text-right px-2">Username</span>
-												<input
-													onChange={(e) => handleChange(e)}
-													name="users_permissions_users"
-													type="text"
-													class="focus:outline-none px-3"
-													placeholder="try@example.com"
-													required=""
-												/>
-											</label>
+											
 											<label class="flex border-b border-gray-200 h-12 py-3 items-center">
 												<span class="text-right px-2">Phone Number</span>
 												<input

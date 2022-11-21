@@ -76,6 +76,8 @@ const UserProfile = (props) => {
 					</Col>
 					<Col sm={9}>
 						{restaurants.map((item) => {
+							console.log(item.id)
+							localStorage.setItem("userid",item.id)
 							
 							return (
 								<Tab.Content key={item.id}>

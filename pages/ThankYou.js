@@ -1,9 +1,25 @@
 import React,{useEffect} from "react";
-import { Email } from "./CheckoutPage";
-console.log(Email)
+
+
 
 const ThankYou = (props) => {
+let InvoiceNumber=localStorage.getItem("InvoiceNumber")
+let InvoiceDate = localStorage.getItem("InvoiceDate");
+let TOtalPaid = localStorage.getItem("TotalPaid");
+let Total = localStorage.getItem("Total");
+useEffect(() => {
+ setTimeout(()=>{
+	localStorage.removeItem("InvoiceNumber")
+	localStorage.removeItem("InvoiceDate");
+	localStorage.removeItem("TotalPaid");
+	localStorage.removeItem("Total");
+	localStorage.removeItem("Carts")
 	
+
+ },10000)
+}, [])
+
+
 	
 	
 	return (
@@ -16,7 +32,7 @@ const ThankYou = (props) => {
 								<div class="card-header px-4 py-5">
 									<h5 class="text-muted mb-0">
 										Thanks for your Order,{" "}
-										<span style={{ color: "#a8729a" }}>Anna</span>!
+										<span style={{ color: "#a8729a" }}></span>!
 									</h5>
 								</div>
 								<div class="card-body p-4">
@@ -25,80 +41,53 @@ const ThankYou = (props) => {
 											Receipt
 										</p>
 									</div>
-									<div class="card shadow-0 border mb-4">
-										<div class="card-body">
-											<div class="row">
-												<div class="col-md-2 text-center d-flex justify-content-center align-items-center">
-													<p class="text-muted mb-0">Samsung Galaxy</p>
-												</div>
-												<div class="col-md-2 text-center d-flex justify-content-center align-items-center">
-													<p class="text-muted mb-0 small">White</p>
-												</div>
-												<div class="col-md-2 text-center d-flex justify-content-center align-items-center">
-													<p class="text-muted mb-0 small">Capacity: 64GB</p>
-												</div>
-
-												<div class="col-md-2 text-center d-flex justify-content-center align-items-center">
-													<p class="text-muted mb-0 small">$499</p>
-												</div>
-											</div>
-											<hr
-												class="mb-4"
-												style={{ backgroundColor: "#e0e0e0", opacity: "1" }}
-											/>
+									
+									<div >
+										<div class="d-flex justify-content-between pt-2">
+											<p class="fw-bold mb-0">Order Details</p>
+											<p class="text-muted mb-0">
+												<span class="fw-bold me-4">Total RS</span>{" "}
+												{TOtalPaid}
+											</p>
+										</div>
+										<div class="d-flex justify-content-between pt-2">
+											<p class="text-muted mb-0">
+												Invoice Number : {InvoiceNumber}
+											</p>
+											<p class="text-muted mb-0">
+												<span class="fw-bold me-4">Discount</span> Rs.0
+											</p>
+										</div>
+										<div class="d-flex justify-content-between">
+											<p class="text-muted mb-0">
+												Invoice Date : {InvoiceDate}
+											</p>
+											<p class="text-muted mb-0">
+												<span class="fw-bold me-4">GST 0%</span>
+											</p>
+										</div>
+										<div class="d-flex justify-content-between mb-5">
+											<p class="text-muted mb-0">
+												<span class="fw-bold me-4">Delivery Charges</span>
+												Free
+											</p>
+										</div>
+										<div
+											class="card-footer border-0 px-4 py-5"
+											style={{
+												backgroundColor: "#a8729a",
+												borderBottomLeftRadius: "10px",
+												borderBottomRightRadius: "10px",
+											}}
+										>
+											<h5 class="d-flex align-items-center justify-content-end text-white text-uppercase mb-0">
+												Total paid:{" "}
+												<span class="h2 mb-0 ms-2">
+													{Total}
+												</span>
+											</h5>
 										</div>
 									</div>
-									{props.productsData.data.map((item) => {
-										
-										return (
-											<div key={item.id}>
-												<div class="d-flex justify-content-between pt-2">
-													<p class="fw-bold mb-0">Order Details</p>
-													<p class="text-muted mb-0">
-														<span class="fw-bold me-4">Total RS</span>{" "}
-														{item.attributes.Total}
-													</p>
-												</div>
-												<div class="d-flex justify-content-between pt-2">
-													<p class="text-muted mb-0">
-														Invoice Number : {item.attributes.InvoiceNumber}
-													</p>
-													<p class="text-muted mb-0">
-														<span class="fw-bold me-4">Discount</span> Rs.0
-													</p>
-												</div>
-												<div class="d-flex justify-content-between">
-													<p class="text-muted mb-0">
-														Invoice Date : {item.attributes.InvoiceDate}
-													</p>
-													<p class="text-muted mb-0">
-														<span class="fw-bold me-4">GST 0%</span>
-													</p>
-												</div>
-												<div class="d-flex justify-content-between mb-5">
-													<p class="text-muted mb-0">
-														<span class="fw-bold me-4">Delivery Charges</span>
-														Free
-													</p>
-												</div>
-												<div
-													class="card-footer border-0 px-4 py-5"
-													style={{
-														backgroundColor: "#a8729a",
-														borderBottomLeftRadius: "10px",
-														borderBottomRightRadius: "10px",
-													}}
-												>
-													<h5 class="d-flex align-items-center justify-content-end text-white text-uppercase mb-0">
-														Total paid:{" "}
-														<span class="h2 mb-0 ms-2">
-															{item.attributes.Total}
-														</span>
-													</h5>
-												</div>
-											</div>
-										);
-									})}
 								</div>
 							</div>
 						</div>
@@ -124,7 +113,7 @@ export async function getServerSideProps(context) {
 	
 	
 	let a = await fetch(
-		`https://gentle-lake-42463.herokuapp.com/api/order-deatails`,
+		`https://pakeeza-backend-railway-production.up.railway.app/api/order-deatails`,
 		(headers = headers)
 	);
 	

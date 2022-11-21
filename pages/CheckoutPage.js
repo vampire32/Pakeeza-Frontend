@@ -1,8 +1,13 @@
-import React,{useState} from 'react'
+import React,{useState,useEffect} from 'react'
 import { useRouter } from "next/router";
 import Link from "next/link";
+import Script from 'next/script';
 
 const CheckoutPage = (props) => {
+	
+		
+
+	
 	let ProductName;
 	let ProductPrice;
 	let ProductImg;
@@ -11,14 +16,27 @@ const CheckoutPage = (props) => {
 	let InvoiceDate=new Date();
 	const router = useRouter();
 	const { slug } = router.query;
+	const [checkBox, setcheckBox] = useState(false)
+	const Easypaisa=()=>{
+		if(checkBox==false){
+			setcheckBox(true)
+		}
+		else if(checkBox==true){
+			setcheckBox(false)
+		}
+	}
+	
+	
+	
 	const [UserData, setUserData] = useState({
 		Name: "",
 		Email: "",
 		Address: "",
 		City: "",
-		COD:"",
-		PhoneNumber:"",
-		VistStore:"",
+		COD: "",
+		PhoneNumber: "",
+		VistStore: "",
+		users_permissions_users: "",
 	});
 	 const handleChange = (e) => {
 			const { name, value } = e.target;
@@ -31,7 +49,7 @@ const [Alert, setAlert] = useState(false);
 		
 		try {
 			const responseOrder = await fetch(
-				"https://gentle-lake-42463.herokuapp.com/api/order-deatails",
+				"https://pakeeza-backend-railway-production.up.railway.app/api/order-deatails",
 				{
 					headers: {
 						"Content-Type": "application/json",
@@ -45,14 +63,15 @@ const [Alert, setAlert] = useState(false);
 							InvoiceDate: InvoiceDate,
 							Total: props.SubTotal,
 							TotalPaid: props.SubTotal,
-							Email: UserData.Email
+							Email: UserData.Email,
+							users_permissions_users: UserData.users_permissions_users,
 						},
 					}),
 					method: "POST",
 				}
 			);
 			const response = await fetch(
-				"https://gentle-lake-42463.herokuapp.com/api/check-outs",
+				"https://pakeeza-backend-railway-production.up.railway.app/api/check-outs",
 				{
 					headers: {
 						"Content-Type": "application/json",
@@ -78,7 +97,10 @@ const [Alert, setAlert] = useState(false);
 					method: "POST",
 				}
 			);
-			
+			localStorage.setItem("InvoiceNumber",InvoiceNumber)
+			localStorage.setItem("InvoiceDate",InvoiceDate)
+			localStorage.setItem("TotalPaid", props.SubTotal);
+			localStorage.setItem("Total", props.SubTotal);
 			setAlert(true);
 			
 			setTimeout(() => {
@@ -89,12 +111,21 @@ const [Alert, setAlert] = useState(false);
 			const OrderResponse = await response.json();
 			console.log(addResponse)
 			console.log(OrderResponse);
+			localStroge.remove("Carts")
 			alert("Data Send");
 		} catch (error) {
 			console.error(error);
 			alert(error)
 		}
 	};
+	let data = [
+		{
+			invoicenumber: InvoiceNumber,
+			invoicedate: InvoiceDate,
+			total: props.SubTotal,
+			titalpaid: props.SubTotal,
+		},
+	];
 	return (
 		<div>
 			{Alert ? (
@@ -183,6 +214,20 @@ const [Alert, setAlert] = useState(false);
 													required=""
 												/>
 											</label>
+											<label
+												htmlFor="Email"
+												class="flex border-b border-gray-200 h-12 py-3 items-center"
+											>
+												<span class="text-right px-2">Username</span>
+												<input
+													onChange={(e) => handleChange(e)}
+													name="users_permissions_users"
+													type="text"
+													class="focus:outline-none px-3"
+													placeholder="try@example.com"
+													required=""
+												/>
+											</label>
 											<label class="flex border-b border-gray-200 h-12 py-3 items-center">
 												<span class="text-right px-2">Phone Number</span>
 												<input
@@ -251,6 +296,50 @@ const [Alert, setAlert] = useState(false);
 														required=""
 													/>
 												</label>
+												<label
+													htmlFor="Easypaisa"
+													class="flex border-b border-gray-200 h-12 py-3 items-center"
+												>
+													<span class="text-right px-2">Easypaisa</span>
+													<input
+														name="Easypaisa"
+														id="Easypaisa"
+														aria-describedby="remember"
+														type="checkbox"
+														class="w-4 h-4 border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-primary-300 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-primary-600 dark:ring-offset-gray-800"
+														required=""
+														onChange={Easypaisa}
+													/>
+												</label>
+												{checkBox ? (
+													<div id="easypaisa-form">
+														<label class="flex border-b border-gray-200 h-12 py-3 items-center">
+															<span class="text-right px-2">Account Title</span>
+															<span>Syed Abdul Moiz Shah</span>
+														</label>
+														<label class="flex border-b border-gray-200 h-12 py-3 items-center">
+															<span class="text-right px-2">
+																Account Number
+															</span>
+															<span>03169089872</span>
+														</label>
+														<label class="flex border-b border-gray-200 h-12 py-3 items-center">
+															<span class="text-right px-2">Bank Name</span>
+															<span>EasyPaisa</span>
+														</label>
+														<label class="flex border-b border-gray-200 h-12 py-3 items-center">
+															<span class="text-right px-2">TID</span>
+															<input
+																onChange={(e) => handleChange(e)}
+																name="TID"
+																class="focus:outline-none px-3"
+																placeholder="TID"
+															/>
+														</label>
+													</div>
+												) : (
+													<div></div>
+												)}
 											</fieldset>
 										</section>
 									</div>
@@ -261,7 +350,6 @@ const [Alert, setAlert] = useState(false);
 										Pay RS {props.SubTotal}
 									</button>
 								</form>
-								{console.log(UserData.CheckBox)}
 							</div>
 						</div>
 						<div class="col-span-1 bg-white lg:block hidden">

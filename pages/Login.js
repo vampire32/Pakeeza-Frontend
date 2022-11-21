@@ -6,6 +6,7 @@ import { parseCookies, setCookie, destroyCookie } from "nookies";
 import getConfig from 'next/config';
 import { redirect } from 'next/dist/server/api-utils';
 import UserProfile from '../Components/UserProfile';
+import Cookies from "js-cookie";
 
 const {publicRuntimeConfig}=getConfig();
 	const Authorization=
@@ -31,7 +32,7 @@ const Login = () => {
 	const handleSubmit = async (e) => {
 		e.preventDefault();
 		axios
-			.post("https://gentle-lake-42463.herokuapp.com/api/auth/local", {
+			.post("https://pakeeza-backend-railway-production.up.railway.app/api/auth/local", {
 				identifier: UserData.email,
 				password: UserData.password,
 			})
@@ -41,10 +42,10 @@ const Login = () => {
 				console.log("User profile", response.data.user);
 				console.log("User token", response.data.jwt);
 				localStorage.setItem("jwt", response.data.jwt);
-				setCookie(null, "jwt", response.data.jwt, {
-					maxAge: 30 * 24 * 60 * 60,
-					path: "/",
-				});
+				Cookies.set("jwt", response.data.jwt);
+				Cookies.set("Email", UserData.email);
+				localStorage.setItem("Email",UserData.email)
+				
 
 				setAlert(true);
 				setTimeout(() => {

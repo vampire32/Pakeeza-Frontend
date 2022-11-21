@@ -1,10 +1,16 @@
-import React from 'react'
+import React,{useEffect} from 'react'
 import Image from "next/image";
 import Avatar1 from "../styles/Images/avatar1.jpeg";
 import Avatar2 from "../styles/Images/avatar2.jpeg";
 import Avatar3 from "../styles/Images/avatar3.jpeg";
-
+import AOS from "aos";
+import "aos/dist/aos.css";
 export const Testimonials = () => {
+	useEffect(() => {
+		AOS.init({
+			duration: 2000,
+		});
+	}, []);
   return (
 		<div>
 			<div

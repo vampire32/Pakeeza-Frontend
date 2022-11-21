@@ -127,7 +127,7 @@ const NavBar = ({ Carts, addToCart, RemoveFromcart, clearCart, SubTotal }) => {
 														href="#"
 														className="flex items-center justify-center rounded-md border border-transparent bg-[#9e7098]  px-6 py-3 text-base font-medium text-white shadow-sm hover:bg-[#9e7098] "
 													>
-														Checkout
+														<Link href="/CheckoutPage">Checkout</Link>
 													</a>
 													<button
 														onClick={clearCart}
@@ -158,7 +158,7 @@ const NavBar = ({ Carts, addToCart, RemoveFromcart, clearCart, SubTotal }) => {
 					</div>
 				</Dialog>
 			</Transition.Root>
-			<nav className=" shadow-sm  w-full z-10 navbar-design ">
+			<nav className=" shadow-sm  w-full z-10 navbar-design   bgm">
 				<div className="w-full">
 					<div className="flex items-center h-20 w-full">
 						<div className="flex items-center  mx-20  justify-evenly w-full">
@@ -167,12 +167,7 @@ const NavBar = ({ Carts, addToCart, RemoveFromcart, clearCart, SubTotal }) => {
 									Pakeeza<span className="text-[#ffae42]">Electronics</span>
 								</span>
 							</div>
-							<a className="cursor-pointer text-[#ffae42] font-semibold px-3 py-2 text-md hover:font-black res">
-								<div className="flex">
-									<VscLocation size={45} />
-									Shop Address
-								</div>
-							</a>
+						
 							<div className="hidden res3 md:block">
 								<div className=" ml-10 flex items-baseline space-x-4">
 									<a className="cursor-pointer text-[#ffae42] font-semibold px-3 py-2 text-md hover:font-black">
@@ -228,7 +223,7 @@ const NavBar = ({ Carts, addToCart, RemoveFromcart, clearCart, SubTotal }) => {
 									</a>
 
 									<a className=" text-[#ffae42] hover:text-[#ffae42]  font-semibold px-3 py-2 text-md hover:font-black">
-										<Link activeClass="Home" href="/Contact">
+										<Link activeClass="Home" href="/Contactus">
 											Contact
 										</Link>
 									</a>
@@ -349,7 +344,7 @@ const NavBar = ({ Carts, addToCart, RemoveFromcart, clearCart, SubTotal }) => {
 								</a>
 
 								<a className="cursor-pointer hover:bg-blue-600 text-black hover:text-white block px-3 py-2 rounded-md text-base font-medium">
-									<Link href="/home">About</Link>
+									<Link href="/About">About</Link>
 								</a>
 
 								<a className="cursor-pointer hover:bg-blue-600 text-black hover:text-white block px-3 py-2 rounded-md text-base font-medium">
@@ -357,7 +352,7 @@ const NavBar = ({ Carts, addToCart, RemoveFromcart, clearCart, SubTotal }) => {
 								</a>
 
 								<a className="cursor-pointer hover:bg-blue-600 text-black hover:text-white block px-3 py-2 rounded-md text-base font-medium">
-									<Link href="/home">Contact</Link>
+									<Link href="/Contactus">Contact</Link>
 								</a>
 								<a className="cursor-pointer text-[#ffae42] font-semibold px-3 py-2 text-md hover:font-black">
 									<div className="flex">

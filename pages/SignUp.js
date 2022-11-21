@@ -19,7 +19,7 @@ const SignUp = () => {
 		e.preventDefault();
 		try {
 			const response = await fetch(
-				"https://gentle-lake-42463.herokuapp.com/api/auth/local/register",
+				"https://pakeeza-backend-railway-production.up.railway.app/api/auth/local/register",
 				{
 					headers: {
 						"Content-Type": "application/json",

@@ -1,5 +1,5 @@
 import Head from "next/head";
-import { Fragment, useState } from "react";
+import { Fragment, useState,useEffect } from "react";
 import Image from "next/image";
 
 import { Testimonials } from "../Components/Testimonials";
@@ -37,7 +37,8 @@ import {
 	PlusIcon,
 	Squares2X2Icon,
 } from "@heroicons/react/20/solid";
-
+import AOS from "aos";
+import "aos/dist/aos.css";
 import C1 from "../styles/Images/cart.jpg";
 import C2 from "../styles/Images/cart-2.jpg";
 import C3 from "../styles/Images/cart-3.jpg";
@@ -121,6 +122,11 @@ function classNames(...classes) {
 	return classes.filter(Boolean).join(" ");
 }
 const Home = (props) => {
+	useEffect(() => {
+		AOS.init({
+			duration: 2000,
+		});
+	}, []);
 	 const [mobileFiltersOpen, setMobileFiltersOpen] = useState(false);
 	return (
 		<div>
@@ -131,11 +137,23 @@ const Home = (props) => {
 			</Head>
 			<MainSlider />
 			<Brands />
-			<div className="bg-[#2b2a2a] h-[50rem] mt-[10rem]">
-				<div className="container ">
-					<h3 className="text-center text-yellow-600 mt-5 text-[32px] mt-5 pb=22 font-medium">
-						New Arrivals
+			<div className="linear-color" data-aos="fade-up">
+				<div className="container-fluid h-[25rem] linear-color2">
+					<p className=" text-[40px] font-bold text-yellow-400  text-center">
+						Premium Collections
+					</p>
+					<h3 className=" font-bold text-[40px] text-center pb-3  ml-5 text-slate-600 ">
+						HOT DEALS
 					</h3>
+					<p className="text-center text-white text-[18px]">
+						Details to details is what makes Hexashop different from the other
+						themes
+					</p>
+				</div>
+			</div>
+
+			<div className="bg-hot-img2 h-[50rem]  " data-aos="fade-up">
+				<div>
 					<Swiper
 						breakpoints={{
 							640: {
@@ -148,33 +166,29 @@ const Home = (props) => {
 								slidesPerView: 3,
 							},
 						}}
-						spaceBetween={30}
+						// slidesPerView={4}
+
 						freeMode={true}
-						pagination={{
-							clickable: true,
-						}}
 						navigation={{
 							clickable: true,
 						}}
-						modules={[Pagination, Navigation]}
-						className="mySwiper"
+						modules={[Navigation]}
+						className="mySwiper flex justify-center"
 					>
-						{props.productsData.data.map((item) => {
+						{props.HotDeals.data.map((item) => {
 							let imgurl = "https://glacial-woodland-47482.herokuapp.com";
 							let img =
 								item.attributes.img.data.attributes.formats.thumbnail.url;
-							// console.log(img);
+							console.log(img);
 
 							return (
-								<SwiperSlide key={item.id}>
+								<SwiperSlide key={item.id} className="mt-40" >
 									<ProductCards
 										slug={item.attributes.Model}
 										name={item.attributes.Name}
-										
 										brands={item.attributes.Brand}
 										price={item.attributes.Price}
 										Picture={img}
-										
 									/>
 									;
 								</SwiperSlide>
@@ -185,7 +199,7 @@ const Home = (props) => {
 			</div>
 
 			<section class="container py-5">
-				<div class="row">
+				<div class="row" data-aos="fade-up">
 					<div class="col-md-6 col-lg-3 pb-5">
 						<div class="h-100 py-5 services-icon-wap shadow">
 							<div class="h1 text-success text-center">
@@ -233,23 +247,83 @@ const Home = (props) => {
 				</div>
 			</section>
 
-			<div className="container mt-[3rem]">
-				<h2 className="text-center text-[32px] font-bold pb-[2rem] text-[#ffae42]">
+			<div className="container mt-[3rem] " data-aos="fade-up">
+				<h2 className="text-center text-[32px] font-extrabold pb-[2rem] text-[#ffae42]">
 					TOP CATEGORIES
 				</h2>
+				<div className="row" data-aos="fade-up">
+					<div className="col-md-4">
+						<div className="flex justify-center">
+							<img
+								src="https://cdn3d.iconscout.com/3d/premium/thumb/air-conditioner-6249768-5115937.png"
+								style={{ width: "20%" }}
+							/>
+						</div>
+						<h4 className="text-center text-[14px]">AIR CON & AirCooler</h4>
+					</div>
+					<div className="col-md-4">
+						<div className="flex justify-center">
+							<img
+								src="https://static.vecteezy.com/system/resources/previews/008/525/804/original/refrigerator-device-electronic-icon-3d-illustration-png.png"
+								style={{ width: "20%" }}
+							/>
+						</div>
+						<h4 className="text-center text-[14px]">REFRIGERATOR & FREEZERS</h4>
+					</div>
+					<div className="col-md-4">
+						<div className="flex justify-center">
+							<img
+								src="https://cdn3d.iconscout.com/3d/premium/thumb/led-tv-6810080-5581522.png"
+								style={{ width: "20%" }}
+							/>
+						</div>
+						<h4 className="text-center text-[14px]">LED TV & SOUND SYSTEM</h4>
+					</div>
+					<div className="col-md-4">
+						<div className="flex justify-center">
+							<img
+								src="https://cdn3d.iconscout.com/3d/premium/thumb/electronics-appliances-5580689-4668669.png"
+								style={{ width: "20%" }}
+							/>
+						</div>
+						<h4 className="text-center text-[14px]">HOME APPLIANCES</h4>
+					</div>
+					<div className="col-md-4">
+						<div className="flex justify-center">
+							<img
+								src="https://cdn3d.iconscout.com/3d/premium/thumb/kitchen-room-6347476-5251974.png"
+								style={{ width: "20%" }}
+							/>
+						</div>
+						<h4 className="text-center text-[14px]">BUILT-IN KITCHEN</h4>
+					</div>
+					<div className="col-md-4">
+						<div className="flex justify-center">
+							<img
+								src="https://cdn3d.iconscout.com/3d/premium/thumb/washing-machine-5756640-4825944.png"
+								style={{ width: "20%" }}
+							/>
+						</div>
+						<h4 className="text-center text-[14px]">WASHING SOLUTIONS</h4>
+					</div>
+				</div>
 			</div>
-			<div className="bg-[#2b2a2a] h-[50rem] mt-[10rem]">
-				<div className="conatiner mt-[4rem]">
-					<p className="text-yellow-500 text-[30px] text-center">
+			<div className="linear-color" data-aos="fade-up">
+				<div className="container-fluid h-[25rem] linear-color2">
+					<p className=" text-[40px] font-bold text-yellow-400  text-center">
 						Premium Collections
 					</p>
-					<h3 className=" font-extrabold text-[40px] text-center pb-3  ml-5 text-white">
-						AIR-CON & AIR COOLER
+					<h3 className=" font-bold text-[40px] text-center pb-3  ml-5 text-slate-600 ">
+						AIR CON & AirCooler
 					</h3>
 					<p className="text-center text-white text-[18px]">
 						Details to details is what makes Hexashop different from the other
 						themes
 					</p>
+				</div>
+			</div>
+			<div className="bg-ac-img2  h-[50rem] " data-aos="fade-up">
+				<div className="conatiner ">
 					<Swiper
 						breakpoints={{
 							640: {
@@ -276,40 +350,48 @@ const Home = (props) => {
 						className="mySwiper"
 					>
 						{props.productsData.data.map((item) => {
-							let imgurl = "https://glacial-woodland-47482.herokuapp.com";
+							let imgurl =
+								"https://pakeeza-backend-railway-production.up.railway.app/";
 							let img =
-								item.attributes.img.data.attributes.formats.thumbnail.url;
+								item.attributes.img.data.attributes.formats.thumbnail.url;;
 
 							return (
-								<SwiperSlide key={item.id}>
+								<SwiperSlide key={item.id} className="mt-40" >
 									<ProductCards
-										slug={item.attributes.Name}
+										slug={item.attributes.Model}
+										name={item.attributes.Name}
 										brands={item.attributes.Brand}
 										price={item.attributes.Price}
 										Picture={img}
-										Model={item.attributes.Model}
 									/>
 									;
 								</SwiperSlide>
 							);
 						})}
 					</Swiper>
+					<div className="flex justify-center mt-10">
+						<a className="btn btn-secondary text-center px-12 ">View</a>
+					</div>
 				</div>
 			</div>
 
 			{/* <Dlivery /> */}
-			<div className="bg-[#2b2a2a] h-[50rem] mt-[10rem]">
-				<div className="conatiner mt-[4rem]">
-					<p className="text-yellow-500 text-[30px] text-center">
+			<div className="linear-color" data-aos="fade-up">
+				<div className="container-fluid h-[25rem] linear-color2">
+					<p className=" text-[40px] font-bold text-yellow-400  text-center">
 						Premium Collections
 					</p>
-					<h3 className=" font-extrabold text-[40px] text-center pb-3  ml-5 text-white">
+					<h3 className=" font-bold text-[40px] text-center pb-3  ml-5 text-slate-600 ">
 						REFRIGERATOR & FREEZERS
 					</h3>
 					<p className="text-center text-white text-[18px]">
 						Details to details is what makes Hexashop different from the other
 						themes
 					</p>
+				</div>
+			</div>
+			<div className="bg-freezer-img2  h-[50rem] " data-aos="fade-up">
+				<div className="conatiner">
 					<Swiper
 						breakpoints={{
 							640: {
@@ -334,16 +416,17 @@ const Home = (props) => {
 						className="mySwiper"
 					>
 						{props.FreezerData.data.map((item) => {
-							let imgurl = "https://glacial-woodland-47482.herokuapp.com";
+							let imgurl =
+								"https://pakeeza-backend-railway-production.up.railway.app/";
 							let img =
-								item.attributes.img.data.attributes.formats.thumbnail.url;
+								item.attributes.img.data.attributes.formats.thumbnail.url;;
 							// console.log(img);
 
 							return (
-								<SwiperSlide key={item.id}>
+								<SwiperSlide key={item.id} className="mt-40" >
 									<ProductCards
-										slug={item.attributes.Name}
-										Model={item.attributes.Model}
+										slug={item.attributes.Model}
+										name={item.attributes.Name}
 										brands={item.attributes.Brand}
 										price={item.attributes.Price}
 										Picture={img}
@@ -353,20 +436,27 @@ const Home = (props) => {
 							);
 						})}
 					</Swiper>
+					<div className="flex justify-center mt-10">
+						<a className="btn btn-secondary text-center px-12 ">View</a>
+					</div>
 				</div>
 			</div>
-			<div className="bg-[#2b2a2a] h-[50rem] mt-[10rem]">
-				<div className="conatiner mt-[4rem]">
-					<p className="text-yellow-500 text-[30px] text-center">
+			<div className="linear-color" data-aos="fade-up">
+				<div className="container-fluid h-[25rem] linear-color2">
+					<p className=" text-[40px] font-bold text-yellow-400  text-center">
 						Premium Collections
 					</p>
-					<h3 className=" font-extrabold text-[40px] text-center pb-3  ml-5 text-white">
+					<h3 className=" font-bold text-[40px] text-center pb-3  ml-5 text-slate-600 ">
 						LED TV & SOUND SYSTEM
 					</h3>
 					<p className="text-center text-white text-[18px]">
 						Details to details is what makes Hexashop different from the other
 						themes
 					</p>
+				</div>
+			</div>
+			<div className="bg-led-img2 h-[50rem]" data-aos="fade-up">
+				<div className="conatiner">
 					<Swiper
 						breakpoints={{
 							640: {
@@ -391,39 +481,47 @@ const Home = (props) => {
 						className="mySwiper"
 					>
 						{props.LEDData.data.map((item) => {
-							let imgurl = "https://glacial-woodland-47482.herokuapp.com";
+							let imgurl =
+								"https://pakeeza-backend-railway-production.up.railway.app";
 							let img =
-								item.attributes.img.data.attributes.formats.thumbnail.url;
+								item.attributes.img.data.attributes.formats.thumbnail.url;;
 							// console.log(img);
 
 							return (
-								<SwiperSlide key={item.id}>
+								<SwiperSlide key={item.id} className="mt-40" >
 									<ProductCards
 										slug={item.attributes.Model}
 										name={item.attributes.Name}
 										brands={item.attributes.Brand}
 										price={item.attributes.Price}
-										Picture={img}
+										// Picture={img}
 									/>
 									;
 								</SwiperSlide>
 							);
 						})}
 					</Swiper>
+					<div className="flex justify-center">
+						<a className="btn btn-secondary text-center px-12 ">View</a>
+					</div>
 				</div>
 			</div>
-			<div className="bg-[#2b2a2a] h-[50rem] mt-[10rem]">
-				<div className="conatiner mt-[4rem]">
-					<p className="text-yellow-500 text-[30px] text-center">
+			<div className="linear-color" data-aos="fade-up">
+				<div className="container-fluid h-[25rem] linear-color2">
+					<p className=" text-[40px] font-bold text-yellow-400  text-center">
 						Premium Collections
 					</p>
-					<h3 className=" font-extrabold text-[40px] text-center pb-3  ml-5 text-white">
+					<h3 className=" font-bold text-[40px] text-center pb-3  ml-5 text-slate-600 ">
 						HOME APPLIANCES
 					</h3>
 					<p className="text-center text-white text-[18px]">
 						Details to details is what makes Hexashop different from the other
 						themes
 					</p>
+				</div>
+			</div>
+			<div className="bg-home-img2  h-[50rem]" data-aos="fade-up" >
+				<div className="conatiner">
 					<Swiper
 						breakpoints={{
 							640: {
@@ -448,13 +546,14 @@ const Home = (props) => {
 						className="mySwiper"
 					>
 						{props.HomeData.data.map((item) => {
-							let imgurl = "https://glacial-woodland-47482.herokuapp.com";
+							let imgurl =
+								"https://pakeeza-backend-railway-production.up.railway.app";
 							let img =
-								item.attributes.img.data.attributes.formats.thumbnail.url;
+								item.attributes.img.data.attributes.formats.thumbnail.url;;
 							// console.log(img);
 
 							return (
-								<SwiperSlide key={item.id}>
+								<SwiperSlide key={item.id} className="mt-40" >
 									<ProductCards
 										slug={item.attributes.Model}
 										name={item.attributes.Name}
@@ -467,20 +566,27 @@ const Home = (props) => {
 							);
 						})}
 					</Swiper>
+					<div className="flex justify-center mt-10">
+						<a className="btn btn-secondary text-center px-12 ">View</a>
+					</div>
 				</div>
 			</div>
-			<div className="bg-[#2b2a2a] h-[50rem] mt-[10rem]">
-				<div className="conatiner mt-[4rem]">
-					<p className="text-yellow-500 text-[30px] text-center">
+			<div className="linear-color" data-aos="fade-up">
+				<div className="container-fluid h-[25rem] linear-color2">
+					<p className=" text-[40px] font-bold text-yellow-400  text-center">
 						Premium Collections
 					</p>
-					<h3 className=" font-extrabold text-[40px] text-center pb-3  ml-5 text-white">
+					<h3 className=" font-bold text-[40px] text-center pb-3  ml-5 text-slate-600 ">
 						BUILT-IN KITCHEN
 					</h3>
 					<p className="text-center text-white text-[18px]">
 						Details to details is what makes Hexashop different from the other
 						themes
 					</p>
+				</div>
+			</div>
+			<div className="bg-kitchen-img2  h-[50rem] " data-aos="fade-up">
+				<div className="conatiner">
 					<Swiper
 						breakpoints={{
 							640: {
@@ -505,13 +611,14 @@ const Home = (props) => {
 						className="mySwiper"
 					>
 						{props.KitchenData.data.map((item) => {
-							let imgurl = "https://glacial-woodland-47482.herokuapp.com";
+							let imgurl =
+								"https://pakeeza-backend-railway-production.up.railway.app";
 							let img =
-								item.attributes.img.data.attributes.formats.thumbnail.url;
+								item.attributes.img.data.attributes.formats.thumbnail.url;;
 							// console.log(img);
 
 							return (
-								<SwiperSlide key={item.id}>
+								<SwiperSlide key={item.id} className="mt-40" >
 									<ProductCards
 										slug={item.attributes.Model}
 										name={item.attributes.Name}
@@ -524,20 +631,27 @@ const Home = (props) => {
 							);
 						})}
 					</Swiper>
+					<div className="flex justify-center">
+						<a className="btn btn-secondary text-center px-12 ">View</a>
+					</div>
 				</div>
 			</div>
-			<div className="bg-[#2b2a2a] h-[50rem] mt-[10rem]">
-				<div className="conatiner mt-[4rem]">
-					<p className="text-yellow-500 text-[30px] text-center">
+			<div className="linear-color" data-aos="fade-up">
+				<div className="container-fluid h-[25rem] linear-color2">
+					<p className=" text-[40px] font-bold text-yellow-400  text-center">
 						Premium Collections
 					</p>
-					<h3 className=" font-extrabold text-[40px] text-center pb-3  ml-5 text-white">
+					<h3 className=" font-bold text-[40px] text-center pb-3  ml-5 text-slate-600 ">
 						WASHING SOLUTIONS
 					</h3>
 					<p className="text-center text-white text-[18px]">
 						Details to details is what makes Hexashop different from the other
 						themes
 					</p>
+				</div>
+			</div>
+			<div className="bg-washing-img2 h-[50rem]" data-aos="fade-up">
+				<div className="conatiner">
 					<Swiper
 						breakpoints={{
 							640: {
@@ -562,13 +676,14 @@ const Home = (props) => {
 						className="mySwiper"
 					>
 						{props.WashingData.data.map((item) => {
-							let imgurl = "https://glacial-woodland-47482.herokuapp.com";
+							let imgurl =
+								"https://pakeeza-backend-railway-production.up.railway.app";
 							let img =
-								item.attributes.img.data.attributes.formats.thumbnail.url;
+								item.attributes.img.data.attributes.formats.thumbnail.url;;
 							// console.log(img);
 
 							return (
-								<SwiperSlide key={item.id}>
+								<SwiperSlide key={item.id} className="mt-40" >
 									<ProductCards
 										slug={item.attributes.Model}
 										name={item.attributes.Name}
@@ -581,44 +696,50 @@ const Home = (props) => {
 							);
 						})}
 					</Swiper>
+					<div className="flex justify-center mt-10">
+						<a className="btn btn-secondary text-center px-12 ">View</a>
+					</div>
 				</div>
 			</div>
 
 			<Dlivery />
 			<Testimonials />
-			
 		</div>
 	);
 };
 export async function getServerSideProps(context) {
 	let headers = {
 		Authorization:
-			"9ad861e7d9919e881e8b92dfda4c896c1bac63a983dc0acc82727073cc2692d137929ebae6d3242d3a30f1988bc4b8d59faf909d74751f2d4a4f2ab6e4451fa6b1df48774c83cd3646a9a4fed0c45f2716ffd1fc18fd649ecdeea1107ec31a6762073d70cf6f0baa9e063ddd36cbe04bab635baed591742cba412e3ad64cf1ec",
+			"b98506029163804d8c79317a85c0ae8049f45b1d14065bd2553f08258c746314562c5462fd1019bdf52829a79a904424758c2504e80cf0434dbc06dccf35e66eae7fe6756bbc228dab3b7a40e215141adca3ae32109a392c84fff9745787055b42c9f8f7c8ab3e867d11e4863283521f463069b5162f9468fac1135f64ae7bab",
 	};
 	let a = await fetch(
-		"https://gentle-lake-42463.herokuapp.com/api/products?filters[Category][$eq]=AC&populate=*",
+		"https://pakeeza-backend-railway-production.up.railway.app/api/products?filters[Category][$eq]=AC&populate=*",
 		(headers = headers)
 	);
 	
 	let b = await fetch(
-		"https://gentle-lake-42463.herokuapp.com/api/products?filters[Category][$eq]=Freezer&populate=*",
+		"https://pakeeza-backend-railway-production.up.railway.app/api/products?filters[Category][$eq]=Freezer&populate=*",
 		(headers = headers)
 	);
 	let c = await fetch(
-		"https://gentle-lake-42463.herokuapp.com/api/products?filters[Category][$eq]=Appliance&populate=*",
+		"https://pakeeza-backend-railway-production.up.railway.app/api/products?filters[Category][$eq]=Appliance&populate=*",
 		(headers = headers)
 	);
 	let d = await fetch(
-		"https://gentle-lake-42463.herokuapp.com/api/products?filters[Category][$eq]=Kitchen&populate=*",
+		"https://pakeeza-backend-railway-production.up.railway.app/api/products?filters[Category][$eq]=Kitchen&populate=*",
 		(headers = headers)
 	);
 	
 	let e = await fetch(
-		"https://gentle-lake-42463.herokuapp.com/api/products?filters[Category][$eq]=LED&populate=*",
+		"https://pakeeza-backend-railway-production.up.railway.app/api/products?filters[Category][$eq]=LED&populate=*",
 		(headers = headers)
 	);
 	let f = await fetch(
-		"https://gentle-lake-42463.herokuapp.com/api/products?filters[Category][$eq]=Washing&populate=*",
+		"https://pakeeza-backend-railway-production.up.railway.app/api/products?filters[Category][$eq]=Washing&populate=*",
+		(headers = headers)
+	);
+	let g = await fetch(
+		"https://pakeeza-backend-railway-production.up.railway.app/api/products?populate=*",
 		(headers = headers)
 	);
 	
@@ -630,10 +751,11 @@ export async function getServerSideProps(context) {
 	let KitchenData = await d.json();
 	let LEDData = await e.json();
 	let WashingData = await f.json();
+	let HotDeals=await g.json();
 
 	
 	return {
-		props: { productsData: productsData, FreezerData: FreezerData,LEDData:LEDData,HomeData:HomeData,KitchenData:KitchenData,WashingData:WashingData},
+		props: { productsData: productsData, FreezerData: FreezerData,LEDData:LEDData,HomeData:HomeData,KitchenData:KitchenData,WashingData:WashingData,HotDeals:HotDeals},
 		// will be passed to the page component as props
 	};
 }

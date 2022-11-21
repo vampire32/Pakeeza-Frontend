@@ -83,7 +83,21 @@ const Slug = ({ addToCart, RemoveFromcart, productsData }) => {
 	});
 	const handleSubmit = async (e) => {
 		e.preventDefault();
-		addToCart(slug, 1, UserData.Brand, UserData.Name, UserData.img);
+		if (!localStorage.getItem("jwt")) {
+			router.push("/Login");
+		} else if (localStorage.getItem("jwt")) {
+			addToCart(slug, 1, UserData.Brand, UserData.Name, UserData.img);
+		}
+		
+	};
+	const handleSubmit2 = async (e) => {
+		e.preventDefault();
+		if (!localStorage.getItem("jwt")) {
+			router.push("/Login");
+		} else if (localStorage.getItem("jwt")) {
+			addToCart(slug, 1, UserData.Brand, UserData.Name, UserData.img);
+			router.push("/CheckoutPage")
+		}
 	};
 	const router = useRouter();
 	const { slug } = router.query;
@@ -142,8 +156,11 @@ const Slug = ({ addToCart, RemoveFromcart, productsData }) => {
 										>
 											Add to Cart
 										</button>
-										<button class="flex ml-auto text-white bg-gray-800  border-0 py-2 px-6 focus:outline-none  rounded">
-											<Link href="/CheckoutPage">Buy Now</Link>
+										<button
+											onClick={handleSubmit2}
+											class="flex ml-auto text-white bg-gray-800  border-0 py-2 px-6 focus:outline-none  rounded"
+										>
+											Buy Now
 										</button>
 									</div>
 								</div>
@@ -291,7 +308,7 @@ export async function getServerSideProps(context) {
 			"9ad861e7d9919e881e8b92dfda4c896c1bac63a983dc0acc82727073cc2692d137929ebae6d3242d3a30f1988bc4b8d59faf909d74751f2d4a4f2ab6e4451fa6b1df48774c83cd3646a9a4fed0c45f2716ffd1fc18fd649ecdeea1107ec31a6762073d70cf6f0baa9e063ddd36cbe04bab635baed591742cba412e3ad64cf1ec",
 	};
 	let a = await fetch(
-		`https://gentle-lake-42463.herokuapp.com/api/products?filters[Model][$contains]=${slug}&populate=*`,
+		`https://pakeeza-backend-railway-production.up.railway.app/api/products?filters[Model][$contains]=${slug}&populate=*`,
 		(headers = headers)
 	);
 	let productsData = await a.json();

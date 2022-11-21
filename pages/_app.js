@@ -10,9 +10,12 @@ import '../styles/filters.css'
 import '../styles/about.css'
 import '../styles/checkout.css'
 
+
+
 import getConfig from "next/config";
 
 import NavBar from "../Components/Navbar";
+import Header from "../Components/header";
 
 function MyApp({ Component, pageProps }) {
 	useEffect(() => {
@@ -22,6 +25,7 @@ function MyApp({ Component, pageProps }) {
 	}, [])
 	const [Carts, setCarts] = useState({})
 	const [SubTotal, setSubTotal] = useState(0)
+	const [Email, setEmail] = useState()
 	useEffect(() => {
 		try {
 			 if (localStorage.getItem("Carts")) {
@@ -32,6 +36,7 @@ function MyApp({ Component, pageProps }) {
 
 			
 		}
+		setEmail(localStorage.getItem("Email"))
 		
 	 
 	}, [])
@@ -49,6 +54,7 @@ function MyApp({ Component, pageProps }) {
 	// }
 	const addToCart=(itemCode,qty,price,name,img)=>{
 		let newCart=Carts
+		let Email =localStorage.getItem('Email')
 		if (itemCode in Carts) {
 			newCart[itemCode].qty = Carts[itemCode].qty + qty;
 		} else {
@@ -61,6 +67,7 @@ function MyApp({ Component, pageProps }) {
 	}
 	const saveCart = (myCart) => {
 		localStorage.setItem("Carts", JSON.stringify(myCart));
+		
 		let subt = 0;
 		let keys = Object.keys(myCart);
 		for (let i = 0; i < keys.length; i++) {
@@ -92,11 +99,13 @@ function MyApp({ Component, pageProps }) {
 				crossorigin="anonymous"
 			/>
 			<Script src="https://cdn.tailwindcss.com" />
+			<Header/>
 			<NavBar
 				Carts={Carts}
 				addToCart={addToCart}
 				clearCart={clearCart}
 				SubTotal={SubTotal}
+				
 			/>
 
 			<Component
@@ -104,6 +113,7 @@ function MyApp({ Component, pageProps }) {
 				addToCart={addToCart}
 				clearCart={clearCart}
 				SubTotal={SubTotal}
+				Email={Email}
 				{...pageProps}
 			/>
 			<Footer />

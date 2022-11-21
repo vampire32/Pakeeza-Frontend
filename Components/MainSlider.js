@@ -1,4 +1,4 @@
-import React from 'react'
+import React,{useEffect} from 'react'
 import C1 from "../styles/Images/Slide1.png";
 import { FaChevronRight } from "react-icons/fa";
 import { FaChevronLeft } from "react-icons/fa";
@@ -6,14 +6,22 @@ import C2 from "../styles/Images/Slide2.png";
 import C3 from "../styles/Images/slide3.png";
 import Image from "next/image";
 import Link from 'next/link';
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 const MainSlider = () => {
+	useEffect(() => {
+		AOS.init({
+			duration: 2000,
+		});
+	}, []);
   return (
 		<div>
 			<div
 				id="template-mo-zay-hero-carousel"
 				class="carousel slide"
 				data-bs-ride="carousel"
+				data-aos="fade-in"
 			>
 				<ol class="carousel-indicators">
 					<li
@@ -45,7 +53,7 @@ const MainSlider = () => {
 								<div class="mx-auto col-md-8 col-lg-6 order-lg-last">
 									<div class="img-fluid">
 										<img
-											src="https://www.pngkey.com/png/full/410-4106754_bring-home-the-smartest-smart-tv-television.png"
+											src="https://www.pngall.com/wp-content/uploads/5/LED-TV-PNG-File-Download-Free.png"
 											alt=""
 										/>
 									</div>

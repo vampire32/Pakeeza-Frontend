@@ -3,13 +3,92 @@
     margin-top: -50px;
     background-color: #200b52;
 }
+.bg-hot-img{
+    background-image: linear-gradient(0deg, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("../styles/Images/hot-img.jpg");
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    
+
+}
+.bg-hot-img2 {
+    background-image: linear-gradient(0deg, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.9)), url("../styles/Images/hotimg2.avif");
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+
+
+}
+.bg-ac-img2 {
+    background-image: linear-gradient(0deg, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.9)), url("../styles/Images/AC-bg.jpg");
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+
+
+}
+.bg-freezer-img2 {
+    background-image: linear-gradient(0deg, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.9)), url("../styles/Images/freezer-bg.jpg");
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+
+
+}
+.bg-led-img2 {
+    background-image: linear-gradient(0deg, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.9)), url("../styles/Images/LED-bg.jpg");
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+
+
+}
+.bg-home-img2 {
+    background-image: linear-gradient(0deg, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.9)), url("../styles/Images/home-bg.png");
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+
+
+}
+.bg-kitchen-img2 {
+    background-image: linear-gradient(0deg, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.9)), url("../styles/Images/kitchen-bg.jpg");
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+
+
+}
+.bg-washing-img2 {
+    background-image: linear-gradient(0deg, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.9)), url("../styles/Images/washing-bg.avif");
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+
+
+}
 
   .linear-color {
       background-color: rgba(0, 0, 0, 0.5);
       border-radius: 15px;
   }
+  .linear-color2 {
+      background-color: rgba(0, 0, 0, 1);
+      border-radius: 15px;
+  }
+  .bgm{
+    background-color: rgba(0, 0, 0, 0.5);
+  }
 .hover-btn:hover{
-    background-color: #ffae42!important;
+    background-color: rgba(71,85,105)!important;
 }
 #template-mo-zay-hero-carousel .carousel-control-next i,
 #template-mo-zay-hero-carousel .carousel-control-prev i {
@@ -797,7 +876,7 @@
 
  .swiper-slide img {
      display: block;
-     width: 100%;
+     width: 100%!important;
      height: 100%;
      object-fit: cover;
      

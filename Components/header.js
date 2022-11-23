@@ -9,9 +9,9 @@ const Header = () => {
   return (
 		<div>
 			<header class="text-gray-600 body-font">
-				<div class="container mx-auto flex flex-wrap  flex-col p-2 md:flex-row items-center">
+				<div class="container mx-auto flex flex-wrap  flex-col  md:flex-row items-center">
 					<a class="flex title-font font-medium items-center text-gray-900 ">
-						<Image src={Logo} width={80} height={80} />
+						<Image src={Logo} width={150} height={150} />
 					</a>
 					<nav class="md:ml-auto flex flex-wrap items-center text-base justify-center">
 						<a class="mr-5 hover:text-gray-900">

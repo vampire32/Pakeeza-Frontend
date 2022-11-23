@@ -11,6 +11,9 @@
   content: "";
   height: 0;
 }
+.collapse{
+  visibility: visible!important;
+}
 .form-radio {
   -webkit-appearance: none;
   -moz-appearance: none;
@@ -5767,7 +5770,7 @@ optgroup {
 
 button,
 input {
-  overflow: visible;
+  overflow: hidden;
 }
 
 button,

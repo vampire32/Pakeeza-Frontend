@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import React from 'react'
 
 const Footer = () => {
@@ -6,7 +7,7 @@ const Footer = () => {
 			<footer class="body-font bg-red-500  ">
 				<div class="container px-5 py-24 mx-auto ">
 					<div class="flex flex-wrap md:text-left justify-between text-center -mb-10 -mx-4">
-						<div class="lg:w-1/6 md:w-1/2 w-full px-4">
+						<div class="lg:w-1/4 md:w-1/2 w-full px-4">
 							<svg
 								xmlns="http://www.w3.org/2000/svg"
 								fill="none"
@@ -37,19 +38,29 @@ const Footer = () => {
 							</h2>
 							<nav class="list-none mb-10 leading-[3rem]">
 								<li>
-									<a class="text-white hover:text-white">Home</a>
+									<a class="text-white hover:text-white">
+										<Link href="/">Home</Link>
+									</a>
 								</li>
 								<li>
-									<a class="text-white hover:text-white">About</a>
+									<a class="text-white hover:text-white">
+										<Link href="/About">About</Link>
+									</a>
 								</li>
 								<li>
-									<a class="text-white hover:text-white">Contact</a>
+									<a class="text-white hover:text-white">
+										<Link href="/Contactus">Contact</Link>
+									</a>
 								</li>
 								<li>
-									<a class="text-white hover:text-white">Login</a>
+									<a class="text-white hover:text-white">
+										<Link href="/Login">Login</Link>
+									</a>
 								</li>
 								<li>
-									<a class="text-white hover:text-white">SignUp</a>
+									<a class="text-white hover:text-white">
+										<Link href="/SignUp">Signup</Link>
+									</a>
 								</li>
 							</nav>
 						</div>
@@ -60,27 +71,33 @@ const Footer = () => {
 							<nav class="list-none mb-10 text-justify leading-[3rem]">
 								<li>
 									<a class="text-white hover:text-white">
-										AIR-CON & AIR COOLER
+										<Link href="/AirCooler">AIR CON & AirCooler</Link>
 									</a>
 								</li>
 								<li>
 									<a class="text-white hover:text-white">
-										REFRIGERATOR & FREEZERS
+										<Link href="/Freezer">REFRIGERATOR & FREEZERS</Link>
 									</a>
 								</li>
 								<li>
 									<a class="text-white hover:text-white">
-										LED TV & SOUND SYSTEM
+										<Link href="/LEDSystem">LED TV & SOUND SYSTEM</Link>
 									</a>
 								</li>
 								<li>
-									<a class="text-white hover:text-white">HOME APPLIANCES</a>
+									<a class="text-white hover:text-white">
+										<Link href="/HomeApp">HOME APPLIANCES</Link>
+									</a>
 								</li>
 								<li>
-									<a class="text-white hover:text-white">BUILT-IN KITCHEN</a>
+									<a class="text-white hover:text-white">
+										<Link href="/Kitchen">BUILT-IN KITCHEN</Link>
+									</a>
 								</li>
 								<li>
-									<a class="text-white hover:text-white">WASHING SOLUTIONS</a>
+									<a class="text-white hover:text-white">
+										<Link href="/Washing">WASHING SOLUTIONS</Link>
+									</a>
 								</li>
 							</nav>
 						</div>
@@ -134,7 +151,6 @@ const Footer = () => {
 				<div class="bg-red-100">
 					<div class="container mx-auto py-4 px-5 flex flex-wrap flex-col sm:flex-row">
 						<p class="text-gray-500 text-sm text-center sm:text-left">
-							
 							<a
 								href="https://twitter.com/knyttneve"
 								class="text-black ml-1"

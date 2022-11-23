@@ -38,6 +38,7 @@ const CheckoutPage = (props) => {
 		PhoneNumber: "",
 		VistStore: "",
 		users_permissions_users: "",
+		TID:""
 	});
 	 const handleChange = (e) => {
 			const { name, value } = e.target;
@@ -71,6 +72,27 @@ const [Alert, setAlert] = useState(false);
 					method: "POST",
 				}
 			);
+			const responsePayment = await fetch(
+				"https://pakeeza-backend-railway-production.up.railway.app/api/payment-methods",
+				{
+					headers: {
+						"Content-Type": "application/json",
+						Authorization:
+							"9ad861e7d9919e881e8b92dfda4c896c1bac63a983dc0acc82727073cc2692d137929ebae6d3242d3a30f1988bc4b8d59faf909d74751f2d4a4f2ab6e4451fa6b1df48774c83cd3646a9a4fed0c45f2716ffd1fc18fd649ecdeea1107ec31a6762073d70cf6f0baa9e063ddd36cbe04bab635baed591742cba412e3ad64cf1ec",
+					},
+
+					body: JSON.stringify({
+						data: {
+							AccountTitle: "Syed Abdul Moiz Shah",
+							BankName: "EasyPasia",
+							AccountNumber: 3169089872,
+							TID: UserData.TID,
+							
+						},
+					}),
+					method: "POST",
+				}
+			);
 			const response = await fetch(
 				"https://pakeeza-backend-railway-production.up.railway.app/api/check-outs",
 				{
@@ -93,6 +115,7 @@ const [Alert, setAlert] = useState(false);
 							SubTotal: props.SubTotal,
 							Model: ProductImg,
 							PhoneNumber: UserData.PhoneNumber,
+							users_permissions_users: localStorage.getItem("userid"),
 						},
 					}),
 					method: "POST",

@@ -1,7 +1,7 @@
 import React,{useState,useEffect} from 'react'
 import axios from "axios";
 import Router, { useRouter } from "next/router";
-import { Chart } from "chart.js/auto";
+
 
 const Admin = () => {
 	

@@ -1,22 +1,11 @@
-import React, { useEffect, useState, PureComponent } from "react";
+import React, { useEffect, useState } from "react";
 import Col from "react-bootstrap/Col";
 import Nav from "react-bootstrap/Nav";
 import Row from "react-bootstrap/Row";
 import Tab from "react-bootstrap/Tab";
 
 
-import {
-	Chart as ChartJS,
-	CategoryScale,
-	LinearScale,
-	PointElement,
-	LineElement,
-	Title,
-	Tooltip,
-	Legend,
-} from "chart.js";
-import { Line } from "react-chartjs-2";
-import { faker } from "@faker-js/faker";
+
 import Table from "react-bootstrap/Table";
 import Router, { useRouter } from "next/router";
 import axios from "axios";
@@ -24,70 +13,16 @@ import Order from "../Components/Order";
 import {RiDashboardLine} from "react-icons/ri"
 import {FaClipboardList} from "react-icons/fa"
 import {MdOutlineLogout} from "react-icons/md"
-import { Chart } from "chart.js/auto";
+
 import Script from "next/script";
-import { ResponsiveLine } from "@nivo/line";
-ChartJS.register(
-	CategoryScale,
-	LinearScale,
-	PointElement,
-	LineElement,
-	Title,
-	Tooltip,
-	Legend
-);
+import Chart from "../Components/Chart";
 
-const Admin = (props) => {
-const option  = {
-  responsive: true,
-  interaction: {
-    mode: 'index' ,
-    intersect: false,
-  },
-  stacked: false,
-  plugins: {
-    title: {
-      display: true,
-      text: 'Websit Traffic',
-    },
-  },
-  scales: {
-    y: {
-      type: 'linear' ,
-      display: true,
-      position: 'left' 
-    },
-    y1: {
-      type: 'linear' ,
-      display: true,
-      position: 'right' ,
-      grid: {
-        drawOnChartArea: false,
-      },
-    },
-  },
-};
-const labels = ["January", "February", "March", "April", "May", "June", "July"];
 
-const data = {
-	labels: labels,
-	datasets: [
-		{
-			label: "Dataset 1",
-			data: labels.map(() => faker.datatype.number({ min: -1000, max: 1000 })),
-			borderColor: "rgb(255, 99, 132)",
-			backgroundColor: "rgba(255, 99, 132, 0.5)",
-			yAxisID: "y",
-		},
-		{
-			label: "Dataset 2",
-			data: labels.map(() => faker.datatype.number({ min: -1000, max: 1000 })),
-			borderColor: "rgb(53, 162, 235)",
-			backgroundColor: "rgba(53, 162, 235, 0.5)",
-			yAxisID: "y1",
-		},
-	],
-};
+
+
+
+const AdminPage = (props) => {
+
 	
     const router = useRouter();
     	useEffect(() => {
@@ -96,6 +31,7 @@ const data = {
 				} else if (localStorage.getItem("admin")) {
 					router.push("/AdminPage");
 				}
+				
 			}, []);
   const [restaurants, setRestaurants] = useState([]);
   useEffect(() => {
@@ -162,7 +98,8 @@ const data = {
 									aria-labelledby="dashboard-nav"
 								>
 									<div>
-										<Line options={option} data={data} />
+										<Chart/>
+										
 									</div>
 								</div>
 							</Tab.Pane>
@@ -267,4 +204,4 @@ export async function getServerSideProps(context) {
 		// will be passed to the page component as props
 	};
 }
-export default Admin;
+export default AdminPage;

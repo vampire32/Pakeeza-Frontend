@@ -2,7 +2,8 @@ import React,{useState,useEffect} from 'react'
 import { useRouter } from "next/router";
 import Link from "next/link";
 import Script from 'next/script';
-
+import Image from 'next/image';
+import QR from '../styles/Images/QRCODE.jpg'
 const CheckoutPage = (props) => {
 	
 		
@@ -314,23 +315,26 @@ const [Alert, setAlert] = useState(false);
 												</label>
 												{COD ? (
 													<div className="bg-gray-500 text-white">
-														<p className="text-center">
-															Advance Payment Required For Orders Abover 20000
-															<br />
-															Please deposit your amount in the following bank
-															account:
-															<br />
-															share Receipt with order Slip as proof of payment
-															on +92-3365124444(Whatsapp Only)
-															<br />
-															Easypaia
-															<br />
-															Account Title: PAkeeza Electronics
-															<br />
-															Account Number: 081XXXXXXX55
-															<br />
-															IBANPAK46 HABB 00-083XXXXX55
-														</p>
+														<div className="flex justify-center">
+															<p className="text-center">
+																Advance Payment Required For Orders Abover 20000
+																<br />
+																Please deposit your amount in the following bank
+																account:
+																<br />
+																share Receipt with order Slip as proof of
+																payment on +92-3365124444(Whatsapp Only)
+																<br />
+																Easypaia
+																<br />
+																Account Title: PAkeeza Electronics
+																<br />
+																Account Number: 081XXXXXXX55
+																<br />
+																IBANPAK46 HABB 00-083XXXXX55
+															</p>
+															<Image src={QR} width={220} height={100} />
+														</div>
 														<a
 															href="https://api.whatsapp.com/send?phone+923365124444"
 															className="btn btn-success ml-[45%]"
@@ -380,21 +384,25 @@ const [Alert, setAlert] = useState(false);
 												</label>
 												{checkBox ? (
 													<div className="bg-gray-500 text-white">
-														<p className="text-center">
-															Please deposit your amount in the following bank
-															account:
-															<br />
-															share Receipt with order Slip as proof of payment
-															on +92-3365124444(Whatsapp Only)
-															<br />
-															Easypaia
-															<br />
-															Account Title: PAkeeza Electronics
-															<br />
-															Account Number: 081XXXXXXX55
-															<br />
-															IBANPAK46 HABB 00-083XXXXX55
-														</p>
+														<div className="flex justify-center">
+															<p className="text-center">
+																
+																Please deposit your amount in the following bank
+																account:
+																<br />
+																share Receipt with order Slip as proof of
+																payment on +92-3365124444(Whatsapp Only)
+																<br />
+																Easypaia
+																<br />
+																Account Title: PAkeeza Electronics
+																<br />
+																Account Number: 081XXXXXXX55
+																<br />
+																IBANPAK46 HABB 00-083XXXXX55
+															</p>
+															<Image src={QR} width={220} height={100} />
+														</div>
 														<a
 															href="https://api.whatsapp.com/send?phone+923365124444"
 															className="btn btn-success ml-[45%]"

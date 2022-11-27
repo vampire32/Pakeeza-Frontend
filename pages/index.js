@@ -136,6 +136,67 @@ const Home = (props) => {
 				<link rel="icon" href="/favicon.ico" />
 			</Head>
 			<MainSlider />
+			<div className="container mt-[3rem] " data-aos="fade-up">
+				<h2 className="text-center text-[32px] font-extrabold pb-[2rem] text-[#ffae42]">
+					TOP CATEGORIES
+				</h2>
+				<div className="row" data-aos="fade-up">
+					<div className="col-md-4 pb-20">
+						<div className="flex justify-center">
+							<img
+								src="https://cdn3d.iconscout.com/3d/premium/thumb/air-conditioner-6249768-5115937.png"
+								style={{ width: "20%" }}
+							/>
+						</div>
+						<h4 className="text-center text-[14px]">AIR CON & AirCooler</h4>
+					</div>
+					<div className="col-md-4">
+						<div className="flex justify-center">
+							<img
+								src="https://static.vecteezy.com/system/resources/previews/008/525/804/original/refrigerator-device-electronic-icon-3d-illustration-png.png"
+								style={{ width: "20%" }}
+							/>
+						</div>
+						<h4 className="text-center text-[14px]">REFRIGERATOR & FREEZERS</h4>
+					</div>
+					<div className="col-md-4">
+						<div className="flex justify-center">
+							<img
+								src="https://cdn3d.iconscout.com/3d/premium/thumb/led-tv-6810080-5581522.png"
+								style={{ width: "20%" }}
+							/>
+						</div>
+						<h4 className="text-center text-[14px]">LED TV & SOUND SYSTEM</h4>
+					</div>
+					<div className="col-md-4">
+						<div className="flex justify-center">
+							<img
+								src="https://cdn3d.iconscout.com/3d/premium/thumb/electronics-appliances-5580689-4668669.png"
+								style={{ width: "20%" }}
+							/>
+						</div>
+						<h4 className="text-center text-[14px]">HOME APPLIANCES</h4>
+					</div>
+					<div className="col-md-4">
+						<div className="flex justify-center">
+							<img
+								src="https://cdn3d.iconscout.com/3d/premium/thumb/kitchen-room-6347476-5251974.png"
+								style={{ width: "20%" }}
+							/>
+						</div>
+						<h4 className="text-center text-[14px]">BUILT-IN KITCHEN</h4>
+					</div>
+					<div className="col-md-4">
+						<div className="flex justify-center">
+							<img
+								src="https://cdn3d.iconscout.com/3d/premium/thumb/washing-machine-5756640-4825944.png"
+								style={{ width: "20%" }}
+							/>
+						</div>
+						<h4 className="text-center text-[14px]">WASHING SOLUTIONS</h4>
+					</div>
+				</div>
+			</div>
 			<Brands />
 			<div className="linear-color" data-aos="fade-up">
 				<div className="container-fluid h-[25rem] linear-color2">
@@ -177,8 +238,7 @@ const Home = (props) => {
 					>
 						{props.HotDeals.data.map((item) => {
 							let imgurl = "https://glacial-woodland-47482.herokuapp.com";
-							let img =
-								item.attributes.img.data.attributes.url;
+							let img = item.attributes.img.data.attributes.url;
 							console.log(img);
 
 							return (
@@ -247,67 +307,6 @@ const Home = (props) => {
 				</div>
 			</section>
 
-			<div className="container mt-[3rem] " data-aos="fade-up">
-				<h2 className="text-center text-[32px] font-extrabold pb-[2rem] text-[#ffae42]">
-					TOP CATEGORIES
-				</h2>
-				<div className="row" data-aos="fade-up">
-					<div className="col-md-4">
-						<div className="flex justify-center">
-							<img
-								src="https://cdn3d.iconscout.com/3d/premium/thumb/air-conditioner-6249768-5115937.png"
-								style={{ width: "20%" }}
-							/>
-						</div>
-						<h4 className="text-center text-[14px]">AIR CON & AirCooler</h4>
-					</div>
-					<div className="col-md-4">
-						<div className="flex justify-center">
-							<img
-								src="https://static.vecteezy.com/system/resources/previews/008/525/804/original/refrigerator-device-electronic-icon-3d-illustration-png.png"
-								style={{ width: "20%" }}
-							/>
-						</div>
-						<h4 className="text-center text-[14px]">REFRIGERATOR & FREEZERS</h4>
-					</div>
-					<div className="col-md-4">
-						<div className="flex justify-center">
-							<img
-								src="https://cdn3d.iconscout.com/3d/premium/thumb/led-tv-6810080-5581522.png"
-								style={{ width: "20%" }}
-							/>
-						</div>
-						<h4 className="text-center text-[14px]">LED TV & SOUND SYSTEM</h4>
-					</div>
-					<div className="col-md-4">
-						<div className="flex justify-center">
-							<img
-								src="https://cdn3d.iconscout.com/3d/premium/thumb/electronics-appliances-5580689-4668669.png"
-								style={{ width: "20%" }}
-							/>
-						</div>
-						<h4 className="text-center text-[14px]">HOME APPLIANCES</h4>
-					</div>
-					<div className="col-md-4">
-						<div className="flex justify-center">
-							<img
-								src="https://cdn3d.iconscout.com/3d/premium/thumb/kitchen-room-6347476-5251974.png"
-								style={{ width: "20%" }}
-							/>
-						</div>
-						<h4 className="text-center text-[14px]">BUILT-IN KITCHEN</h4>
-					</div>
-					<div className="col-md-4">
-						<div className="flex justify-center">
-							<img
-								src="https://cdn3d.iconscout.com/3d/premium/thumb/washing-machine-5756640-4825944.png"
-								style={{ width: "20%" }}
-							/>
-						</div>
-						<h4 className="text-center text-[14px]">WASHING SOLUTIONS</h4>
-					</div>
-				</div>
-			</div>
 			<div className="linear-color" data-aos="fade-up">
 				<div className="container-fluid h-[25rem] linear-color2">
 					<p className=" text-[40px] font-bold text-yellow-400  text-center">
@@ -340,11 +339,10 @@ const Home = (props) => {
 							},
 						}}
 						freeMode={true}
-						
 						navigation={{
 							clickable: true,
 						}}
-						modules={[ Navigation]}
+						modules={[Navigation]}
 						className="mySwiper"
 					>
 						{props.productsData.data.map((item) => {
@@ -405,7 +403,6 @@ const Home = (props) => {
 						}}
 						spaceBetween={30}
 						freeMode={true}
-						
 						navigation={{
 							clickable: true,
 						}}
@@ -469,11 +466,10 @@ const Home = (props) => {
 						}}
 						spaceBetween={30}
 						freeMode={true}
-						
 						navigation={{
 							clickable: true,
 						}}
-						modules={[ Navigation]}
+						modules={[Navigation]}
 						className="mySwiper"
 					>
 						{props.LEDData.data.map((item) => {
@@ -533,11 +529,10 @@ const Home = (props) => {
 						}}
 						spaceBetween={30}
 						freeMode={true}
-						
 						navigation={{
 							clickable: true,
 						}}
-						modules={[ Navigation]}
+						modules={[Navigation]}
 						className="mySwiper"
 					>
 						{props.HomeData.data.map((item) => {
@@ -597,11 +592,10 @@ const Home = (props) => {
 						}}
 						spaceBetween={30}
 						freeMode={true}
-						
 						navigation={{
 							clickable: true,
 						}}
-						modules={[ Navigation]}
+						modules={[Navigation]}
 						className="mySwiper"
 					>
 						{props.KitchenData.data.map((item) => {
@@ -661,11 +655,10 @@ const Home = (props) => {
 						}}
 						spaceBetween={30}
 						freeMode={true}
-						
 						navigation={{
 							clickable: true,
 						}}
-						modules={[ Navigation]}
+						modules={[Navigation]}
 						className="mySwiper"
 					>
 						{props.WashingData.data.map((item) => {

@@ -1,9 +1,10 @@
 import React,{useEffect} from 'react'
-import C1 from "../styles/Images/Slide1.png";
+import C1 from "../styles/Images/LED-TV-PNG-File-Download-Free.png";
 import { FaChevronRight } from "react-icons/fa";
 import { FaChevronLeft } from "react-icons/fa";
 import C2 from "../styles/Images/Slide2.png";
-import C3 from "../styles/Images/slide3.png";
+import C3 from "../styles/Images/Home-Appliance-Transparent.png";
+import C4 from "../styles/Images/images-removebg-preview.png";
 import Image from "next/image";
 import Link from 'next/link';
 import AOS from "aos";
@@ -52,10 +53,7 @@ const MainSlider = () => {
 							<div class="row p-5">
 								<div class="mx-auto col-md-8 col-lg-6 order-lg-last">
 									<div class="img-fluid">
-										<img
-											src="https://www.pngall.com/wp-content/uploads/5/LED-TV-PNG-File-Download-Free.png"
-											alt=""
-										/>
+										<Image src={C1} alt="" />
 									</div>
 								</div>
 								<div class="col-lg-6 mb-0 d-flex align-items-center">
@@ -63,7 +61,7 @@ const MainSlider = () => {
 										<h1 class="h1 text-[#ffae42]">
 											<b>Pakeeza </b> Electronics
 										</h1>
-										<h3 class="h2 leading-[3rem]">
+										<h3 class="text-[20px] leading-[3rem]">
 											GENUINE ELECTRONICS AND LIFESTYLE STORE IN PAKISTAN.
 										</h3>
 										<p>
@@ -72,7 +70,7 @@ const MainSlider = () => {
 											mobiles, and accessories at the best prices
 										</p>
 										<a class="btn border-2 border-yellow-600 px-8  bg-transparent text-white mx-5 mb-3 hover-btn">
-											<Link href="/">Buy Now</Link>
+											<Link href="/LEDSystem">Buy Now</Link>
 										</a>
 									</div>
 								</div>
@@ -84,10 +82,7 @@ const MainSlider = () => {
 							<div class="row p-5">
 								<div class="mx-auto col-md-8 col-lg-6 order-lg-last">
 									<div class="img-fluid">
-										<img
-											src="https://www.pngall.com/wp-content/uploads/11/Home-Appliance-Transparent.png"
-											alt=""
-										/>
+										<Image src={C3} alt="" />
 									</div>
 								</div>
 								<div class="col-lg-6 mb-0 d-flex align-items-center">
@@ -95,7 +90,7 @@ const MainSlider = () => {
 										<h1 class="h1 text-[#ffae42]">
 											<b>Pakeeza </b> Electronics
 										</h1>
-										<h3 class="h2">
+										<h3 class="text-[20px] ">
 											Best Reliable ELECTRONICS STORE IN PAKISTAN
 										</h3>
 										<p>
@@ -104,7 +99,7 @@ const MainSlider = () => {
 											only from authorized dealers.
 										</p>
 										<a class="btn border-2 border-yellow-600 px-8  bg-transparent text-white mx-5 mb-3 hover-btn">
-											<Link href="/">Buy Now</Link>
+											<Link href="/Kitchen">Buy Now</Link>
 										</a>
 									</div>
 								</div>
@@ -127,7 +122,9 @@ const MainSlider = () => {
 										<h1 class="h1 text-[#ffae42]">
 											<b>Pakeeza </b> Electronics
 										</h1>
-										<h3 class="h2">AIR-CON & AIR COOLER STORE IN PAKISTAN.</h3>
+										<h3 class="text-[20px] ">
+											AIR-CON & AIR COOLER STORE IN PAKISTAN.
+										</h3>
 										<p>
 											delivered right to their doorstep. Compared to a number of
 											marketplaces that sell the very same items from
@@ -135,7 +132,7 @@ const MainSlider = () => {
 											originality of the product.
 										</p>
 										<a class="btn border-2 border-yellow-600 px-8  bg-transparent text-white mx-5 mb-3 hover-btn">
-											<Link href="/">Buy Now</Link>
+											<Link href="/AirCooler">Buy Now</Link>
 										</a>
 									</div>
 								</div>
@@ -147,11 +144,7 @@ const MainSlider = () => {
 							<div class="row p-5">
 								<div class="mx-auto col-md-8 col-lg-6 order-lg-last">
 									<div class="img-fluid">
-										<img
-											src="https://freepngimg.com/save/19055-refrigerator-picture/1800x2550"
-											width="60%"
-											alt=""
-										/>
+										<Image src={C4} alt="" width={500} height={500} />
 									</div>
 								</div>
 								<div class="col-lg-6 mb-0 d-flex align-items-center">
@@ -159,7 +152,7 @@ const MainSlider = () => {
 										<h1 class="h1 text-[#ffae42]">
 											<b>Pakeeza </b> Electronics
 										</h1>
-										<h3 class="h2">
+										<h3 class="text-[20px] ">
 											REFRIGERATOR & FREEZERS STORE IN PAKISTAN.
 										</h3>
 										<p>
@@ -168,7 +161,7 @@ const MainSlider = () => {
 											giving good prices as compared to others electronics shops
 										</p>
 										<a class="btn border-2 border-yellow-600 px-8  bg-transparent text-white mx-5 mb-3 hover-btn">
-											<Link href="/">Buy Now</Link>
+											<Link href="/Freezer">Buy Now</Link>
 										</a>
 									</div>
 								</div>
@@ -188,14 +181,16 @@ const MainSlider = () => {
 										<h1 class="h1 text-[#ffae42]">
 											<b>Pakeeza </b> Electronics
 										</h1>
-										<h3 class="h2">HOME APPLIANCES STORE IN PAKISTAN</h3>
+										<h3 class="text-[20px] ">
+											HOME APPLIANCES STORE IN PAKISTAN
+										</h3>
 										<p>
 											At Pakeeza Electronics store, you can acquire any type of
 											home appliance at cheap rates. In market, we are giving
 											good prices as compared to an others electronics shops.
 										</p>
 										<a class="btn border-2 border-yellow-600 px-8  bg-transparent text-white mx-5 mb-3 hover-btn">
-											<Link href="/">Buy Now</Link>
+											<Link href="/HomeApp">Buy Now</Link>
 										</a>
 									</div>
 								</div>

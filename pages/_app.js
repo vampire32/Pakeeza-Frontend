@@ -16,6 +16,7 @@ import getConfig from "next/config";
 
 import NavBar from "../Components/Navbar";
 import Header from "../Components/header";
+import Floating from "../Components/Floating";
 
 function MyApp({ Component, pageProps }) {
 	useEffect(() => {
@@ -99,6 +100,7 @@ function MyApp({ Component, pageProps }) {
 				crossorigin="anonymous"
 			/>
 			<Script src="https://cdn.tailwindcss.com" />
+			<Script src="https://canvasjs.com/assets/script/canvasjs.min.js"/>
 			<Header/>
 			<NavBar
 				Carts={Carts}
@@ -116,6 +118,7 @@ function MyApp({ Component, pageProps }) {
 				Email={Email}
 				{...pageProps}
 			/>
+			<Floating/>
 			<Footer />
 		</>
 	);

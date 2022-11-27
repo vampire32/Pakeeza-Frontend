@@ -101,19 +101,6 @@ const Footer = () => {
 								</li>
 							</nav>
 						</div>
-						<div class="lg:w-1/5 md:w-1/2 w-full px-4">
-							<h2 class="title-font font-medium text-white tracking-widest text-sm mb-3">
-								Social Links
-							</h2>
-							<nav class="list-none mb-10 leading-[3rem]">
-								<li>
-									<a class="text-white hover:text-white">FaceBook</a>
-								</li>
-								<li>
-									<a class="text-white hover:text-white">Instagram</a>
-								</li>
-							</nav>
-						</div>
 						<div class="lg:w-1/4 md:w-1/2 w-full px-4 linear-color ">
 							<div class="">
 								<div class="container px-5 py-8 flex flex-wrap justify-center mx-auto items-center">
@@ -144,6 +131,19 @@ const Footer = () => {
 									</div>
 								</div>
 							</div>
+						</div>
+						<div class="lg:w-1/5 md:w-1/2 w-full px-4">
+							<h2 class="title-font font-medium text-white tracking-widest text-sm mb-3">
+								Social Links
+							</h2>
+							<nav class="list-none mb-10 leading-[3rem]">
+								<li>
+									<a class="text-white hover:text-white">FaceBook</a>
+								</li>
+								<li>
+									<a class="text-white hover:text-white">Instagram</a>
+								</li>
+							</nav>
 						</div>
 					</div>
 				</div>

@@ -178,11 +178,11 @@ const Home = (props) => {
 						{props.HotDeals.data.map((item) => {
 							let imgurl = "https://glacial-woodland-47482.herokuapp.com";
 							let img =
-								item.attributes.img.data.attributes.formats.thumbnail.url;
+								item.attributes.img.data.attributes.url;
 							console.log(img);
 
 							return (
-								<SwiperSlide key={item.id} className="mt-40" >
+								<SwiperSlide key={item.id} className="mt-40">
 									<ProductCards
 										slug={item.attributes.Model}
 										name={item.attributes.Name}
@@ -340,23 +340,20 @@ const Home = (props) => {
 							},
 						}}
 						freeMode={true}
-						pagination={{
-							clickable: true,
-						}}
+						
 						navigation={{
 							clickable: true,
 						}}
-						modules={[Pagination, Navigation]}
+						modules={[ Navigation]}
 						className="mySwiper"
 					>
 						{props.productsData.data.map((item) => {
 							let imgurl =
 								"https://pakeeza-backend-railway-production.up.railway.app/";
-							let img =
-								item.attributes.img.data.attributes.formats.thumbnail.url;;
+							let img = item.attributes.img.data.attributes.url;
 
 							return (
-								<SwiperSlide key={item.id} className="mt-40" >
+								<SwiperSlide key={item.id} className="mt-10">
 									<ProductCards
 										slug={item.attributes.Model}
 										name={item.attributes.Name}
@@ -370,7 +367,9 @@ const Home = (props) => {
 						})}
 					</Swiper>
 					<div className="flex justify-center mt-10">
-						<a className="btn btn-secondary text-center px-12 ">View</a>
+						<a className="btn hover-btn bg-yellow-400 text-white text-center px-12">
+							View
+						</a>
 					</div>
 				</div>
 			</div>
@@ -406,24 +405,21 @@ const Home = (props) => {
 						}}
 						spaceBetween={30}
 						freeMode={true}
-						pagination={{
-							clickable: true,
-						}}
+						
 						navigation={{
 							clickable: true,
 						}}
-						modules={[Pagination, Navigation]}
+						modules={[Navigation]}
 						className="mySwiper"
 					>
 						{props.FreezerData.data.map((item) => {
 							let imgurl =
 								"https://pakeeza-backend-railway-production.up.railway.app/";
-							let img =
-								item.attributes.img.data.attributes.formats.thumbnail.url;;
+							let img = item.attributes.img.data.attributes.url;
 							// console.log(img);
 
 							return (
-								<SwiperSlide key={item.id} className="mt-40" >
+								<SwiperSlide key={item.id} className="mt-40">
 									<ProductCards
 										slug={item.attributes.Model}
 										name={item.attributes.Name}
@@ -437,7 +433,9 @@ const Home = (props) => {
 						})}
 					</Swiper>
 					<div className="flex justify-center mt-10">
-						<a className="btn btn-secondary text-center px-12 ">View</a>
+						<a className="btn hover-btn bg-yellow-400 text-white text-center px-12 ">
+							View
+						</a>
 					</div>
 				</div>
 			</div>
@@ -471,30 +469,27 @@ const Home = (props) => {
 						}}
 						spaceBetween={30}
 						freeMode={true}
-						pagination={{
-							clickable: true,
-						}}
+						
 						navigation={{
 							clickable: true,
 						}}
-						modules={[Pagination, Navigation]}
+						modules={[ Navigation]}
 						className="mySwiper"
 					>
 						{props.LEDData.data.map((item) => {
 							let imgurl =
 								"https://pakeeza-backend-railway-production.up.railway.app";
-							let img =
-								item.attributes.img.data.attributes.formats.thumbnail.url;;
+							let img = item.attributes.img.data.attributes.url;
 							// console.log(img);
 
 							return (
-								<SwiperSlide key={item.id} className="mt-40" >
+								<SwiperSlide key={item.id} className="mt-40">
 									<ProductCards
 										slug={item.attributes.Model}
 										name={item.attributes.Name}
 										brands={item.attributes.Brand}
 										price={item.attributes.Price}
-										// Picture={img}
+										Picture={img}
 									/>
 									;
 								</SwiperSlide>
@@ -502,7 +497,9 @@ const Home = (props) => {
 						})}
 					</Swiper>
 					<div className="flex justify-center">
-						<a className="btn btn-secondary text-center px-12 ">View</a>
+						<a className="btn hover-btn bg-yellow-400 text-white text-center px-12 ">
+							View
+						</a>
 					</div>
 				</div>
 			</div>
@@ -520,7 +517,7 @@ const Home = (props) => {
 					</p>
 				</div>
 			</div>
-			<div className="bg-home-img2  h-[50rem]" data-aos="fade-up" >
+			<div className="bg-home-img2  h-[50rem]" data-aos="fade-up">
 				<div className="conatiner">
 					<Swiper
 						breakpoints={{
@@ -536,24 +533,21 @@ const Home = (props) => {
 						}}
 						spaceBetween={30}
 						freeMode={true}
-						pagination={{
-							clickable: true,
-						}}
+						
 						navigation={{
 							clickable: true,
 						}}
-						modules={[Pagination, Navigation]}
+						modules={[ Navigation]}
 						className="mySwiper"
 					>
 						{props.HomeData.data.map((item) => {
 							let imgurl =
 								"https://pakeeza-backend-railway-production.up.railway.app";
-							let img =
-								item.attributes.img.data.attributes.formats.thumbnail.url;;
+							let img = item.attributes.img.data.attributes.url;
 							// console.log(img);
 
 							return (
-								<SwiperSlide key={item.id} className="mt-40" >
+								<SwiperSlide key={item.id} className="mt-10">
 									<ProductCards
 										slug={item.attributes.Model}
 										name={item.attributes.Name}
@@ -567,7 +561,9 @@ const Home = (props) => {
 						})}
 					</Swiper>
 					<div className="flex justify-center mt-10">
-						<a className="btn btn-secondary text-center px-12 ">View</a>
+						<a className="btn hover-btn bg-yellow-400 text-white text-center px-12 ">
+							View
+						</a>
 					</div>
 				</div>
 			</div>
@@ -601,24 +597,21 @@ const Home = (props) => {
 						}}
 						spaceBetween={30}
 						freeMode={true}
-						pagination={{
-							clickable: true,
-						}}
+						
 						navigation={{
 							clickable: true,
 						}}
-						modules={[Pagination, Navigation]}
+						modules={[ Navigation]}
 						className="mySwiper"
 					>
 						{props.KitchenData.data.map((item) => {
 							let imgurl =
 								"https://pakeeza-backend-railway-production.up.railway.app";
-							let img =
-								item.attributes.img.data.attributes.formats.thumbnail.url;;
+							let img = item.attributes.img.data.attributes.url;
 							// console.log(img);
 
 							return (
-								<SwiperSlide key={item.id} className="mt-40" >
+								<SwiperSlide key={item.id} className="mt-40">
 									<ProductCards
 										slug={item.attributes.Model}
 										name={item.attributes.Name}
@@ -632,7 +625,9 @@ const Home = (props) => {
 						})}
 					</Swiper>
 					<div className="flex justify-center">
-						<a className="btn btn-secondary text-center px-12 ">View</a>
+						<a className="btn hover-btn bg-yellow-400 text-white text-center px-12 ">
+							View
+						</a>
 					</div>
 				</div>
 			</div>
@@ -666,24 +661,21 @@ const Home = (props) => {
 						}}
 						spaceBetween={30}
 						freeMode={true}
-						pagination={{
-							clickable: true,
-						}}
+						
 						navigation={{
 							clickable: true,
 						}}
-						modules={[Pagination, Navigation]}
+						modules={[ Navigation]}
 						className="mySwiper"
 					>
 						{props.WashingData.data.map((item) => {
 							let imgurl =
 								"https://pakeeza-backend-railway-production.up.railway.app";
-							let img =
-								item.attributes.img.data.attributes.formats.thumbnail.url;;
+							let img = item.attributes.img.data.attributes.url;
 							// console.log(img);
 
 							return (
-								<SwiperSlide key={item.id} className="mt-40" >
+								<SwiperSlide key={item.id} className="mt-40">
 									<ProductCards
 										slug={item.attributes.Model}
 										name={item.attributes.Name}
@@ -697,7 +689,9 @@ const Home = (props) => {
 						})}
 					</Swiper>
 					<div className="flex justify-center mt-10">
-						<a className="btn btn-secondary text-center px-12 ">View</a>
+						<a className="btn hover-btn bg-yellow-400 text-white text-center px-12 ">
+							View
+						</a>
 					</div>
 				</div>
 			</div>

@@ -111,7 +111,7 @@ const Slug = ({ addToCart, RemoveFromcart, productsData }) => {
 				<div class="container px-5 py-24 mx-auto">
 					{productsData.data.map((item) => {
 						let imgurl = "https://glacial-woodland-47482.herokuapp.com";
-						let img = item.attributes.img.data.attributes.formats.thumbnail.url;
+						let img = item.attributes.img.data.attributes.url;
 						console.log(item.attributes.Model);
 						UserData.Name = item.attributes.Name;
 						UserData.Model=slug
@@ -151,14 +151,14 @@ const Slug = ({ addToCart, RemoveFromcart, productsData }) => {
 											RS.{UserData.Brand}
 										</span>
 										<button
-											class="flex ml-auto text-white bg-gray-800 border-0 py-2 px-6 focus:outline-none  rounded"
+											class="flex ml-auto  text-black border-2 border-yellow-600 hover-btn bg-transparent py-2 px-6 focus:outline-none  rounded"
 											onClick={handleSubmit}
 										>
 											Add to Cart
 										</button>
 										<button
 											onClick={handleSubmit2}
-											class="flex ml-auto text-white bg-gray-800  border-0 py-2 px-6 focus:outline-none  rounded"
+											class="flex ml-auto text-white border-2 hover:text-white border-yellow-500 hover-btn bg-yellow-500 py-2 px-6 focus:outline-none  rounded"
 										>
 											Buy Now
 										</button>

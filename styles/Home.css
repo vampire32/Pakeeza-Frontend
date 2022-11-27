@@ -12,6 +12,38 @@
     
 
 }
+.float {
+    position: fixed;
+    width: 75px;
+    height: 75px;
+    bottom: 40px;
+    right: 40px;
+    background-color: #25D366;
+    color: white;
+    border-radius: 50px;
+    text-align: center;
+    box-shadow: 2px 2px 3px #999;
+}
+
+.float2 {
+    position: fixed;
+    width: 75px;
+    height: 75px;
+    bottom: 40px;
+    left: 40px;
+
+    background-color: #25D366;
+    color: white;
+    border-radius: 50px;
+    text-align: center;
+    box-shadow: 2px 2px 3px #999;
+}
+.my-float {
+    margin-top: 26px;
+    margin-left: 25px;
+    width: 25px;
+    height: 25px;
+}
 .bg-hot-img2 {
     background-image: linear-gradient(0deg, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.9)), url("../styles/Images/hotimg2.avif");
     background-size: cover;
@@ -66,6 +98,49 @@
 
 
 }
+
+.bg-dash{
+    background-image: url("../styles/Images/ivancik.jpg");
+}
+ .background-radial-gradient {
+     background-color: hsl(218, 41%, 15%);
+     background-image: radial-gradient(650px circle at 0% 0%,
+             hsl(218, 41%, 35%) 15%,
+             hsl(218, 41%, 30%) 35%,
+             hsl(218, 41%, 20%) 75%,
+             hsl(218, 41%, 19%) 80%,
+             transparent 100%),
+         radial-gradient(1250px circle at 100% 100%,
+             hsl(218, 41%, 45%) 15%,
+             hsl(218, 41%, 30%) 35%,
+             hsl(218, 41%, 20%) 75%,
+             hsl(218, 41%, 19%) 80%,
+             transparent 100%);
+ }
+
+ #radius-shape-1 {
+     height: 220px;
+     width: 220px;
+     top: -60px;
+     left: -130px;
+     background: radial-gradient(#44006b, #ad1fff);
+     overflow: hidden;
+ }
+
+ #radius-shape-2 {
+     border-radius: 38% 62% 63% 37% / 70% 33% 67% 30%;
+     bottom: -60px;
+     right: -110px;
+     width: 300px;
+     height: 300px;
+     background: radial-gradient(#44006b, #ad1fff);
+     overflow: hidden;
+ }
+
+ .bg-glass {
+     background-color: hsla(0, 0%, 100%, 0.9) !important;
+     backdrop-filter: saturate(200%) blur(25px);
+ }
 .bg-washing-img2 {
     background-image: linear-gradient(0deg, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.9)), url("../styles/Images/washing-bg.avif");
     background-size: cover;
@@ -88,7 +163,7 @@
     background-color: rgba(0, 0, 0, 0.5);
   }
 .hover-btn:hover{
-    background-color: rgba(71,85,105)!important;
+    background-color: #ffae42!important;
 }
 #template-mo-zay-hero-carousel .carousel-control-next i,
 #template-mo-zay-hero-carousel .carousel-control-prev i {
@@ -248,6 +323,36 @@
      .u__section_111 .u-text-1 {
          font-size: 2.25rem;
      }
+ }
+ .float {
+     position: fixed;
+     width: 60px;
+     height: 60px;
+     bottom: 40px;
+     right: 40px;
+     background-color: #25D366;
+     color: #FFF;
+     border-radius: 50px;
+     text-align: center;
+     box-shadow: 2px 2px 3px #999;
+ }
+
+ .float2 {
+     position: fixed;
+     width: 60px;
+     height: 60px;
+     bottom: 40px;
+     left: 40px;
+     background-color: #25D366;
+     color: #FFF;
+     border-radius: 50px;
+     text-align: center;
+     box-shadow: 2px 2px 3px #999;
+ }
+
+ .my-float {
+     margin-top: 22px;
+     margin-left: 25px;
  }
  .u-section-16 {
      background-image: none;

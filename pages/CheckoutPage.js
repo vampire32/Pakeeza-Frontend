@@ -18,6 +18,8 @@ const CheckoutPage = (props) => {
 	const router = useRouter();
 	const { slug } = router.query;
 	const [checkBox, setcheckBox] = useState(false)
+	const [COD, setCOD] = useState(false)
+	const [Store, setStore] = useState(false)
 	const Easypaisa=()=>{
 		if(checkBox==false){
 			setcheckBox(true)
@@ -26,6 +28,20 @@ const CheckoutPage = (props) => {
 			setcheckBox(false)
 		}
 	}
+	const CODF = () => {
+		if (COD == false) {
+			setCOD(true);
+		} else if (COD == true) {
+			setCOD(false);
+		}
+	};
+	const StoreF = () => {
+		if (Store == false) {
+			setStore(true);
+		} else if (Store == true) {
+			setStore(false);
+		}
+	};
 	
 	
 	
@@ -238,7 +254,7 @@ const [Alert, setAlert] = useState(false);
 													required=""
 												/>
 											</label>
-											
+
 											<label class="flex border-b border-gray-200 h-12 py-3 items-center">
 												<span class="text-right px-2">Phone Number</span>
 												<input
@@ -287,7 +303,7 @@ const [Alert, setAlert] = useState(false);
 														Cash on Deliver (COD)
 													</span>
 													<input
-														onChange={(e) => handleChange(e)}
+														onChange={CODF}
 														name="COD"
 														id="remember"
 														aria-describedby="remember"
@@ -296,6 +312,35 @@ const [Alert, setAlert] = useState(false);
 														required=""
 													/>
 												</label>
+												{COD ? (
+													<div className="bg-gray-500 text-white">
+														<p className="text-center">
+															Advance Payment Required For Orders Abover 20000
+															<br />
+															Please deposit your amount in the following bank
+															account:
+															<br />
+															share Receipt with order Slip as proof of payment
+															on +92-3365124444(Whatsapp Only)
+															<br />
+															Easypaia
+															<br />
+															Account Title: PAkeeza Electronics
+															<br />
+															Account Number: 081XXXXXXX55
+															<br />
+															IBANPAK46 HABB 00-083XXXXX55
+														</p>
+														<a
+															href="https://api.whatsapp.com/send?phone+923365124444"
+															className="btn btn-success ml-[45%]"
+														>
+															Sahre Recipt
+														</a>
+													</div>
+												) : (
+													<div></div>
+												)}
 												<label class="flex border-b border-gray-200 h-12 py-3 items-center">
 													<span class="text-right px-2">Vist Store</span>
 													<input
@@ -305,13 +350,24 @@ const [Alert, setAlert] = useState(false);
 														type="checkbox"
 														class="w-4 h-4 border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-primary-300 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-primary-600 dark:ring-offset-gray-800"
 														required=""
+														onChange={StoreF}
 													/>
 												</label>
+												{Store ? (
+													<div className="bg-gray-500 text-white">
+														<p className="text-center">
+															Address:Office No. 8 /A, near Punjab college,
+															Block D Islamabad
+														</p>
+													</div>
+												) : (
+													<div></div>
+												)}
 												<label
 													htmlFor="Easypaisa"
 													class="flex border-b border-gray-200 h-12 py-3 items-center"
 												>
-													<span class="text-right px-2">Easypaisa</span>
+													<span class="text-right px-2">Bank Deposit</span>
 													<input
 														name="Easypaisa"
 														id="Easypaisa"
@@ -323,30 +379,28 @@ const [Alert, setAlert] = useState(false);
 													/>
 												</label>
 												{checkBox ? (
-													<div id="easypaisa-form">
-														<label class="flex border-b border-gray-200 h-12 py-3 items-center">
-															<span class="text-right px-2">Account Title</span>
-															<span>Syed Abdul Moiz Shah</span>
-														</label>
-														<label class="flex border-b border-gray-200 h-12 py-3 items-center">
-															<span class="text-right px-2">
-																Account Number
-															</span>
-															<span>03169089872</span>
-														</label>
-														<label class="flex border-b border-gray-200 h-12 py-3 items-center">
-															<span class="text-right px-2">Bank Name</span>
-															<span>EasyPaisa</span>
-														</label>
-														<label class="flex border-b border-gray-200 h-12 py-3 items-center">
-															<span class="text-right px-2">TID</span>
-															<input
-																onChange={(e) => handleChange(e)}
-																name="TID"
-																class="focus:outline-none px-3"
-																placeholder="TID"
-															/>
-														</label>
+													<div className="bg-gray-500 text-white">
+														<p className="text-center">
+															Please deposit your amount in the following bank
+															account:
+															<br />
+															share Receipt with order Slip as proof of payment
+															on +92-3365124444(Whatsapp Only)
+															<br />
+															Easypaia
+															<br />
+															Account Title: PAkeeza Electronics
+															<br />
+															Account Number: 081XXXXXXX55
+															<br />
+															IBANPAK46 HABB 00-083XXXXX55
+														</p>
+														<a
+															href="https://api.whatsapp.com/send?phone+923365124444"
+															className="btn btn-success ml-[45%]"
+														>
+															Sahre Recipt
+														</a>
 													</div>
 												) : (
 													<div></div>
@@ -356,7 +410,7 @@ const [Alert, setAlert] = useState(false);
 									</div>
 									<button
 										type="submit"
-										class="submit-button px-4 py-3 rounded-full bg-[#9e7098]  text-white focus:ring focus:outline-none w-full text-xl font-semibold transition-colors"
+										class="submit-button px-4 py-3 rounded-full bg-yellow-400  text-white focus:ring focus:outline-none w-full text-xl font-semibold transition-colors"
 									>
 										Pay RS {props.SubTotal}
 									</button>

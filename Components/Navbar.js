@@ -45,16 +45,16 @@ const NavBar = ({ Carts, addToCart, RemoveFromcart, clearCart, SubTotal }) => {
 									leaveTo="translate-x-full"
 								>
 									<Dialog.Panel className="pointer-events-auto w-screen max-w-md">
-										<div className="flex h-full flex-col overflow-y-scroll bg-white shadow-xl">
+										<div className="flex h-full flex-col overflow-y-scroll bg-[#200b52] shadow-xl">
 											<div className="flex-1 overflow-y-auto py-6 px-4 sm:px-6">
 												<div className="flex items-start justify-between">
-													<Dialog.Title className="text-lg font-medium text-gray-900">
+													<Dialog.Title className="text-lg font-medium text-white">
 														Shopping cart
 													</Dialog.Title>
 													<div className="ml-3 flex h-7 items-center">
 														<button
 															type="button"
-															className="-m-2 p-2 text-gray-400 hover:text-gray-500"
+															className="-m-2 p-2 text-white hover:text-gray-500"
 															onClick={() => setcart(false)}
 														>
 															<span className="sr-only">Close panel</span>
@@ -84,7 +84,7 @@ const NavBar = ({ Carts, addToCart, RemoveFromcart, clearCart, SubTotal }) => {
 																		</div>
 																		<div className="ml-4 flex flex-1 flex-col">
 																			<div>
-																				<div className="flex justify-between text-base font-medium text-gray-900">
+																				<div className="flex justify-between text-base font-medium text-white">
 																					<h3>
 																						<a href="#">{Carts[k].name}</a>
 																					</h3>
@@ -95,9 +95,7 @@ const NavBar = ({ Carts, addToCart, RemoveFromcart, clearCart, SubTotal }) => {
 																						{Carts[k].price}
 																					</p>
 																				</div>
-																				<p className="mt-1 text-sm text-gray-500">
-																					Blue
-																				</p>
+																			
 																			</div>
 																			<div className="flex flex-1 items-end justify-between text-sm">
 																				<p className="text-gray-500">
@@ -114,24 +112,24 @@ const NavBar = ({ Carts, addToCart, RemoveFromcart, clearCart, SubTotal }) => {
 											</div>
 
 											<div className="border-t border-gray-200 py-6 px-4 sm:px-6">
-												<div className="flex justify-between text-base font-medium text-gray-900">
+												<div className="flex justify-between text-base font-medium text-white">
 													<p>Subtotal</p>
 													<p>${SubTotal}</p>
 													{console.log(SubTotal)}
 												</div>
-												<p className="mt-0.5 text-sm text-gray-500">
+												<p className="mt-0.5 text-sm text-white">
 													Shipping and taxes calculated at checkout.
 												</p>
 												<div className="mt-6 flex justify-evenly">
 													<a
 														href="#"
-														className="flex items-center justify-center rounded-md border border-transparent bg-[#9e7098]  px-6 py-3 text-base font-medium text-white shadow-sm hover:bg-[#9e7098] "
+														className="flex items-center justify-center rounded-md border border-transparent bg-[#ffae42]  px-6 py-3 text-base font-medium text-white shadow-sm hover:bg-[#ffae42] "
 													>
 														<Link href="/CheckoutPage">Checkout</Link>
 													</a>
 													<button
 														onClick={clearCart}
-														className="flex items-center justify-center rounded-md border border-transparent bg-[#9e7098]  px-6 py-3 text-base font-medium text-white shadow-sm hover:bg-[#9e7098] "
+														className="flex items-center justify-center rounded-md border border-transparent bg-[#ffae42]  px-6 py-3 text-base font-medium text-white shadow-sm hover:bg-[#ffae42] "
 													>
 														Clear Cart
 													</button>
@@ -160,6 +158,7 @@ const NavBar = ({ Carts, addToCart, RemoveFromcart, clearCart, SubTotal }) => {
 			</Transition.Root>
 			<nav class="navbar navbar-expand-lg navbar-light bg-[#ffff]">
 				<div class="container-fluid">
+					<a class="navbar-brand" href="#"></a>
 					<button
 						class="navbar-toggler "
 						type="button"
@@ -172,7 +171,7 @@ const NavBar = ({ Carts, addToCart, RemoveFromcart, clearCart, SubTotal }) => {
 						<span class="navbar-toggler-icon"></span>
 					</button>
 					<div
-						class=" navbar-collapse justify-content-around"
+						class=" navbar-collapse justify-content-between md:ml-0 lg:ml-44 "
 						id="navbarSupportedContent"
 					>
 						<ul class="navbar-nav text-[20px]">

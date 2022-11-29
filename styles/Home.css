@@ -1,17 +1,10 @@
 /* Carousel Hero */
 #template-mo-zay-hero-carousel .carousel-indicators li {
     margin-top: -50px;
-    background-color: #200b52;
+    background-color: rgb(46, 34, 156);
 }
-.bg-hot-img{
-    background-image: linear-gradient(0deg, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("../styles/Images/hot-img.jpg");
-    background-size: cover;
-    background-position: center;
-    background-attachment: fixed;
-    background-repeat: no-repeat;
-    
 
-}
+
 .float {
     position: fixed;
     width: 75px;
@@ -45,7 +38,11 @@
     height: 25px;
 }
 .bg-hot-img2 {
-    background-image: linear-gradient(0deg, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.9)), url("../styles/Images/hotimg2.avif");
+    background-image: linear-gradient(0deg, rgba(46,
+        34,
+        156, 0.5), rgba(46,
+            34,
+            156, 0.5)), url("../styles/Images/hotimg2.avif");
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
@@ -54,7 +51,13 @@
 
 }
 .bg-ac-img2 {
-    background-image: linear-gradient(0deg, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.9)), url("../styles/Images/AC-bg.jpg");
+    background-image: linear-gradient(0deg,
+        rgba(46,
+            34,
+            156, 0.5),
+        rgba(46,
+            34,
+            156, 0.5)), url("../styles/Images/AC-bg.jpg");
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
@@ -63,7 +66,13 @@
 
 }
 .bg-freezer-img2 {
-    background-image: linear-gradient(0deg, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.9)), url("../styles/Images/freezer-bg.jpg");
+    background-image: linear-gradient(0deg,
+        rgba(46,
+            34,
+            156, 0.5),
+        rgba(46,
+            34,
+            156, 0.5)), url("../styles/Images/freezer-bg.jpg");
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
@@ -72,7 +81,13 @@
 
 }
 .bg-led-img2 {
-    background-image: linear-gradient(0deg, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.9)), url("../styles/Images/LED-bg.jpg");
+    background-image: linear-gradient(0deg,
+        rgba(46,
+            34,
+            156, 0.5),
+        rgba(46,
+            34,
+            156, 0.5)), url("../styles/Images/LED-bg.jpg");
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
@@ -81,7 +96,13 @@
 
 }
 .bg-home-img2 {
-    background-image: linear-gradient(0deg, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.9)), url("../styles/Images/home-bg.png");
+    background-image: linear-gradient(0deg,
+        rgba(46,
+            34,
+            156, 0.5),
+        rgba(46,
+            34,
+            156, 0.5)), url("../styles/Images/home-bg.png");
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
@@ -90,7 +111,13 @@
 
 }
 .bg-kitchen-img2 {
-    background-image: linear-gradient(0deg, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.9)), url("../styles/Images/kitchen-bg.jpg");
+    background-image: linear-gradient(0deg,
+        rgba(46,
+            34,
+            156, 0.5),
+        rgba(46,
+            34,
+            156, 0.5)), url("../styles/Images/kitchen-bg.jpg");
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
@@ -142,7 +169,13 @@
      backdrop-filter: saturate(200%) blur(25px);
  }
 .bg-washing-img2 {
-    background-image: linear-gradient(0deg, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.9)), url("../styles/Images/washing-bg.avif");
+    background-image: linear-gradient(0deg,
+        rgba(46,
+            34,
+            156, 0.5),
+        rgba(46,
+            34,
+            156, 0.5)), url("../styles/Images/washing-bg.avif");
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
@@ -156,7 +189,7 @@
       border-radius: 15px;
   }
   .linear-color2 {
-      background-color: rgba(0, 0, 0, 1);
+      background-color: rgb(46, 34, 156);
       border-radius: 15px;
   }
   .bgm{
@@ -180,8 +213,11 @@
     font-size: .5em !important;
     color: #000 !important;
 }
+.margin{
+    
+}
 #template-mo-zay-hero-carousel {
-    background: linear-gradient(0deg, rgba(0, 0, 0, 0.25), rgba(0, 0, 0, 0.25)),#200b52;
+    background: linear-gradient(0deg, rgba(0, 0, 0, 0.25), rgba(0, 0, 0, 0.25)),rgb(46, 34, 156);
     color: white;
 }
 #template-mo-zay-hero-carousel .carousel-control-next i,
@@ -204,7 +240,8 @@
  }
  .u__section_111 {
      background-image: none;
-     color: white;
+     
+     background-color: rgb(46, 34, 156)!important;
  }
 
  .u__section_111 .u-sheet-1 {
@@ -303,6 +340,9 @@
      .u__section_111 .u-sheet-1 {
          min-height: 100px;
      }
+     .margin{
+        margin-left: 0!important;
+     }
 
      .u__section_111 .u-container-layout-1 {
          padding-left: 10px;
@@ -323,7 +363,48 @@
      .u__section_111 .u-text-1 {
          font-size: 2.25rem;
      }
+         .hide {
+             display: none;
+         }
+        .overlay-content {
+            position: relative;
+            top: 25%;
+            width: 100%;
+            text-align: center;
+            margin-top: 30px;
+        }
+    
+        .overlay a {
+            padding: 8px;
+            text-decoration: none;
+            font-size: 36px;
+            color: #818181;
+            display: block;
+            transition: 0.3s;
+        }
+    
+        .overlay a:hover,
+        .overlay a:focus {
+            color: #f1f1f1;
+        }
+    
+        .overlay .closebtn {
+            position: absolute;
+            top: 20px;
+            right: 45px;
+            font-size: 60px;
+        }
+                .overlay a {
+                    font-size: 20px
+                }
+        
+                .overlay .closebtn {
+                    font-size: 40px;
+                    top: 15px;
+                    right: 35px;
+                }
  }
+ 
  .float {
      position: fixed;
      width: 60px;

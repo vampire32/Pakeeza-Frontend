@@ -37,12 +37,12 @@ import {
 	PlusIcon,
 	Squares2X2Icon,
 } from "@heroicons/react/20/solid";
-import AOS from "aos";
-import "aos/dist/aos.css";
+
 import C1 from "../styles/Images/cart.jpg";
 import C2 from "../styles/Images/cart-2.jpg";
 import C3 from "../styles/Images/cart-3.jpg";
 import C4 from "../styles/Images/cart-4.jpg";
+import Link from "next/link";
 const product = {
 	slug: "Basic Tee 6-Pack",
 	price: "$192",
@@ -122,11 +122,7 @@ function classNames(...classes) {
 	return classes.filter(Boolean).join(" ");
 }
 const Home = (props) => {
-	useEffect(() => {
-		AOS.init({
-			duration: 2000,
-		});
-	}, []);
+	
 	 const [mobileFiltersOpen, setMobileFiltersOpen] = useState(false);
 	return (
 		<div>
@@ -136,11 +132,11 @@ const Home = (props) => {
 				<link rel="icon" href="/favicon.ico" />
 			</Head>
 			<MainSlider />
-			<div className="container mt-[3rem] " data-aos="fade-up">
+			<div className="container mt-[3rem] ">
 				<h2 className="text-center text-[32px] font-extrabold pb-[2rem] text-[#ffae42]">
 					TOP CATEGORIES
 				</h2>
-				<div className="row" data-aos="fade-up">
+				<div className="row">
 					<div className="col-md-4 pb-20">
 						<div className="flex justify-center">
 							<img
@@ -148,62 +144,74 @@ const Home = (props) => {
 								style={{ width: "20%" }}
 							/>
 						</div>
-						<h4 className="text-center text-[14px]">AIR CON & AirCooler</h4>
+						<h4 className="text-center text-[14px]">
+							<Link href="/AirCooler">AIR CON & AirCooler</Link>
+						</h4>
 					</div>
-					<div className="col-md-4">
+					<div className="col-md-4 pb-20">
 						<div className="flex justify-center">
 							<img
 								src="https://static.vecteezy.com/system/resources/previews/008/525/804/original/refrigerator-device-electronic-icon-3d-illustration-png.png"
 								style={{ width: "20%" }}
 							/>
 						</div>
-						<h4 className="text-center text-[14px]">REFRIGERATOR & FREEZERS</h4>
+						<h4 className="text-center text-[14px]">
+							R<Link href="/Freezer">REFRIGERATOR & FREEZERS</Link>
+						</h4>
 					</div>
-					<div className="col-md-4">
+					<div className="col-md-4 pb-20">
 						<div className="flex justify-center">
 							<img
 								src="https://cdn3d.iconscout.com/3d/premium/thumb/led-tv-6810080-5581522.png"
 								style={{ width: "20%" }}
 							/>
 						</div>
-						<h4 className="text-center text-[14px]">LED TV & SOUND SYSTEM</h4>
+						<h4 className="text-center text-[14px]">
+							<Link href="/LEDSystem">LED TV & SOUND SYSTEM</Link>
+						</h4>
 					</div>
-					<div className="col-md-4">
+					<div className="col-md-4 pb-20">
 						<div className="flex justify-center">
 							<img
 								src="https://cdn3d.iconscout.com/3d/premium/thumb/electronics-appliances-5580689-4668669.png"
 								style={{ width: "20%" }}
 							/>
 						</div>
-						<h4 className="text-center text-[14px]">HOME APPLIANCES</h4>
+						<h4 className="text-center text-[14px]">
+							<Link href="/HomeApp">HOME APPLIANCES</Link>
+						</h4>
 					</div>
-					<div className="col-md-4">
+					<div className="col-md-4 pb-20">
 						<div className="flex justify-center">
 							<img
 								src="https://cdn3d.iconscout.com/3d/premium/thumb/kitchen-room-6347476-5251974.png"
 								style={{ width: "20%" }}
 							/>
 						</div>
-						<h4 className="text-center text-[14px]">BUILT-IN KITCHEN</h4>
+						<h4 className="text-center text-[14px]">
+							<Link href="/Kitchen">BUILT-IN KITCHEN</Link>
+						</h4>
 					</div>
-					<div className="col-md-4">
+					<div className="col-md-4 pb-20">
 						<div className="flex justify-center">
 							<img
 								src="https://cdn3d.iconscout.com/3d/premium/thumb/washing-machine-5756640-4825944.png"
 								style={{ width: "20%" }}
 							/>
 						</div>
-						<h4 className="text-center text-[14px]">WASHING SOLUTIONS</h4>
+						<h4 className="text-center text-[14px]">
+							<Link href="/Washing">WASHING SOLUTIONS</Link>
+						</h4>
 					</div>
 				</div>
 			</div>
 			<Brands />
-			<div className="linear-color" data-aos="fade-up">
+			<div className="">
 				<div className="container-fluid h-[25rem] linear-color2">
 					<p className=" text-[40px] font-bold text-yellow-400  text-center">
 						Premium Collections
 					</p>
-					<h3 className=" font-bold text-[40px] text-center pb-3  ml-5 text-slate-600 ">
+					<h3 className=" font-bold text-[40px] text-center pb-3  ml-5 text-yellow-600 ">
 						HOT DEALS
 					</h3>
 					<p className="text-center text-white text-[18px]">
@@ -213,18 +221,18 @@ const Home = (props) => {
 				</div>
 			</div>
 
-			<div className="bg-hot-img2 h-[50rem]  " data-aos="fade-up">
+			<div className="bg-hot-img2 h-[50rem]  ">
 				<div>
 					<Swiper
 						breakpoints={{
 							640: {
-								slidesPerView: 1,
-							},
-							768: {
 								slidesPerView: 2,
 							},
-							1199: {
+							768: {
 								slidesPerView: 3,
+							},
+							1199: {
+								slidesPerView: 4,
 							},
 						}}
 						// slidesPerView={4}
@@ -249,6 +257,8 @@ const Home = (props) => {
 										brands={item.attributes.Brand}
 										price={item.attributes.Price}
 										Picture={img}
+										border="white"
+										text="yellow"
 									/>
 									;
 								</SwiperSlide>
@@ -259,7 +269,7 @@ const Home = (props) => {
 			</div>
 
 			<section class="container py-5">
-				<div class="row" data-aos="fade-up">
+				<div class="row">
 					<div class="col-md-6 col-lg-3 pb-5">
 						<div class="h-100 py-5 services-icon-wap shadow">
 							<div class="h1 text-success text-center">
@@ -307,12 +317,12 @@ const Home = (props) => {
 				</div>
 			</section>
 
-			<div className="linear-color" data-aos="fade-up">
+			<div className="linear-color">
 				<div className="container-fluid h-[25rem] linear-color2">
 					<p className=" text-[40px] font-bold text-yellow-400  text-center">
 						Premium Collections
 					</p>
-					<h3 className=" font-bold text-[40px] text-center pb-3  ml-5 text-slate-600 ">
+					<h3 className=" font-bold text-[40px] text-center pb-3  ml-5 text-yellow-600 ">
 						AIR CON & AirCooler
 					</h3>
 					<p className="text-center text-white text-[18px]">
@@ -321,20 +331,20 @@ const Home = (props) => {
 					</p>
 				</div>
 			</div>
-			<div className="bg-ac-img2  h-[50rem] " data-aos="fade-up">
+			<div className="bg-ac-img2  h-[50rem] ">
 				<div className="conatiner ">
 					<Swiper
 						breakpoints={{
 							640: {
-								slidesPerView: 1,
-								spaceBetween: 30,
-							},
-							768: {
 								slidesPerView: 2,
 								spaceBetween: 30,
 							},
-							1199: {
+							768: {
 								slidesPerView: 3,
+								spaceBetween: 30,
+							},
+							1199: {
+								slidesPerView: 4,
 								spaceBetween: -100,
 							},
 						}}
@@ -358,6 +368,8 @@ const Home = (props) => {
 										brands={item.attributes.Brand}
 										price={item.attributes.Price}
 										Picture={img}
+										border="white"
+										text="yellow"
 									/>
 									;
 								</SwiperSlide>
@@ -373,12 +385,12 @@ const Home = (props) => {
 			</div>
 
 			{/* <Dlivery /> */}
-			<div className="linear-color" data-aos="fade-up">
+			<div className="linear-color">
 				<div className="container-fluid h-[25rem] linear-color2">
 					<p className=" text-[40px] font-bold text-yellow-400  text-center">
 						Premium Collections
 					</p>
-					<h3 className=" font-bold text-[40px] text-center pb-3  ml-5 text-slate-600 ">
+					<h3 className=" font-bold text-[40px] text-center pb-3  ml-5 text-yellow-600  ">
 						REFRIGERATOR & FREEZERS
 					</h3>
 					<p className="text-center text-white text-[18px]">
@@ -387,18 +399,18 @@ const Home = (props) => {
 					</p>
 				</div>
 			</div>
-			<div className="bg-freezer-img2  h-[50rem] " data-aos="fade-up">
+			<div className="bg-freezer-img2  h-[50rem] ">
 				<div className="conatiner">
 					<Swiper
 						breakpoints={{
 							640: {
-								slidesPerView: 1,
-							},
-							768: {
 								slidesPerView: 2,
 							},
-							1199: {
+							768: {
 								slidesPerView: 3,
+							},
+							1199: {
+								slidesPerView: 4,
 							},
 						}}
 						spaceBetween={30}
@@ -423,6 +435,8 @@ const Home = (props) => {
 										brands={item.attributes.Brand}
 										price={item.attributes.Price}
 										Picture={img}
+										border="white"
+										text="yellow"
 									/>
 									;
 								</SwiperSlide>
@@ -436,12 +450,12 @@ const Home = (props) => {
 					</div>
 				</div>
 			</div>
-			<div className="linear-color" data-aos="fade-up">
+			<div className="linear-color">
 				<div className="container-fluid h-[25rem] linear-color2">
 					<p className=" text-[40px] font-bold text-yellow-400  text-center">
 						Premium Collections
 					</p>
-					<h3 className=" font-bold text-[40px] text-center pb-3  ml-5 text-slate-600 ">
+					<h3 className=" font-bold text-[40px] text-center pb-3  ml-5 text-yellow-600  ">
 						LED TV & SOUND SYSTEM
 					</h3>
 					<p className="text-center text-white text-[18px]">
@@ -450,18 +464,18 @@ const Home = (props) => {
 					</p>
 				</div>
 			</div>
-			<div className="bg-led-img2 h-[50rem]" data-aos="fade-up">
+			<div className="bg-led-img2 h-[50rem]">
 				<div className="conatiner">
 					<Swiper
 						breakpoints={{
 							640: {
-								slidesPerView: 1,
-							},
-							768: {
 								slidesPerView: 2,
 							},
-							1199: {
+							768: {
 								slidesPerView: 3,
+							},
+							1199: {
+								slidesPerView: 4,
 							},
 						}}
 						spaceBetween={30}
@@ -486,6 +500,8 @@ const Home = (props) => {
 										brands={item.attributes.Brand}
 										price={item.attributes.Price}
 										Picture={img}
+										border="white"
+										text="yellow"
 									/>
 									;
 								</SwiperSlide>
@@ -499,12 +515,12 @@ const Home = (props) => {
 					</div>
 				</div>
 			</div>
-			<div className="linear-color" data-aos="fade-up">
+			<div className="linear-color">
 				<div className="container-fluid h-[25rem] linear-color2">
 					<p className=" text-[40px] font-bold text-yellow-400  text-center">
 						Premium Collections
 					</p>
-					<h3 className=" font-bold text-[40px] text-center pb-3  ml-5 text-slate-600 ">
+					<h3 className=" font-bold text-[40px] text-center pb-3  ml-5 text-yellow-600 ">
 						HOME APPLIANCES
 					</h3>
 					<p className="text-center text-white text-[18px]">
@@ -513,18 +529,18 @@ const Home = (props) => {
 					</p>
 				</div>
 			</div>
-			<div className="bg-home-img2  h-[50rem]" data-aos="fade-up">
+			<div className="bg-home-img2  h-[50rem]">
 				<div className="conatiner">
 					<Swiper
 						breakpoints={{
 							640: {
-								slidesPerView: 1,
-							},
-							768: {
 								slidesPerView: 2,
 							},
-							1199: {
+							768: {
 								slidesPerView: 3,
+							},
+							1199: {
+								slidesPerView: 4,
 							},
 						}}
 						spaceBetween={30}
@@ -549,6 +565,8 @@ const Home = (props) => {
 										brands={item.attributes.Brand}
 										price={item.attributes.Price}
 										Picture={img}
+										border="white"
+										text="yellow"
 									/>
 									;
 								</SwiperSlide>
@@ -562,12 +580,12 @@ const Home = (props) => {
 					</div>
 				</div>
 			</div>
-			<div className="linear-color" data-aos="fade-up">
+			<div className="linear-color">
 				<div className="container-fluid h-[25rem] linear-color2">
 					<p className=" text-[40px] font-bold text-yellow-400  text-center">
 						Premium Collections
 					</p>
-					<h3 className=" font-bold text-[40px] text-center pb-3  ml-5 text-slate-600 ">
+					<h3 className=" font-bold text-[40px] text-center pb-3  ml-5 text-yellow-600 ">
 						BUILT-IN KITCHEN
 					</h3>
 					<p className="text-center text-white text-[18px]">
@@ -576,18 +594,18 @@ const Home = (props) => {
 					</p>
 				</div>
 			</div>
-			<div className="bg-kitchen-img2  h-[50rem] " data-aos="fade-up">
+			<div className="bg-kitchen-img2  h-[50rem] ">
 				<div className="conatiner">
 					<Swiper
 						breakpoints={{
 							640: {
-								slidesPerView: 1,
-							},
-							768: {
 								slidesPerView: 2,
 							},
-							1199: {
+							768: {
 								slidesPerView: 3,
+							},
+							1199: {
+								slidesPerView: 4,
 							},
 						}}
 						spaceBetween={30}
@@ -612,6 +630,8 @@ const Home = (props) => {
 										brands={item.attributes.Brand}
 										price={item.attributes.Price}
 										Picture={img}
+										border="white"
+										text="yellow"
 									/>
 									;
 								</SwiperSlide>
@@ -625,12 +645,12 @@ const Home = (props) => {
 					</div>
 				</div>
 			</div>
-			<div className="linear-color" data-aos="fade-up">
+			<div className="linear-color">
 				<div className="container-fluid h-[25rem] linear-color2">
 					<p className=" text-[40px] font-bold text-yellow-400  text-center">
 						Premium Collections
 					</p>
-					<h3 className=" font-bold text-[40px] text-center pb-3  ml-5 text-slate-600 ">
+					<h3 className=" font-bold text-[40px] text-center pb-3  ml-5 text-yellow-600  ">
 						WASHING SOLUTIONS
 					</h3>
 					<p className="text-center text-white text-[18px]">
@@ -639,18 +659,18 @@ const Home = (props) => {
 					</p>
 				</div>
 			</div>
-			<div className="bg-washing-img2 h-[50rem]" data-aos="fade-up">
+			<div className="bg-washing-img2 h-[50rem]">
 				<div className="conatiner">
 					<Swiper
 						breakpoints={{
 							640: {
-								slidesPerView: 1,
-							},
-							768: {
 								slidesPerView: 2,
 							},
-							1199: {
+							768: {
 								slidesPerView: 3,
+							},
+							1199: {
+								slidesPerView: 4,
 							},
 						}}
 						spaceBetween={30}
@@ -675,6 +695,8 @@ const Home = (props) => {
 										brands={item.attributes.Brand}
 										price={item.attributes.Price}
 										Picture={img}
+										border="white"
+										text="yellow"
 									/>
 									;
 								</SwiperSlide>
@@ -700,33 +722,33 @@ export async function getServerSideProps(context) {
 			"b98506029163804d8c79317a85c0ae8049f45b1d14065bd2553f08258c746314562c5462fd1019bdf52829a79a904424758c2504e80cf0434dbc06dccf35e66eae7fe6756bbc228dab3b7a40e215141adca3ae32109a392c84fff9745787055b42c9f8f7c8ab3e867d11e4863283521f463069b5162f9468fac1135f64ae7bab",
 	};
 	let a = await fetch(
-		"https://pakeeza-backend-railway-production.up.railway.app/api/products?filters[Category][$eq]=AC&populate=*",
+		"https://pakeeza-backend-railway-production.up.railway.app/api/products?filters[Category][$eq]=AC&populate=*&pagination[page]=1&pagination[pageSize]=4",
 		(headers = headers)
 	);
 	
 	let b = await fetch(
-		"https://pakeeza-backend-railway-production.up.railway.app/api/products?filters[Category][$eq]=Freezer&populate=*",
+		"https://pakeeza-backend-railway-production.up.railway.app/api/products?filters[Category][$eq]=Freezer&populate=*&pagination[page]=1&pagination[pageSize]=4",
 		(headers = headers)
 	);
 	let c = await fetch(
-		"https://pakeeza-backend-railway-production.up.railway.app/api/products?filters[Category][$eq]=Appliance&populate=*",
+		"https://pakeeza-backend-railway-production.up.railway.app/api/products?filters[Category][$eq]=Appliance&populate=*&pagination[page]=1&pagination[pageSize]=4",
 		(headers = headers)
 	);
 	let d = await fetch(
-		"https://pakeeza-backend-railway-production.up.railway.app/api/products?filters[Category][$eq]=Kitchen&populate=*",
+		"https://pakeeza-backend-railway-production.up.railway.app/api/products?filters[Category][$eq]=Kitchen&populate=*&pagination[page]=1&pagination[pageSize]=4",
 		(headers = headers)
 	);
 	
 	let e = await fetch(
-		"https://pakeeza-backend-railway-production.up.railway.app/api/products?filters[Category][$eq]=LED&populate=*",
+		"https://pakeeza-backend-railway-production.up.railway.app/api/products?filters[Category][$eq]=LED&populate=*&pagination[page]=1&pagination[pageSize]=4",
 		(headers = headers)
 	);
 	let f = await fetch(
-		"https://pakeeza-backend-railway-production.up.railway.app/api/products?filters[Category][$eq]=Washing&populate=*",
+		"https://pakeeza-backend-railway-production.up.railway.app/api/products?filters[Category][$eq]=Washing&populate=*&pagination[page]=1&pagination[pageSize]=4",
 		(headers = headers)
 	);
 	let g = await fetch(
-		"https://pakeeza-backend-railway-production.up.railway.app/api/products?populate=*",
+		"https://pakeeza-backend-railway-production.up.railway.app/api/products?populate=*&pagination[page]=1&pagination[pageSize]=4",
 		(headers = headers)
 	);
 	

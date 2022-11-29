@@ -18,7 +18,7 @@ const Brands = () => {
 	}, []);
   return (
 		<div>
-			<section class="bg-light py-5 mt-10" data-aos="fade-up">
+			<section class="bg-light py-5 mt-10" >
 				<div class="container my-4">
 					<div class="row text-center py-3">
 						<div class="col-lg-6 m-auto">

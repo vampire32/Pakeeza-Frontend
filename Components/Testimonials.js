@@ -15,7 +15,7 @@ export const Testimonials = () => {
 		<div>
 			<div
 				className="container my-24 px-6 margin-mobile  "
-				data-aos="zoom-in-up"
+				
 			>
 				{" "}
 				<section class="mb-32 text-gray-800 text-center">

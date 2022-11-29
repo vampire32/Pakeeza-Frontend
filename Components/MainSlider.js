@@ -22,7 +22,7 @@ const MainSlider = () => {
 				id="template-mo-zay-hero-carousel"
 				class="carousel slide"
 				data-bs-ride="carousel"
-				data-aos="fade-in"
+				
 			>
 				<ol class="carousel-indicators">
 					<li

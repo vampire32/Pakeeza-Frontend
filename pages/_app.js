@@ -100,16 +100,15 @@ function MyApp({ Component, pageProps }) {
 				crossorigin="anonymous"
 			/>
 			<Script src="https://cdn.tailwindcss.com" />
-			<Script src="https://canvasjs.com/assets/script/canvasjs.min.js"/>
-			<Header/>
+			<Script src="https://canvasjs.com/assets/script/canvasjs.min.js" />
+			<Script src="../Components/script.js"/>
+			<Header />
 			<NavBar
 				Carts={Carts}
 				addToCart={addToCart}
 				clearCart={clearCart}
 				SubTotal={SubTotal}
-				
 			/>
-
 			<Component
 				Carts={Carts}
 				addToCart={addToCart}
@@ -118,7 +117,7 @@ function MyApp({ Component, pageProps }) {
 				Email={Email}
 				{...pageProps}
 			/>
-			<Floating/>
+			<Floating />
 			<Footer />
 		</>
 	);

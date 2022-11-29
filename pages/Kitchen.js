@@ -377,7 +377,7 @@ const Kitchen = (props) => {
 								</form>
 
 								{/* Product grid */}
-								<div className="lg:col-span-3 bg-[#2b2a2a]">
+								<div className="lg:col-span-3 ">
 									{/* Replace with your content */}
 									<div className=" lg:h-full">
 										<div className="row ">
@@ -397,6 +397,8 @@ const Kitchen = (props) => {
 															brands={item.attributes.Brand}
 															price={item.attributes.Price}
 															Picture={img}
+															border="blue"
+															text="black"
 														/>
 													</div>
 												);

@@ -6,8 +6,8 @@ import {AiTwotoneMail} from 'react-icons/ai'
 const Contactus = () => {
 	return (
 		<div>
-			<div className="container  ">
-				<h1 className="text-center font-bold text-[40px]">Contact US</h1>
+			<h1 className="text-center font-bold text-[40px]">Contact US</h1>
+			<div className="container flex justify-center ">
 				<div className="row mt-[3rem] ">
 					<div className="col-md-4">
 						<div
@@ -18,7 +18,7 @@ const Contactus = () => {
 								<ImLocation2
 									size={60}
 									style={{ marginLeft: "6rem" }}
-									color="#C8FFD4"
+									color="#ffae42"
 								/>
 								<h2 class="card-title">Address</h2>
 								<h3 class="card-text">
@@ -37,13 +37,10 @@ const Contactus = () => {
 								<AiFillPhone
 									size={60}
 									style={{ marginLeft: "6rem" }}
-									color="#C8FFD4"
+									color="#ffae42"
 								/>
 								<h2 class="card-title">Phone</h2>
-								<h3 class="card-text">
-									Some quick example text to build on the card title and make up
-									the bulk of the cards content.
-								</h3>
+								<h3 class="card-text">+92-3365124444</h3>
 							</div>
 						</div>
 					</div>
@@ -56,12 +53,11 @@ const Contactus = () => {
 								<AiTwotoneMail
 									size={60}
 									style={{ marginLeft: "6rem" }}
-									color="#C8FFD4"
+									color="#ffae42"
 								/>
 								<h2 class="card-title">Address</h2>
 								<h3 class="card-text">
-									Some quick example text to build on the card title and make up
-									the bulk of the cards content.
+									Office No. 8 /A, near Punjab college, Block D Islamabad
 								</h3>
 							</div>
 						</div>
@@ -78,7 +74,7 @@ const Contactus = () => {
 						marginwidth="0"
 						title="map"
 						scrolling="no"
-						src="https://maps.google.com/maps?width=100%&height=600&hl=en&q=%C4%B0zmir+(My%20Business%20Name)&ie=UTF8&t=&z=14&iwloc=B&output=embed"
+						src="https://maps.google.com/maps?width=100%&height=600&hl=en&q=PakeezaElectronics+(PakeezaElectronics)&ie=UTF8&t=&z=14&iwloc=B&output=embed"
 						style={{ filter: "grayscale(1) contrast(1.2) opacity(0.4)" }}
 					></iframe>
 				</div>

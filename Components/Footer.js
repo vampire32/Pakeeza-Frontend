@@ -4,26 +4,14 @@ import React from 'react'
 const Footer = () => {
   return (
 		<div>
-			<footer class="body-font bg-red-500  ">
+			<footer class="body-font bg-blue-900  ">
 				<div class="container px-5 py-24 mx-auto ">
 					<div class="flex flex-wrap md:text-left justify-between text-center -mb-10 -mx-4">
 						<div class="lg:w-1/4 md:w-1/2 w-full px-4">
-							<svg
-								xmlns="http://www.w3.org/2000/svg"
-								fill="none"
-								stroke="currentColor"
-								stroke-linecap="round"
-								stroke-linejoin="round"
-								stroke-width="2"
-								class="w-10 h-10 text-white p-2 bg-red-500 rounded-full"
-								viewBox="0 0 24 24"
-							>
-								<path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
-							</svg>
-							<h3 class="title-font font-bold text-[32px] text-black tracking-widest text-sm mb-3">
+							<h3 class="title-font font-bold text-[32px] text-yellow-600 tracking-widest text-sm mb-3">
 								Pakeeza Electronics
 							</h3>
-							<p className="text-justify text-white">
+							<p className="text-justify text-yellow-400">
 								Culpa aliquip amet labore ut. Labore duis ullamco eu ex sunt
 								mollit do amet commodo irure eiusmod ex. Qui nulla tempor
 								proident minim aliquip magna ut elit ullamco qui dolore
@@ -33,69 +21,69 @@ const Footer = () => {
 						</div>
 
 						<div class="lg:w-1/6 md:w-1/2 w-full px-4">
-							<h2 class="title-font font-medium text-white tracking-widest text-sm mb-3">
+							<h2 class="title-font font-medium text-yellow-400 tracking-widest text-sm mb-3">
 								Important Link
 							</h2>
 							<nav class="list-none mb-10 leading-[3rem]">
 								<li>
-									<a class="text-white hover:text-white">
+									<a class="text-yellow-400 hover:text-yellow-400">
 										<Link href="/">Home</Link>
 									</a>
 								</li>
 								<li>
-									<a class="text-white hover:text-white">
+									<a class="text-yellow-400 hover:text-yellow-400">
 										<Link href="/About">About</Link>
 									</a>
 								</li>
 								<li>
-									<a class="text-white hover:text-white">
+									<a class="text-yellow-400 hover:text-yellow-400">
 										<Link href="/Contactus">Contact</Link>
 									</a>
 								</li>
 								<li>
-									<a class="text-white hover:text-white">
+									<a class="text-yellow-400 hover:text-yellow-400">
 										<Link href="/Login">Login</Link>
 									</a>
 								</li>
 								<li>
-									<a class="text-white hover:text-white">
+									<a class="text-yellow-400 hover:text-yellow-400">
 										<Link href="/SignUp">Signup</Link>
 									</a>
 								</li>
 							</nav>
 						</div>
 						<div class="lg:w-1/5 md:w-1/2 w-full px-4">
-							<h2 class="title-font font-medium  text-white tracking-widest text-sm mb-3">
+							<h2 class="title-font font-medium  text-yellow-400 tracking-widest text-sm mb-3">
 								CATEGORIES
 							</h2>
 							<nav class="list-none mb-10 text-justify leading-[3rem]">
 								<li>
-									<a class="text-white hover:text-white">
+									<a class="text-yellow-400 hover:text-yellow-400">
 										<Link href="/AirCooler">AIR CON & AirCooler</Link>
 									</a>
 								</li>
 								<li>
-									<a class="text-white hover:text-white">
+									<a class="text-yellow-400 hover:text-yellow-400">
 										<Link href="/Freezer">REFRIGERATOR & FREEZERS</Link>
 									</a>
 								</li>
 								<li>
-									<a class="text-white hover:text-white">
+									<a class="text-yellow-400 hover:text-yellow-400">
 										<Link href="/LEDSystem">LED TV & SOUND SYSTEM</Link>
 									</a>
 								</li>
 								<li>
-									<a class="text-white hover:text-white">
+									<a class="text-yellow-400 hover:text-yellow-400">
 										<Link href="/HomeApp">HOME APPLIANCES</Link>
 									</a>
 								</li>
 								<li>
-									<a class="text-white hover:text-white">
+									<a class="text-yellow-400 hover:text-yellow-400">
 										<Link href="/Kitchen">BUILT-IN KITCHEN</Link>
 									</a>
 								</li>
 								<li>
-									<a class="text-white hover:text-white">
+									<a class="text-yellow-400 hover:text-yellow-400">
 										<Link href="/Washing">WASHING SOLUTIONS</Link>
 									</a>
 								</li>
@@ -114,7 +102,7 @@ const Footer = () => {
 											</label>
 											<label
 												for="footer-field"
-												class="leading-9 text-sm text-[35px] tracking-wide  text-white"
+												class="leading-9 text-sm text-[35px] tracking-wide  text-yellow-400"
 											>
 												Signup For to Our newsletters
 											</label>
@@ -125,7 +113,7 @@ const Footer = () => {
 												class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:ring-2 focus:bg-transparent focus:ring-red-200 focus:border-red-500 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
 											/>
 										</div>
-										<button class="inline-flex text-white bg-gray-900 border-0 py-2 px-6 focus:outline-none m-auto  rounded">
+										<button class="inline-flex text-yellow-400 bg-gray-900 border-0 py-2 px-6 focus:outline-none m-auto  rounded">
 											SignUp
 										</button>
 									</div>
@@ -133,15 +121,15 @@ const Footer = () => {
 							</div>
 						</div>
 						<div class="lg:w-1/5 md:w-1/2 w-full px-4">
-							<h2 class="title-font font-medium text-white tracking-widest text-sm mb-3">
+							<h2 class="title-font font-medium text-yellow-400 tracking-widest text-sm mb-3">
 								Social Links
 							</h2>
 							<nav class="list-none mb-10 leading-[3rem]">
 								<li>
-									<a class="text-white hover:text-white">FaceBook</a>
+									<a class="text-yellow-400 hover:text-yellow-400">FaceBook</a>
 								</li>
 								<li>
-									<a class="text-white hover:text-white">Instagram</a>
+									<a class="text-yellow-400 hover:text-yellow-400">Instagram</a>
 								</li>
 							</nav>
 						</div>

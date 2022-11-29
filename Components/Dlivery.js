@@ -10,9 +10,9 @@ const Dlivery = () => {
   return (
 		<div>
 			<section
-				className="u-clearfix u-color-scheme-u10 u-color-style-multicolor-1 u-grey-90 u__section_111"
+				className="u-clearfix u-color-scheme-u10 u-color-style-multicolor-1 u-grey-90 u__section_111 text-yellow-400"
 				id="sec-d871"
-				data-aos="zoom-in"
+				
 			>
 				<div className="u-clearfix u-sheet u-valign-middle u-sheet-1">
 					<div className="u-clearfix u-expanded-width u-layout-wrap u-layout-wrap-1">

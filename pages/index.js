@@ -1,6 +1,7 @@
 import Head from "next/head";
 import { Fragment, useState,useEffect } from "react";
 import Image from "next/image";
+import Sale from  '../styles/Images/fresh.png'
 
 import { Testimonials } from "../Components/Testimonials";
 
@@ -208,15 +209,20 @@ const Home = (props) => {
 			<Brands />
 			<div className="">
 				<div className="container-fluid h-[25rem] linear-color2">
-					<p className=" text-[40px] font-bold text-yellow-400  text-center">
-						Premium Collections
-					</p>
-					<h3 className=" font-bold text-[40px] text-center pb-3  ml-5 text-yellow-600 ">
-						HOT DEALS
-					</h3>
-					<p className="text-center text-white text-[18px]">
-						Details to details is what makes Hexashop different from the other
-						themes
+					<div className="flex justify-center">
+						<img
+							style={{ width: "150px" }}
+							className="mt-"
+							src="https://static.vecteezy.com/system/resources/thumbnails/007/197/786/small/30-percent-price-off-icon-label-or-tag-sale-banner-red-discount-badge-or-discount-offer-price-sign-illustration-vector.jpg"
+						/>
+						<h3 className=" font-bold text-[40px] text-center pb-3  ml-5 text-yellow-600 ">
+							HOT DEALS
+						</h3>
+					</div>
+					<p className="text-white text-center text-[22px] md:w-[100%]  lg:w-[30%] justify-center m-auto mt-5 ">
+						Non et dolor amet magna ut. Aute commodo sit ipsum irure sunt qui
+						cupidatat cillum incididunt. Sint aliqua sit id laboris nulla.
+						Cupidatat enim qui mollit voluptate eiusmod.
 					</p>
 				</div>
 			</div>
@@ -268,66 +274,18 @@ const Home = (props) => {
 				</div>
 			</div>
 
-			<section class="container py-5">
-				<div class="row">
-					<div class="col-md-6 col-lg-3 pb-5">
-						<div class="h-100 py-5 services-icon-wap shadow">
-							<div class="h1 text-success text-center">
-								{/* <i class="fa fa-truck fa-lg"></i> */}
-								<div className="flex justify-center">
-									<FiTruck color="#ffae42" />
-								</div>
-							</div>
-							<h2 class="h5 mt-4 text-center">Delivery Services</h2>
-						</div>
-					</div>
-
-					<div class="col-md-6 col-lg-3 pb-5">
-						<div class="h-100 py-5 services-icon-wap shadow">
-							<div class="h1 text-success text-center">
-								<div className="flex justify-center">
-									<FaExchangeAlt color="#ffae42" />
-								</div>
-							</div>
-							<h2 class="h5 mt-4 text-center">Shipping & Return</h2>
-						</div>
-					</div>
-
-					<div class="col-md-6 col-lg-3 pb-5">
-						<div class="h-100 py-5 services-icon-wap shadow">
-							<div class="h1 text-success text-center">
-								<div className="flex justify-center">
-									<FiPercent color="#ffae42" />
-								</div>
-							</div>
-							<h2 class="h5 mt-4 text-center">Promotion</h2>
-						</div>
-					</div>
-
-					<div class="col-md-6 col-lg-3 pb-5">
-						<div class="h-100 py-5 services-icon-wap shadow">
-							<div class="h1 text-success text-center">
-								<div className="flex justify-center">
-									<Ri24HoursLine color="#ffae42" />
-								</div>
-							</div>
-							<h2 class="h5 mt-4 text-center">24 Hours Service</h2>
-						</div>
-					</div>
-				</div>
-			</section>
-
 			<div className="linear-color">
 				<div className="container-fluid h-[25rem] linear-color2">
-					<p className=" text-[40px] font-bold text-yellow-400  text-center">
-						Premium Collections
-					</p>
-					<h3 className=" font-bold text-[40px] text-center pb-3  ml-5 text-yellow-600 ">
-						AIR CON & AirCooler
-					</h3>
-					<p className="text-center text-white text-[18px]">
-						Details to details is what makes Hexashop different from the other
-						themes
+					<div className="flex justify-center">
+						<Image src={Sale} width={200} height={200} />
+						<h3 className=" font-bold mt-5 text-[40px] text-center pb-3  ml-5 text-yellow-600 ">
+							AIR CONDITIONER & AirCooler
+						</h3>
+					</div>
+					<p className="text-center text-white md:w-[100%]  lg:w-[35%] ml-5 m-auto text-[22px]">
+						Cillum sit nostrud velit proident laborum sit dolore labore nulla
+						duis ad eiusmod tempor cillum. Sit tempor occaecat laborum mollit
+						amet sit occaecat enim anim mollit.
 					</p>
 				</div>
 			</div>
@@ -387,15 +345,16 @@ const Home = (props) => {
 			{/* <Dlivery /> */}
 			<div className="linear-color">
 				<div className="container-fluid h-[25rem] linear-color2">
-					<p className=" text-[40px] font-bold text-yellow-400  text-center">
-						Premium Collections
-					</p>
-					<h3 className=" font-bold text-[40px] text-center pb-3  ml-5 text-yellow-600  ">
-						REFRIGERATOR & FREEZERS
-					</h3>
-					<p className="text-center text-white text-[18px]">
-						Details to details is what makes Hexashop different from the other
-						themes
+					<div className="flex justify-center">
+						<Image src={Sale} width={200} height={200} />
+						<h3 className=" font-bold mt-5 text-[40px] text-center pb-3  ml-5 text-yellow-600 ">
+							REFRIGERATOR & FREEZERS
+						</h3>
+					</div>
+					<p className="text-center text-white md:w-[100%]  lg:w-[35%] ml-5 m-auto text-[22px]">
+						Cillum sit nostrud velit proident laborum sit dolore labore nulla
+						duis ad eiusmod tempor cillum. Sit tempor occaecat laborum mollit
+						amet sit occaecat enim anim mollit.
 					</p>
 				</div>
 			</div>
@@ -452,15 +411,16 @@ const Home = (props) => {
 			</div>
 			<div className="linear-color">
 				<div className="container-fluid h-[25rem] linear-color2">
-					<p className=" text-[40px] font-bold text-yellow-400  text-center">
-						Premium Collections
-					</p>
-					<h3 className=" font-bold text-[40px] text-center pb-3  ml-5 text-yellow-600  ">
-						LED TV & SOUND SYSTEM
-					</h3>
-					<p className="text-center text-white text-[18px]">
-						Details to details is what makes Hexashop different from the other
-						themes
+					<div className="flex justify-center">
+						<Image src={Sale} width={200} height={200} />
+						<h3 className=" font-bold mt-5 text-[40px] text-center pb-3  ml-5 text-yellow-600 ">
+							LED TV & SOUND SYSTEM
+						</h3>
+					</div>
+					<p className="text-center text-white md:w-[100%]  lg:w-[35%] ml-5 m-auto text-[22px]">
+						Cillum sit nostrud velit proident laborum sit dolore labore nulla
+						duis ad eiusmod tempor cillum. Sit tempor occaecat laborum mollit
+						amet sit occaecat enim anim mollit.
 					</p>
 				</div>
 			</div>
@@ -517,15 +477,16 @@ const Home = (props) => {
 			</div>
 			<div className="linear-color">
 				<div className="container-fluid h-[25rem] linear-color2">
-					<p className=" text-[40px] font-bold text-yellow-400  text-center">
-						Premium Collections
-					</p>
-					<h3 className=" font-bold text-[40px] text-center pb-3  ml-5 text-yellow-600 ">
-						HOME APPLIANCES
-					</h3>
-					<p className="text-center text-white text-[18px]">
-						Details to details is what makes Hexashop different from the other
-						themes
+					<div className="flex justify-center">
+						<Image src={Sale} width={200} height={200} />
+						<h3 className=" font-bold mt-5 text-[40px] text-center pb-3  ml-5 text-yellow-600 ">
+							HOME APPLIANCES
+						</h3>
+					</div>
+					<p className="text-center text-white md:w-[100%]  lg:w-[35%] ml-5 m-auto text-[22px]">
+						Cillum sit nostrud velit proident laborum sit dolore labore nulla
+						duis ad eiusmod tempor cillum. Sit tempor occaecat laborum mollit
+						amet sit occaecat enim anim mollit.
 					</p>
 				</div>
 			</div>
@@ -566,6 +527,7 @@ const Home = (props) => {
 										price={item.attributes.Price}
 										Picture={img}
 										border="white"
+										text2="yellow"
 										text="yellow"
 									/>
 									;
@@ -580,139 +542,58 @@ const Home = (props) => {
 					</div>
 				</div>
 			</div>
-			<div className="linear-color">
-				<div className="container-fluid h-[25rem] linear-color2">
-					<p className=" text-[40px] font-bold text-yellow-400  text-center">
-						Premium Collections
-					</p>
-					<h3 className=" font-bold text-[40px] text-center pb-3  ml-5 text-yellow-600 ">
-						BUILT-IN KITCHEN
-					</h3>
-					<p className="text-center text-white text-[18px]">
-						Details to details is what makes Hexashop different from the other
-						themes
-					</p>
-				</div>
-			</div>
-			<div className="bg-kitchen-img2  h-[50rem] ">
-				<div className="conatiner">
-					<Swiper
-						breakpoints={{
-							640: {
-								slidesPerView: 2,
-							},
-							768: {
-								slidesPerView: 3,
-							},
-							1199: {
-								slidesPerView: 4,
-							},
-						}}
-						spaceBetween={30}
-						freeMode={true}
-						navigation={{
-							clickable: true,
-						}}
-						modules={[Navigation]}
-						className="mySwiper"
-					>
-						{props.KitchenData.data.map((item) => {
-							let imgurl =
-								"https://pakeeza-backend-railway-production.up.railway.app";
-							let img = item.attributes.img.data.attributes.url;
-							// console.log(img);
+			
+			
+			<section class="container py-5">
+				<div class="row">
+					<div class="col-md-6 col-lg-3 pb-5">
+						<div class="h-100 py-5 services-icon-wap shadow">
+							<div class="h1 text-success text-center">
+								{/* <i class="fa fa-truck fa-lg"></i> */}
+								<div className="flex justify-center">
+									<FiTruck color="#ffae42" />
+								</div>
+							</div>
+							<h2 class="h5 mt-4 text-center">Delivery Services</h2>
+						</div>
+					</div>
 
-							return (
-								<SwiperSlide key={item.id} className="mt-40">
-									<ProductCards
-										slug={item.attributes.Model}
-										name={item.attributes.Name}
-										brands={item.attributes.Brand}
-										price={item.attributes.Price}
-										Picture={img}
-										border="white"
-										text="yellow"
-									/>
-									;
-								</SwiperSlide>
-							);
-						})}
-					</Swiper>
-					<div className="flex justify-center">
-						<a className="btn hover-btn bg-yellow-400 text-white text-center px-12 ">
-							View
-						</a>
+					<div class="col-md-6 col-lg-3 pb-5">
+						<div class="h-100 py-5 services-icon-wap shadow">
+							<div class="h1 text-success text-center">
+								<div className="flex justify-center">
+									<FaExchangeAlt color="#ffae42" />
+								</div>
+							</div>
+							<h2 class="h5 mt-4 text-center">Shipping & Return</h2>
+						</div>
+					</div>
+
+					<div class="col-md-6 col-lg-3 pb-5">
+						<div class="h-100 py-5 services-icon-wap shadow">
+							<div class="h1 text-success text-center">
+								<div className="flex justify-center">
+									<FiPercent color="#ffae42" />
+								</div>
+							</div>
+							<h2 class="h5 mt-4 text-center">Promotion</h2>
+						</div>
+					</div>
+
+					<div class="col-md-6 col-lg-3 pb-5">
+						<div class="h-100 py-5 services-icon-wap shadow">
+							<div class="h1 text-success text-center">
+								<div className="flex justify-center">
+									<Ri24HoursLine color="#ffae42" />
+								</div>
+							</div>
+							<h2 class="h5 mt-4 text-center">24 Hours Service</h2>
+						</div>
 					</div>
 				</div>
-			</div>
-			<div className="linear-color">
-				<div className="container-fluid h-[25rem] linear-color2">
-					<p className=" text-[40px] font-bold text-yellow-400  text-center">
-						Premium Collections
-					</p>
-					<h3 className=" font-bold text-[40px] text-center pb-3  ml-5 text-yellow-600  ">
-						WASHING SOLUTIONS
-					</h3>
-					<p className="text-center text-white text-[18px]">
-						Details to details is what makes Hexashop different from the other
-						themes
-					</p>
-				</div>
-			</div>
-			<div className="bg-washing-img2 h-[50rem]">
-				<div className="conatiner">
-					<Swiper
-						breakpoints={{
-							640: {
-								slidesPerView: 2,
-							},
-							768: {
-								slidesPerView: 3,
-							},
-							1199: {
-								slidesPerView: 4,
-							},
-						}}
-						spaceBetween={30}
-						freeMode={true}
-						navigation={{
-							clickable: true,
-						}}
-						modules={[Navigation]}
-						className="mySwiper"
-					>
-						{props.WashingData.data.map((item) => {
-							let imgurl =
-								"https://pakeeza-backend-railway-production.up.railway.app";
-							let img = item.attributes.img.data.attributes.url;
-							// console.log(img);
-
-							return (
-								<SwiperSlide key={item.id} className="mt-40">
-									<ProductCards
-										slug={item.attributes.Model}
-										name={item.attributes.Name}
-										brands={item.attributes.Brand}
-										price={item.attributes.Price}
-										Picture={img}
-										border="white"
-										text="yellow"
-									/>
-									;
-								</SwiperSlide>
-							);
-						})}
-					</Swiper>
-					<div className="flex justify-center mt-10">
-						<a className="btn hover-btn bg-yellow-400 text-white text-center px-12 ">
-							View
-						</a>
-					</div>
-				</div>
-			</div>
+			</section>
 
 			<Dlivery />
-			<Testimonials />
 		</div>
 	);
 };

@@ -11,7 +11,7 @@ const Footer = () => {
 							<h3 class="title-font font-bold text-[32px] text-yellow-600 tracking-widest text-sm mb-3">
 								Pakeeza Electronics
 							</h3>
-							<p className="text-justify text-yellow-400">
+							<p className="text-justify text-white">
 								Culpa aliquip amet labore ut. Labore duis ullamco eu ex sunt
 								mollit do amet commodo irure eiusmod ex. Qui nulla tempor
 								proident minim aliquip magna ut elit ullamco qui dolore
@@ -26,27 +26,27 @@ const Footer = () => {
 							</h2>
 							<nav class="list-none mb-10 leading-[3rem]">
 								<li>
-									<a class="text-yellow-400 hover:text-yellow-400">
+									<a class="text-white hover:text-yellow-400">
 										<Link href="/">Home</Link>
 									</a>
 								</li>
 								<li>
-									<a class="text-yellow-400 hover:text-yellow-400">
+									<a class="text-white hover:text-yellow-400">
 										<Link href="/About">About</Link>
 									</a>
 								</li>
 								<li>
-									<a class="text-yellow-400 hover:text-yellow-400">
+									<a class="text-white hover:text-yellow-400">
 										<Link href="/Contactus">Contact</Link>
 									</a>
 								</li>
 								<li>
-									<a class="text-yellow-400 hover:text-yellow-400">
+									<a class="text-white hover:text-yellow-400">
 										<Link href="/Login">Login</Link>
 									</a>
 								</li>
 								<li>
-									<a class="text-yellow-400 hover:text-yellow-400">
+									<a class="text-white hover:text-yellow-400">
 										<Link href="/SignUp">Signup</Link>
 									</a>
 								</li>
@@ -56,70 +56,40 @@ const Footer = () => {
 							<h2 class="title-font font-medium  text-yellow-400 tracking-widest text-sm mb-3">
 								CATEGORIES
 							</h2>
-							<nav class="list-none mb-10 text-justify leading-[3rem]">
-								<li>
-									<a class="text-yellow-400 hover:text-yellow-400">
+							<nav class="list-none mb-10 text-center leading-[3rem]">
+								<li className="text-white">
+									<a class="text-white hover:text-yellow-400">
 										<Link href="/AirCooler">AIR CON & AirCooler</Link>
 									</a>
 								</li>
 								<li>
-									<a class="text-yellow-400 hover:text-yellow-400">
+									<a class="text-white hover:text-yellow-400">
 										<Link href="/Freezer">REFRIGERATOR & FREEZERS</Link>
 									</a>
 								</li>
 								<li>
-									<a class="text-yellow-400 hover:text-yellow-400">
+									<a class="text-white hover:text-yellow-400">
 										<Link href="/LEDSystem">LED TV & SOUND SYSTEM</Link>
 									</a>
 								</li>
 								<li>
-									<a class="text-yellow-400 hover:text-yellow-400">
+									<a class="text-white hover:text-yellow-400">
 										<Link href="/HomeApp">HOME APPLIANCES</Link>
 									</a>
 								</li>
 								<li>
-									<a class="text-yellow-400 hover:text-yellow-400">
+									<a class="text-white t hover:text-yellow-400">
 										<Link href="/Kitchen">BUILT-IN KITCHEN</Link>
 									</a>
 								</li>
 								<li>
-									<a class="text-yellow-400 hover:text-yellow-400">
+									<a class="text-white hover:text-yellow-400">
 										<Link href="/Washing">WASHING SOLUTIONS</Link>
 									</a>
 								</li>
 							</nav>
 						</div>
-						<div class="lg:w-1/4 md:w-1/2 w-full px-4 linear-color ">
-							<div class="">
-								<div class="container px-5 py-8 flex flex-wrap justify-center mx-auto items-center">
-									<div class="flex md:flex-nowrap flex-wrap justify-center items-end md:justify-start">
-										<div class="relative sm:w-64 w-40 sm:mr-4 leading-[5rem] mr-2">
-											<label
-												for="footer-field"
-												class="leading-9 text-sm text-[20px] tracking-wide text-yellow-600 "
-											>
-												Get 25% Discount on your First Purchasing
-											</label>
-											<label
-												for="footer-field"
-												class="leading-9 text-sm text-[35px] tracking-wide  text-yellow-400"
-											>
-												Signup For to Our newsletters
-											</label>
-											<input
-												type="text"
-												id="footer-field"
-												name="footer-field"
-												class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:ring-2 focus:bg-transparent focus:ring-red-200 focus:border-red-500 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
-											/>
-										</div>
-										<button class="inline-flex text-yellow-400 bg-gray-900 border-0 py-2 px-6 focus:outline-none m-auto  rounded">
-											SignUp
-										</button>
-									</div>
-								</div>
-							</div>
-						</div>
+
 						<div class="lg:w-1/5 md:w-1/2 w-full px-4">
 							<h2 class="title-font font-medium text-yellow-400 tracking-widest text-sm mb-3">
 								Social Links
@@ -136,7 +106,7 @@ const Footer = () => {
 					</div>
 				</div>
 
-				<div class="bg-red-100">
+				<div class="bg-white">
 					<div class="container mx-auto py-4 px-5 flex flex-wrap flex-col sm:flex-row">
 						<p class="text-gray-500 text-sm text-center sm:text-left">
 							<a

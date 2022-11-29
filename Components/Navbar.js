@@ -198,10 +198,7 @@ const NavBar = ({ Carts, addToCart, RemoveFromcart, clearCart, SubTotal }) => {
 						<div class="flex  items-center  sm:items-stretch pt-[5rem]">
 							<div class="hidden sm:ml-6 sm:block">
 								<div class="flex space-x-4 ml-44 ">
-									<a
-										class=" text-black  rounded-md text-[22px] font-medium"
-										
-									>
+									<a class=" text-black  rounded-md text-[22px] font-medium">
 										<Link href="/">Home</Link>
 									</a>
 
@@ -275,12 +272,15 @@ const NavBar = ({ Carts, addToCart, RemoveFromcart, clearCart, SubTotal }) => {
 							</div>
 						</div>
 					</div>
-					<div className="flex justify-end hide">
-						<a class="hide lg:inline-block py-2 px-6 bg-blue-500 hover:bg-blue-600 text-sm text-white font-bold rounded-xl transition duration-200">
+					<div className="flex justify-end hide mr-5">
+						<a
+							style={{ backgroundColor: "rgb(46, 34, 156)" }}
+							class="hide lg:inline-block py-2 px-6  hover:bg-blue-600 text-sm text-white font-bold rounded-xl transition duration-200"
+						>
 							<Link href="/Login">Login</Link>
 						</a>
 						<button className=" hide ml-5" onClick={() => setcart(true)}>
-							<FaLuggageCart size={30} />
+							<FaLuggageCart size={30} color="#ffae42" />
 						</button>
 					</div>
 				</div>
@@ -334,10 +334,7 @@ const NavBar = ({ Carts, addToCart, RemoveFromcart, clearCart, SubTotal }) => {
 
 												<div className="mt-8 text-center">
 													<div class="space-y-1 px-2 pt-2 pb-3">
-														<a
-															class=" text-white block px-3 py-2 rounded-md text-base font-medium"
-															
-														>
+														<a class=" text-white block px-3 py-2 rounded-md text-base font-medium">
 															<Link href="/">Home</Link>
 														</a>
 

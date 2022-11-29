@@ -3,6 +3,7 @@ import Filters from '../Components/Filters'
 import MainSlider from '../Components/MainSlider'
 import ProductCards from '../Components/ProductCards';
 import { Fragment, useState } from "react";
+import axios from "axios";
 import { Dialog, Disclosure, Menu, Transition } from "@headlessui/react";
 import { XMarkIcon } from "@heroicons/react/24/outline";
 import {
@@ -96,6 +97,31 @@ const filters = [
 	},
 ];
 const Products = (props) => {
+	const [filter, setfilter] = useState([])
+	const [value, setvalue] = useState("")
+	const [renders, setrenders] = useState(false)
+	const handleChange=(e)=>{
+		setvalue(e.target.value)
+	}
+	const handleSubmit = async (e) => {
+		e.preventDefault();
+		axios
+			.get(
+				`https://pakeeza-backend-railway-production.up.railway.app/api/products?filters[Category][$eq]=AC&filters[SubCategories][$eq]=${value}&populate=*`
+			)
+			.then((response) => {
+				// Handle success.
+				setfilter(response.data);
+				console.log(filter);
+				setrenders(true);
+			})
+			.catch((error) => {
+				// Handle error.
+				alert(error);
+				console.log("An error occurred:", error.response);
+			});
+	};
+
   const [mobileFiltersOpen, setMobileFiltersOpen] = useState(false);
   return (
 		<div>
@@ -153,73 +179,99 @@ const Products = (props) => {
 											<ul
 												role="list"
 												className="px-2 py-3 font-medium text-gray-900"
-											>
-												{subCategories.map((category) => (
-													<li key={category.name}>
-														<a href={category.href} className="block px-2 py-3">
-															{category.name}
-														</a>
-													</li>
-												))}
-											</ul>
+											></ul>
 
-											{filters.map((section) => (
-												<Disclosure
-													as="div"
-													key={section.id}
-													className="border-t border-gray-200 px-4 py-6"
-												>
-													{({ open }) => (
-														<>
-															<h3 className="-mx-2 -my-3 flow-root">
-																<Disclosure.Button className="flex w-full items-center justify-between bg-white px-2 py-3 text-gray-400 hover:text-gray-500">
-																	<span className="font-medium text-gray-900">
-																		{section.name}
-																	</span>
-																	<span className="ml-6 flex items-center">
-																		{open ? (
-																			<MinusIcon
-																				className="h-5 w-5"
-																				aria-hidden="true"
-																			/>
-																		) : (
-																			<PlusIcon
-																				className="h-5 w-5"
-																				aria-hidden="true"
-																			/>
-																		)}
-																	</span>
-																</Disclosure.Button>
-															</h3>
-															<Disclosure.Panel className="pt-6">
-																<div className="space-y-6">
-																	{section.options.map((option, optionIdx) => (
-																		<div
-																			key={option.value}
-																			className="flex items-center"
-																		>
-																			<input
-																				id={`filter-mobile-${section.id}-${optionIdx}`}
-																				name={`${section.id}[]`}
-																				defaultValue={option.value}
-																				type="checkbox"
-																				defaultChecked={option.checked}
-																				className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
-																			/>
-																			<label
-																				htmlFor={`filter-mobile-${section.id}-${optionIdx}`}
-																				className="ml-3 min-w-0 flex-1 text-gray-500"
-																			>
-																				{option.label}
-																			</label>
-																		</div>
-																	))}
-																</div>
-															</Disclosure.Panel>
-														</>
-													)}
-												</Disclosure>
-											))}
+											<Disclosure
+												as="div"
+												className="border-t border-gray-200 px-4 py-6"
+											>
+												<>
+													<h3 className="-mx-2 -my-3 flow-root">
+														<Disclosure.Button className="flex w-full items-center justify-between bg-white px-2 py-3 text-gray-400 hover:text-gray-500">
+															<span className="font-medium text-gray-900">
+																subCategories
+															</span>
+														</Disclosure.Button>
+													</h3>
+													<Disclosure.Panel className="pt-6">
+														<div className="space-y-4">
+															<div className="flex items-center">
+																<input
+																	name="GREELINEUP"
+																	type="checkbox"
+																	defaultValue="GREELINEUP"
+																	onChange={handleChange}
+																	className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
+																/>
+																<label className="ml-3 min-w-0 flex-1 text-gray-500">
+																	GREE LINEUP
+																</label>
+															</div>
+															<div className="flex items-center">
+																<input
+																	name="HAIERLINEUP"
+																	type="checkbox"
+																	defaultValue="HAIERLINEUP"
+																	onChange={handleChange}
+																	className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
+																/>
+																<label className="ml-3 min-w-0 flex-1 text-gray-500">
+																	HAIER LINEUP
+																</label>
+															</div>
+															<div className="flex items-center">
+																<input
+																	name="ORIENTLINEUP"
+																	type="checkbox"
+																	defaultValue="ORIENTLINEUP"
+																	onChange={handleChange}
+																	className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
+																/>
+																<label className="ml-3 min-w-0 flex-1 text-gray-500">
+																	ORIENT LINEUP
+																</label>
+															</div>
+															<div className="flex items-center">
+																<input
+																	name="KENWOODLINEUP"
+																	type="checkbox"
+																	defaultValue="KENWOODLINEUP"
+																	onChange={handleChange}
+																	className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
+																/>
+																<label className="ml-3 min-w-0 flex-1 text-gray-500">
+																	KENWOOD LINEUP
+																</label>
+															</div>
+															<div className="flex items-center">
+																<input
+																	name="ALLOTHERBRANDS"
+																	type="checkbox"
+																	defaultValue="Dawalance"
+																	onChange={handleChange}
+																	className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
+																/>
+																<label className="ml-3 min-w-0 flex-1 text-gray-500">
+																	ALL OTHER BRANDS
+																</label>
+															</div>
+															<div className="flex items-center">
+																<input
+																	name="Dawalance"
+																	type="checkbox"
+																	defaultValue="Dawalance"
+																	onChange={handleChange}
+																	className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
+																/>
+																<label className="ml-3 min-w-0 flex-1 text-gray-500">
+																	Dawlance
+																</label>
+															</div>
+														</div>
+													</Disclosure.Panel>
+												</>
+											</Disclosure>
+											<button onClick={handleSubmit} className="btn btn-danger"></button>
 										</form>
 									</Dialog.Panel>
 								</Transition.Child>
@@ -235,16 +287,6 @@ const Products = (props) => {
 
 							<div className="flex items-center">
 								<Menu as="div" className="relative inline-block text-left">
-									<div>
-										<Menu.Button className="group inline-flex justify-center text-sm font-medium text-gray-700 hover:text-gray-900">
-											Sort
-											<ChevronDownIcon
-												className="-mr-1 ml-1 h-5 w-5 flex-shrink-0 text-gray-400 group-hover:text-gray-500"
-												aria-hidden="true"
-											/>
-										</Menu.Button>
-									</div>
-
 									<Transition
 										as={Fragment}
 										enter="transition ease-out duration-100"
@@ -256,36 +298,12 @@ const Products = (props) => {
 									>
 										<Menu.Items className="absolute right-0 z-10 mt-2 w-40 origin-top-right rounded-md bg-white shadow-2xl ring-1 ring-black ring-opacity-5 focus:outline-none">
 											<div className="py-1">
-												{sortOptions.map((option) => (
-													<Menu.Item key={option.name}>
-														{({ active }) => (
-															<a
-																href={option.href}
-																className={classNames(
-																	option.current
-																		? "font-medium text-gray-900"
-																		: "text-gray-500",
-																	active ? "bg-gray-100" : "",
-																	"block px-4 py-2 text-sm"
-																)}
-															>
-																{option.name}
-															</a>
-														)}
-													</Menu.Item>
-												))}
+												<Menu.Item></Menu.Item>
 											</div>
 										</Menu.Items>
 									</Transition>
 								</Menu>
 
-								<button
-									type="button"
-									className="-m-2 ml-5 p-2 text-gray-400 hover:text-gray-500 sm:ml-7"
-								>
-									<span className="sr-only">View grid</span>
-									<Squares2X2Icon className="h-5 w-5" aria-hidden="true" />
-								</button>
 								<button
 									type="button"
 									className="-m-2 ml-4 p-2 text-gray-400 hover:text-gray-500 sm:ml-6 lg:hidden"
@@ -306,104 +324,164 @@ const Products = (props) => {
 								{/* Filters */}
 								<form className="hidden lg:block">
 									<h3 className="sr-only">Categories</h3>
-									<ul
-										role="list"
-										className="space-y-4 border-b border-gray-200 pb-6 text-sm font-medium text-gray-900"
-									>
-										{subCategories.map((category) => (
-											<li key={category.name}>
-												<a href={category.href}>{category.name}</a>
-											</li>
-										))}
-									</ul>
 
-									{filters.map((section) => (
-										<Disclosure
-											as="div"
-											key={section.id}
-											className="border-b border-gray-200 py-6"
-										>
-											{({ open }) => (
-												<>
-													<h3 className="-my-3 flow-root">
-														<Disclosure.Button className="flex w-full items-center justify-between bg-white py-3 text-sm text-gray-400 hover:text-gray-500">
-															<span className="font-medium text-gray-900">
-																{section.name}
-															</span>
-															<span className="ml-6 flex items-center">
-																{open ? (
-																	<MinusIcon
-																		className="h-5 w-5"
-																		aria-hidden="true"
-																	/>
-																) : (
-																	<PlusIcon
-																		className="h-5 w-5"
-																		aria-hidden="true"
-																	/>
-																)}
-															</span>
-														</Disclosure.Button>
-													</h3>
-													<Disclosure.Panel className="pt-6">
-														<div className="space-y-4">
-															{section.options.map((option, optionIdx) => (
-																<div
-																	key={option.value}
-																	className="flex items-center"
-																>
-																	<input
-																		id={`filter-${section.id}-${optionIdx}`}
-																		name={`${section.id}[]`}
-																		defaultValue={option.value}
-																		type="checkbox"
-																		defaultChecked={option.checked}
-																		className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
-																	/>
-																	<label
-																		htmlFor={`filter-${section.id}-${optionIdx}`}
-																		className="ml-3 text-sm text-gray-600"
-																	>
-																		{option.label}
-																	</label>
-																</div>
-															))}
-														</div>
-													</Disclosure.Panel>
-												</>
-											)}
-										</Disclosure>
-									))}
+									<Disclosure
+										as="div"
+										className="border-b border-gray-200 py-6"
+									>
+										<>
+											<h3 className="-my-3 flow-root">
+												<Disclosure.Button className="flex w-full items-center justify-between bg-white py-3 text-sm text-gray-400 hover:text-gray-500">
+													<span className="font-medium text-gray-900">
+														Brands
+													</span>
+												</Disclosure.Button>
+											</h3>
+											<Disclosure.Panel className="pt-6">
+												<div className="space-y-4">
+													<div className="flex items-center">
+														<input
+															name="GREELINEUP"
+															type="checkbox"
+															defaultValue="GREELINEUP"
+															onChange={handleChange}
+															className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
+														/>
+														<label className="ml-3 min-w-0 flex-1 text-gray-500">
+															GREE LINEUP
+														</label>
+													</div>
+													<div className="flex items-center">
+														<input
+															name="HAIERLINEUP"
+															type="checkbox"
+															defaultValue="HAIERLINEUP"
+															onChange={handleChange}
+															className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
+														/>
+														<label className="ml-3 min-w-0 flex-1 text-gray-500">
+															HAIER LINEUP
+														</label>
+													</div>
+													<div className="flex items-center">
+														<input
+															name="ORIENTLINEUP"
+															type="checkbox"
+															defaultValue="ORIENTLINEUP"
+															onChange={handleChange}
+															className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
+														/>
+														<label className="ml-3 min-w-0 flex-1 text-gray-500">
+															ORIENT LINEUP
+														</label>
+													</div>
+													<div className="flex items-center">
+														<input
+															name="KENWOODLINEUP"
+															type="checkbox"
+															defaultValue="KENWOODLINEUP"
+															onChange={handleChange}
+															className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
+														/>
+														<label className="ml-3 min-w-0 flex-1 text-gray-500">
+															KENWOOD LINEUP
+														</label>
+													</div>
+													<div className="flex items-center">
+														<input
+															name="ALLOTHERBRANDS"
+															type="checkbox"
+															defaultValue="Dawalance"
+															onChange={handleChange}
+															className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
+														/>
+														<label className="ml-3 min-w-0 flex-1 text-gray-500">
+															ALL OTHER BRANDS
+														</label>
+													</div>
+													<div className="flex items-center">
+														<input
+															name="Dawalance"
+															type="checkbox"
+															defaultValue="Dawalance"
+															onChange={handleChange}
+															className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
+														/>
+														<label className="ml-3 min-w-0 flex-1 text-gray-500">
+															Dawlance
+														</label>
+													</div>
+												</div>
+											</Disclosure.Panel>
+										</>
+									</Disclosure>
+									<button onClick={handleSubmit} className="btn btn-danger">
+										Search
+									</button>
+									{console.log(filter)}
 								</form>
 
 								{/* Product grid */}
 								<div className="lg:col-span-3  ">
 									{/* Replace with your content */}
 									<div className=" lg:h-full">
-										<div className="row ">
-											{props.productsData.data.map((item) => {
-												let imgurl =
-													"https://glacial-woodland-47482.herokuapp.com";
-												let img =
-													item.attributes.img.data.attributes.formats.thumbnail
-														.url;
-												console.log(item.attributes.Model);
+										{renders ? (
+											<div className="row">
+												{filter.data.map((item) => {
+													let imgurl =
+														"https://glacial-woodland-47482.herokuapp.com";
+													let img =
+														item.attributes.img.data.attributes.formats
+															.thumbnail.url;
+													console.log(item.attributes.Model);
 
-												return (
-													<div className="col-md-4 " key={item.id}>
-														<ProductCards
-															slug={item.attributes.Model}
-															name={item.attributes.Name}
-															brands={item.attributes.Brand}
-															price={item.attributes.Price}
-															Picture={img}
-															border="blue"
-															text="black"
-														/>
-													</div>
-												);
-											})}
-											{/* <div className="col-md-4 ">
+													return (
+														<div className="col-md-4 " key={item.id}>
+															<ProductCards
+																slug={item.attributes.Model}
+																name={item.attributes.Name}
+																brands={item.attributes.Brand}
+																price={item.attributes.Price}
+																Picture={img}
+																border="blue"
+																text="white"
+																text2="yellow"
+																bg="blue"
+															/>
+														</div>
+													);
+												})}
+											</div>
+										) : (
+											<div className="row">
+												{props.productsData.data.map((item) => {
+													let imgurl =
+														"https://glacial-woodland-47482.herokuapp.com";
+													let img =
+														item.attributes.img.data.attributes.formats
+															.thumbnail.url;
+													console.log(item.attributes.Model);
+
+													return (
+														<div className="col-md-4 " key={item.id}>
+															<ProductCards
+																slug={item.attributes.Model}
+																name={item.attributes.Name}
+																brands={item.attributes.Brand}
+																price={item.attributes.Price}
+																Picture={img}
+																border="blue"
+																text="white"
+																text2="yellow"
+																bg="blue"
+															/>
+														</div>
+													);
+												})}
+											</div>
+										)}
+
+										{/* <div className="col-md-4 ">
 												<ProductCards
 													slug={props.name}
 													brands={props.brand}
@@ -412,7 +490,6 @@ const Products = (props) => {
 													Model={props.model}
 												/>
 											</div> */}
-										</div>
 									</div>
 
 									{/* /End replace */}

@@ -5,6 +5,7 @@ import { FaChevronLeft } from "react-icons/fa";
 import C2 from "../styles/Images/Slide2.png";
 import C3 from "../styles/Images/Home-Appliance-Transparent.png";
 import C4 from "../styles/Images/images-removebg-preview.png";
+import C5 from "../styles/Images/AC-PNG-Image-removebg-preview.png"
 import Image from "next/image";
 import Link from 'next/link';
 import AOS from "aos";
@@ -22,7 +23,6 @@ const MainSlider = () => {
 				id="template-mo-zay-hero-carousel"
 				class="carousel slide"
 				data-bs-ride="carousel"
-				
 			>
 				<ol class="carousel-indicators">
 					<li
@@ -50,13 +50,13 @@ const MainSlider = () => {
 				<div class="carousel-inner">
 					<div class="carousel-item active">
 						<div class="container">
-							<div class="row p-5">
+							<div class="row pb-[10%]">
 								<div class="mx-auto col-md-8 col-lg-6 order-lg-last">
-									<div class="img-fluid">
+									<div class="">
 										<Image src={C1} alt="" />
 									</div>
 								</div>
-								<div class="col-lg-6 mb-0 d-flex align-items-center">
+								<div class="col-lg-6 mb-0 d-flex align-items-center ">
 									<div class="text-align-left align-self-center">
 										<h1 class="h1 text-[#ffae42]">
 											<b>Pakeeza </b> Electronics
@@ -108,13 +108,10 @@ const MainSlider = () => {
 					</div>
 					<div class="carousel-item">
 						<div class="container pb-[5rem]">
-							<div class="row p-5">
+							<div class="row pb-[8%] mt-[10rem]">
 								<div class="mx-auto col-md-8 col-lg-6 order-lg-last">
 									<div class="img-fluid">
-										<img
-											src="https://www.pngarts.com/files/1/AC-Free-PNG-Image.png"
-											alt=""
-										/>
+										<Image src={C5} alt="" />
 									</div>
 								</div>
 								<div class="col-lg-6 mb-0 d-flex align-items-center">
@@ -170,7 +167,7 @@ const MainSlider = () => {
 					</div>
 					<div class="carousel-item">
 						<div class="container">
-							<div class="row p-5">
+							<div class="row pb-52 pt-24">
 								<div class="mx-auto col-md-8 col-lg-6 order-lg-last">
 									<div class="img-fluid">
 										<Image src={C2} alt="" />
